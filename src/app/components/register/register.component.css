@@ -1,35 +1,14 @@
-.login-button {
-  margin-top: 20px;
-  display: block;
-  width: 80%;
-  margin: 20px auto;
-  border-radius: 50px;
-}
 
-.scale {
-  transform: scale(1.6);
-}
-
-mat-form-field,
-mat-checkbox {
-  width: 80%;
-  display: block;
-  margin: 10px auto;
-}
 mat-card-content {
-  margin-top: 20px;
+  margin: auto;
 }
 
-.example-container mat-form-field + mat-form-field {
-  margin-left: 8px;
+mat-form-field {
+  margin-bottom: 0.5em;
 }
-.example-right-align {
-  text-align: right;
+
+mat-raised-button {
+  margin-top: 2em
 }
-input.example-right-align::-webkit-outer-spin-button,
-input.example-right-align::-webkit-inner-spin-button {
-  display: none;
-}
-input.example-right-align {
-  -moz-appearance: textfield;
-}
+
+
