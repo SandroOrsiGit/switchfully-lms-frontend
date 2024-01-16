@@ -7,12 +7,20 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import {FormValidator} from "./form-validator";
 import {MatCardModule} from "@angular/material/card";
+ 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatIconModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatCardModule],
+  imports: [MatFormFieldModule, 
+            MatInputModule, 
+            MatIconModule, 
+            FormsModule, 
+            ReactiveFormsModule,
+            MatButtonModule, 
+            MatCardModule],
 })
 export class RegisterComponent {
   hide = true;
