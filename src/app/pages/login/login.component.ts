@@ -3,11 +3,12 @@ import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule, ButtonComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
