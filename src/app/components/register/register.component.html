@@ -1,9 +1,14 @@
 <div>
 
+  <h1>Register an account</h1>
+
   <div>
     <mat-form-field>
-      <mat-label>Display </mat-label>
-      <input matInput placeholder="Placeholder" required>
+      <mat-label>Display Name</mat-label>
+      <input matInput placeholder="Enter your display name" [formControl]="displayName" required>
+      @if (displayName.invalid) {
+      <mat-error>{{getErrorMessage()}}</mat-error>
+      }
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
     </mat-form-field>
   </div>
@@ -22,12 +27,33 @@
   <div>
     <mat-form-field>
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+      @if (password.invalid) {
+      <mat-error>{{getErrorMessage()}}</mat-error>
+      }
+
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide">
+              [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
     </mat-form-field>
+
   </div>
-  
+
+  <div>
+    <mat-form-field>
+      <mat-label>Confirm your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordConfirm" required>
+      @if (passwordConfirm.invalid) {
+      <mat-error>{{getErrorMessage()}}</mat-error>
+      }
+
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </div>
+
 </div>
