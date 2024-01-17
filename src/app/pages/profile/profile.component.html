@@ -1,0 +1,28 @@
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <i class="material-icons settings-icon" (click)="toggleEditing()">settings</i>
+    <h2>Profile</h2>
+
+    <form>
+      <mat-label>Email</mat-label>
+      <mat-form-field>
+        <input matInput readonly disabled value="{{user$.email}}"/>
+      </mat-form-field>
+
+      <mat-label>Display Name</mat-label>
+      <mat-form-field>
+        <input matInput value="{{user$.displayName}}" [readonly] = "!editing" [disabled] = "!editing"/>
+      </mat-form-field>
+    </form>
+
+    <div class="class-list">
+      <h3>Your Class</h3>
+      <p>{{user$.classes[0]}}</p>
+      <!--    <select>-->
+      <!--      <option *ngFor="let class of classes$">{{class}}</option>-->
+      <!--    </select>-->
+    </div>
+
+    <button mat-raised-button [disabled] = "!editing">Update Profile</button>
+  </div>
+</div>
