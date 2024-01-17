@@ -13,14 +13,31 @@ import { ButtonComponent } from '../../components/button/button.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  hide: boolean = true; 
-
-  getErrorMessage() {
+  // todo: delete prefilled values
+  email = new FormControl('test@gmail.com', [Validators.required, Validators.email]);
+  password = new FormControl('password', [Validators.required]);
+  hide: boolean = true;
+  
+  getEmailErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+  // TODO: add more complexity on password validation
+  getPasswordErrorMessage() {
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.password.hasError('password') ? 'Not a valid password' : '';
+  }
+
+  onLogin() {
+    console.log('login clicked');
+  }
+
+
 }
