@@ -21,7 +21,6 @@ export class KeycloakService {
 
   private setToken(accessToken: string): void {
     sessionStorage.setItem(this.TOKEN_KEY_NAME, accessToken);
-    console.log(accessToken)
   }
 
   getToken(): string {
