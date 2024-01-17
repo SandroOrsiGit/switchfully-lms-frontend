@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonComponent} from "../../components/button/button.component";
 import {CommonModule} from "@angular/common";
+import {ClassgroupService} from "../../services/classgroup.service";
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 
 @Component({
   selector: 'app-create-classgroup',
@@ -14,12 +16,24 @@ import {CommonModule} from "@angular/common";
 })
 export class CreateClassgroupComponent implements OnInit{
   buttonName = '';
+  createClassgroupForm: FormGroup;
+
+  private classgroupService: ClassgroupService = inject(ClassgroupService);
+  private formBuilder: FormBuilder= inject(FormBuilder);
 
   ngOnInit(): void {
-    this.buttonName = 'Sumbit';
+    this.buttonName = 'Submit';
+    this.createClassgroupForm = this.formBuilder.group( {
+      name: ['']
+    });
   }
 
   onSubmit() {
     console.log("submit button clicked")
+    let newClassgroup = this.createClassgroupForm.value;
+   this.classgroupService.createClassgroup(newClassgroup).subscribe(
+      response => console.log("created",response),
+     error => console.error('error: ',error)
+   );
   }
 }

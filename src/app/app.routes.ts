@@ -5,6 +5,5 @@ import {CreateClassgroupComponent} from "./pages/create-classgroup/create-classg
 
 export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
-  // {path: 'classgroup'}
   {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent}
 ];
