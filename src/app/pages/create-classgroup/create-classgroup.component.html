@@ -1,12 +1,12 @@
-<section>
-  <div>
-    <form class="create-classgroup-form" [formGroup]="createClassgroupForm">
-      <mat-form-field class="create-classgroup-full-width">
-        <mat-label>Classgroup name</mat-label>
-        <input matInput #message maxlength="256" placeholder="Type here..." formControlName="name">
+<section>e">
         <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
       </mat-form-field>
     </form>
+    <div>
+      <form class="create-classgroup-form" [formGroup]="createClassgroupForm">
+        <mat-form-field class="create-classgroup-full-width">
+          <mat-label>Classgroup name</mat-label>
+          <input matInput #message maxlength="256" placeholder="Type here..." formControlName="nam
     <app-button [buttonName]="buttonName" (buttonClick)="onSubmit()" ></app-button>
   </div>
 </section>
