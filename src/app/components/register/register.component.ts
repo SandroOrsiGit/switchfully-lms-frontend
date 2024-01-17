@@ -1,26 +1,29 @@
 import { Component } from '@angular/core';
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, MinValidator} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, MinValidator } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
-import {FormValidator} from "./form-validator";
-import {MatCardModule} from "@angular/material/card";
- 
+import { FormValidator } from "./form-validator";
+import { MatCardModule } from "@angular/material/card";
+import { UserService } from '../../services/user.service';
+import { UserMapper } from '../../mapper/user.mapper';
+
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, 
-            MatInputModule, 
-            MatIconModule, 
-            FormsModule, 
-            ReactiveFormsModule,
-            MatButtonModule, 
-            MatCardModule],
+  imports: [MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule],
 })
 export class RegisterComponent {
   hide = true;
@@ -35,11 +38,16 @@ export class RegisterComponent {
     password: this.password,
     passwordConfirm: this.passwordConfirm
   },
-    { validators: FormValidator.passwordsMatch}
-    )
+    { validators: FormValidator.passwordsMatch }
+  )
 
+  constructor(private userService: UserService) {
+
+  }
 
   register() {
+    console.log(this.registerForm.value)
+    this.userService.addUser(UserMapper.toUser(this.registerForm.value))
     
   }
 
