@@ -4,6 +4,7 @@ import {ButtonComponent} from "../button/button.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
+import {CreateModuleDto} from "../../dto/CreateModuleDto";
 
 @Component({
   selector: 'app-create-module-form',
@@ -20,7 +21,7 @@ import {MatInputModule} from "@angular/material/input";
   styleUrl: './create-module-form.component.css'
 })
 export class CreateModuleFormComponent {
-  @Output() onSubmit = new EventEmitter<any>();
+  @Output() onSubmit = new EventEmitter<CreateModuleDto>();
 
   // todo: delete pre-filled values
   name = new FormControl('test', [Validators.required]);
