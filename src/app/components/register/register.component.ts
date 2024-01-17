@@ -47,8 +47,12 @@ export class RegisterComponent {
 
   register() {
     console.log(this.registerForm.value)
-    this.userService.addUser(UserMapper.toUser(this.registerForm.value))
-    
+    this.userService.addUser(UserMapper.toUser(this.registerForm.value)).subscribe(
+      data => {
+        console.warn(data);
+      }
+    )
+
   }
 
 }
