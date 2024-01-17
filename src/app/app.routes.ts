@@ -1,7 +1,9 @@
 import { Routes } from '@angular/router';
 import {RegisterComponent} from "./components/register/register.component";
+import {CreateClassgroupComponent} from "./pages/create-classgroup/create-classgroup.component";
 
 
 export const routes: Routes = [
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'create-classgroup', component: CreateClassgroupComponent}
 ];
