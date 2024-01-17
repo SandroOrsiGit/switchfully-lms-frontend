@@ -1,6 +1,6 @@
 <section>
   <div>
-    <form class="create-classgroup-form">
+    <form class="create-classgroup-form" (ngSubmit)="onSubmit()">
       <mat-form-field class="create-classgroup-full-width">
         <mat-label>Classgroup name</mat-label>
         <input matInput #message maxlength="256" placeholder="Type here...">
