@@ -1,0 +1,12 @@
+mat-toolbar {
+    margin-top: 5%;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+}
+
+mat-toolbar span {
+    font-size: x-large;
+    font-weight: 500;
+    cursor: pointer;
+}
