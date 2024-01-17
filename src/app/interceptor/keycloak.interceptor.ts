@@ -6,7 +6,8 @@ import { environment } from '../../environments/environment.development';
 export const keycloakInterceptor: HttpInterceptorFn = (req, next) => {
   const keycloakService = inject(KeycloakService);
 
-  if (req.url.includes(`${environment.backendUrl}`)) {
+  if (
+    req.url.includes(`${environment.backendUrl}`)) {
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${keycloakService.getToken()}`
