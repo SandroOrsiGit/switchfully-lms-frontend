@@ -1,15 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+import {ButtonComponent} from "../../components/button/button.component";
 
 @Component({
   selector: 'app-create-classgroup',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent],
   templateUrl: './create-classgroup.component.html',
   styleUrl: './create-classgroup.component.css'
 })
-export class CreateClassgroupComponent {
+export class CreateClassgroupComponent implements OnInit{
+  buttonName = '';
 
+  ngOnInit(): void {
+    this.buttonName = 'Sumbit';
+  }
 }
