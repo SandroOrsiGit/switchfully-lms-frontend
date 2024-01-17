@@ -40,7 +40,7 @@ export class RegisterComponent {
 
 
   register() {
-
+    
   }
 
 }
