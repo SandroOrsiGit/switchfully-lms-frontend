@@ -4,13 +4,13 @@
     <h2>Profile</h2>
 
     <form>
-      <mat-label>Email</mat-label>
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input matInput readonly disabled value="{{user$.email}}"/>
       </mat-form-field>
 
-      <mat-label>Display Name</mat-label>
       <mat-form-field>
+        <mat-label>Display Name</mat-label>
         <input matInput value="{{user$.displayName}}" [readonly] = "!editing" [disabled] = "!editing"/>
       </mat-form-field>
     </form>

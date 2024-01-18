@@ -16,7 +16,6 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
-  classGroupService = inject(ClassGroupService);
   editing: boolean = false;
   user$: User = {displayName: 'test',
     email: 'test@test',
