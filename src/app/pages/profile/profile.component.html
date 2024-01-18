@@ -3,7 +3,7 @@
     <i class="material-icons settings-icon" (click)="toggleEditing()">settings</i>
     <h2>Profile</h2>
 
-    <form>
+    <form [formGroup]="updateProfile" (ngSubmit)="updateProfile()">
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput readonly disabled value="{{user$.email}}"/>
@@ -13,6 +13,14 @@
         <mat-label>Display Name</mat-label>
         <input matInput value="{{user$.displayName}}" [readonly] = "!editing" [disabled] = "!editing"/>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+        @if (password.invalid) {
+        <mat-error>Must provide password</mat-error>
+        }
+        </mat-form-field>
     </form>
 
     <div class="class-list">
