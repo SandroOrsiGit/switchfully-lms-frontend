@@ -1,28 +1,28 @@
-<div class="profile-wrapper">
-  <div class="profile-container">
-    <i class="material-icons settings-icon" (click)="toggleEditing()">settings</i>
-    <h2>Profile</h2>
+<!--<div class="profile-wrapper">-->
+<!--  <div class="profile-container">-->
+<!--    <i class="material-icons settings-icon" (click)="toggleEditing()">settings</i>-->
+<!--    <h2>Profile</h2>-->
 
-    <form>
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput readonly disabled value="{{user$.email}}"/>
-      </mat-form-field>
+<!--    <form>-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Email</mat-label>-->
+<!--        <input matInput readonly disabled value="{{user$.email}}"/>-->
+<!--      </mat-form-field>-->
 
-      <mat-form-field>
-        <mat-label>Display Name</mat-label>
-        <input matInput value="{{user$.displayName}}" [readonly] = "!editing" [disabled] = "!editing"/>
-      </mat-form-field>
-    </form>
+<!--      <mat-form-field>-->
+<!--        <mat-label>Display Name</mat-label>-->
+<!--        <input matInput value="{{user$.displayName}}" [readonly] = "!editing" [disabled] = "!editing"/>-->
+<!--      </mat-form-field>-->
+<!--    </form>-->
 
-    <div class="class-list">
-      <h3>Your Class</h3>
-      <p>{{user$.classes[0]}}</p>
-      <!--    <select>-->
-      <!--      <option *ngFor="let class of classes$">{{class}}</option>-->
-      <!--    </select>-->
-    </div>
+<!--    <div class="class-list">-->
+<!--      <h3>Your Class</h3>-->
+<!--      <p>{{user$.classes[0]}}</p>-->
+<!--      &lt;!&ndash;    <select>&ndash;&gt;-->
+<!--      &lt;!&ndash;      <option *ngFor="let class of classes$">{{class}}</option>&ndash;&gt;-->
+<!--      &lt;!&ndash;    </select>&ndash;&gt;-->
+<!--    </div>-->
 
-    <button mat-raised-button [disabled] = "!editing">Update Profile</button>
-  </div>
-</div>
+<!--    <button mat-raised-button [disabled] = "!editing">Update Profile</button>-->
+<!--  </div>-->
+<!--</div>-->

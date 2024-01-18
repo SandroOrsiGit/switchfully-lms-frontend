@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { KeycloakService } from '../../services/keycloak.service';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,10 +13,20 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  private keycloakService = inject(KeycloakService);
+  private userService = inject(UserService);
 
-  constructor(private keycloakService: KeycloakService) { }
+  private TOKEN_KEY_NAME = 'user-id';
+
+
+  constructor() { }
 
   onLogin(loginData: any) {
-    return this.keycloakService.login(loginData).subscribe({ error: console.error });
+    return this.keycloakService.login(loginData).subscribe({
+      next: _ => {
+        this.userService.getUserByToken().subscribe(user =>
+          sessionStorage.setItem(this.TOKEN_KEY_NAME, String(user.id)))
+      },
+      error: _ => console.error });
   }
 }

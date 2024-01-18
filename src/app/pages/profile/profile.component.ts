@@ -1,14 +1,12 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Observable} from 'rxjs';
-import {ClassGroupService} from '../../services/class-group.service';
-import {User} from '../../models/User';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {KeycloakService} from '../../services/keycloak.service';
 import {Router} from '@angular/router';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-profile',

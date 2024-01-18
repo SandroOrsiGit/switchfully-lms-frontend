@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../model/user';
+import { User } from '../models/User';
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -20,8 +20,8 @@ export class UserService {
     return this.http.post<User>(this.url, user)
   }
 
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(this.url + '/' + id)
+  getUserByToken(): Observable<User> {
+    return this.http.get<User>(this.url);
   }
 
 }
