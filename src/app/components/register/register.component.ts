@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -31,6 +31,7 @@ export class RegisterComponent {
   displayName = new FormControl('', [Validators.required])
   password = new FormControl('', [Validators.required])
   passwordConfirm = new FormControl('', [Validators.required])
+  private userService = inject(UserService)
 
   registerForm = new FormGroup({
     email: this.email,
@@ -40,10 +41,6 @@ export class RegisterComponent {
   },
     { validators: FormValidator.passwordsMatch }
   )
-
-  constructor(private userService: UserService) {
-
-  }
 
   register() {
     console.log(this.registerForm.value)
