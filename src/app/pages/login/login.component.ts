@@ -1,26 +1,22 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatInputModule } from '@angular/material/input';
+import { KeycloakService } from '../../services/keycloak.service';
+import { LoginFormComponent } from '../../components/login-form/login-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import { ButtonComponent } from '../../components/button/button.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatIconModule, ButtonComponent],
+  imports: [LoginFormComponent, MatFormFieldModule, MatCardModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  email = new FormControl('', [Validators.required, Validators.email]);
-  hide: boolean = true; 
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+  constructor(private keycloakService: KeycloakService) { }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  onLogin(loginData: any) {
+    return this.keycloakService.login(loginData).subscribe({ error: console.error });
   }
 }

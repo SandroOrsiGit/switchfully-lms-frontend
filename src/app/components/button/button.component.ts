@@ -1,5 +1,5 @@
 
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -18,4 +18,11 @@ import {MatDividerModule} from "@angular/material/divider";
 export class ButtonComponent {
 
   @Input() buttonName: string = '';
+  @Output() buttonClick = new EventEmitter<void>();
+
+  onClick() {
+    this.buttonClick.emit();
+  }
+
+
 }

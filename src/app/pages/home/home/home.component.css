@@ -1,0 +1,46 @@
+.wrapper {
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    padding-bottom: 7%;
+}
+
+.wrapper p {
+    margin-top: 3%;
+}
+
+.wrapper h2 {
+    margin-top: 5%;
+}
+
+.wrapper-body {
+    margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.example-card {
+    flex: 0 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    color: #333;
+}
+
+mat-card-title, mat-card-content {
+    color: #444;
+}
+
+.example-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
