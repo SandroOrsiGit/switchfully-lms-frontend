@@ -31,15 +31,13 @@ export class CreateClassgroupComponent implements OnInit{
   onSubmit() {
     console.log("submit button clicked")
     let newClassgroup = this.createClassgroupForm.value;
-   // this.classgroupService.createClassgroup(newClassgroup).subscribe(
-   //    response => console.log("created",response),
-   //   error => console.error('error: ',error)
-   // );
+    // console.log("create onsubmit: ",newClassgroup);
     this.classgroupService.createClassgroup(newClassgroup)
           .subscribe(response => console.log("created",response));
-    this.classgroupService.createClassgroup(newClassgroup)
-          .subscribe({error: console.error});
-      this.classgroupService.createClassgroup(newClassgroup)
-          .subscribe({complete: console.info});
+
+    // this.classgroupService.createClassgroup(newClassgroup)
+    //       .subscribe({error: console.error});
+    //   this.classgroupService.createClassgroup(newClassgroup)
+    //       .subscribe({complete: console.info});
   }
 }
