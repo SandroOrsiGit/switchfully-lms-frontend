@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ClassgroupService {
-  private readonly url: string  = `${environment.backendUrl}/classgroup/create-classgroup`
+  private readonly url: string  = `${environment.backendUrl}/classgroup`
 
   private http: HttpClient = inject(HttpClient);
   constructor() { }
