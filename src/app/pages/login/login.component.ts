@@ -4,6 +4,7 @@ import { LoginFormComponent } from '../../components/login-form/login-form.compo
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import {UserService} from '../../services/user.service';
+import {ClassgroupService} from '../../services/classgroup.service';
 
 @Component({
   selector: 'app-login',
@@ -15,17 +16,17 @@ import {UserService} from '../../services/user.service';
 export class LoginComponent {
   private keycloakService = inject(KeycloakService);
   private userService = inject(UserService);
-
-  private TOKEN_KEY_NAME = 'user-id';
-
+  private classGroupService = inject(ClassgroupService);
 
   constructor() { }
 
   onLogin(loginData: any) {
     return this.keycloakService.login(loginData).subscribe({
       next: _ => {
-        this.userService.getUserByToken().subscribe(user =>
-          this.userService.setCurrentUser(user))
+        this.userService.getUserByToken().subscribe(user => {
+          this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
+          this.userService.setCurrentUser(user);
+        })
       },
       error: _ => console.error });
   }

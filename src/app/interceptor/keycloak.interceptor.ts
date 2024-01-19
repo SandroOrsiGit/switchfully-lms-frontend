@@ -9,6 +9,7 @@ export const keycloakInterceptor: HttpInterceptorFn = (req, next) => {
   if (
     req.url.includes(`${environment.backendUrl}`)
   && keycloakService.getToken()) {
+    console.log('test')
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${keycloakService.getToken()}`
