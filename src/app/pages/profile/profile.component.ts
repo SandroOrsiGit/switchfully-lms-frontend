@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {KeycloakService} from '../../services/keycloak.service';
 import {Router} from '@angular/router';
 import { User } from '../../models/User';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,21 +18,20 @@ import { User } from '../../models/User';
 })
 export class ProfileComponent implements OnInit{
   keycloakService = inject(KeycloakService);
+  userService = inject(UserService);
   router = inject(Router)
   editing: boolean = false;
-  user$?: User;
-  token?: string;
+  user?: User;
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log('test');
     if(!this.keycloakService.isLoggedIn()){
       console.log('test');
       this.router.navigate(['/login']);
     }
-    this.token = this.keycloakService.getToken();
+    this.user = this.userService.getCurrentUser();
   }
 
   toggleEditing(): void {

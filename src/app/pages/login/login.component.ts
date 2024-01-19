@@ -25,7 +25,7 @@ export class LoginComponent {
     return this.keycloakService.login(loginData).subscribe({
       next: _ => {
         this.userService.getUserByToken().subscribe(user =>
-          sessionStorage.setItem(this.TOKEN_KEY_NAME, String(user.id)))
+          this.userService.setCurrentUser(user))
       },
       error: _ => console.error });
   }
