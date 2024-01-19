@@ -9,6 +9,6 @@ import {keycloakInterceptor} from "./interceptor/keycloak.interceptor";
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
               provideAnimations(),
-              provideHttpClient(withInterceptors([keycloakInterceptor]))
+              provideHttpClient()
             ]
 };
