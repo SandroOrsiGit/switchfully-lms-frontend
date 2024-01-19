@@ -3,6 +3,7 @@ import {RegisterComponent} from "./components/register/register.component";
 import { LoginComponent } from './pages/login/login.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 import { TestpageComponent } from './pages/testPage/testpage.component';
+import {CreateClassgroupComponent} from "./pages/create-classgroup/create-classgroup.component";
 
 import { HomeComponent } from './pages/home/home/home.component';
 
@@ -11,5 +12,7 @@ export const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'testpage', component: TestpageComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent}
 ];
