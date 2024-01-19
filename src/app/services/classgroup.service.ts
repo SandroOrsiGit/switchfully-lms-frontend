@@ -14,7 +14,6 @@ export class ClassgroupService {
   constructor() { }
 
   createClassgroup(newClassgroup: Classgroup) {
-    console.log('service: ',newClassgroup);
       return this.http.post<Classgroup>(this.url, newClassgroup);
   }
 }
