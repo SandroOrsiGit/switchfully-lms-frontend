@@ -8,6 +8,8 @@ import {KeycloakService} from '../../services/keycloak.service';
 import {Router} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
+import {ClassGroupService} from '../../services/class-group.service';
+import {ClassGroup} from '../../models/ClassGroup';
 
 @Component({
   selector: 'app-profile',
@@ -18,20 +20,24 @@ import {UserService} from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit{
   keycloakService = inject(KeycloakService);
+  classGroupService = inject(ClassGroupService)
   userService = inject(UserService);
   router = inject(Router)
   editing: boolean = false;
   user?: User;
+  classGroupsForCurrentUser?: ClassGroup[];
 
   constructor() {
   }
 
   ngOnInit() {
     if(!this.keycloakService.isLoggedIn()){
-      console.log('test');
       this.router.navigate(['/login']);
     }
+
     this.user = this.userService.getCurrentUser();
+    this.classGroupService.getClassGroupsByUserId(this.user?.id)
+
   }
 
   toggleEditing(): void {
