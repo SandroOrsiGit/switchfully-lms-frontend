@@ -1,3 +1,7 @@
+mat-card {
+  height: 75%;
+  box-shadow: none;
+}
 
 mat-card-content {
   margin: auto;
@@ -30,7 +34,7 @@ mat-form-field {
 
 .mat-mdc-card{
   box-shadow: none;
-  margin-top: 9em!important;
+  /*margin-top: 9em!important;*/
 }
 
 h1 {
