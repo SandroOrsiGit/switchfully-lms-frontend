@@ -1,3 +1,4 @@
+
 import {Component, inject, OnInit} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,14 +17,17 @@ import {MatNativeDateModule} from "@angular/material/core";
   templateUrl: './create-classgroup.component.html',
   styleUrl: './create-classgroup.component.css',
 })
+
 export class CreateClassgroupComponent implements OnInit{
   buttonName = 'Submit';
+
   createClassgroupForm: FormGroup;
 
   private classgroupService: ClassgroupService = inject(ClassgroupService);
-  private formBuilder: FormBuilder= inject(FormBuilder);
+  private formBuilder: FormBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
+
     this.createClassgroupForm = this.formBuilder.group( {
       name: ['name'],
       startDate: [''],
@@ -37,12 +41,7 @@ export class CreateClassgroupComponent implements OnInit{
     newClassgroup.endDate = this.convertDate(newClassgroup.endDate);// To fix timezone issue
 
     this.classgroupService.createClassgroup(newClassgroup)
-          .subscribe(response => console.log("created",response));
-
-    // this.classgroupService.createClassgroup(newClassgroup)
-    //       .subscribe({error: console.error});
-    //   this.classgroupService.createClassgroup(newClassgroup)
-    //       .subscribe({complete: console.info});
+      .subscribe();
   }
 
   convertDate(date: any) {

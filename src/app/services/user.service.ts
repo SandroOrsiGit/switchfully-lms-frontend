@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { CreateUser } from '../model/createUser';
+import { User } from '../models/User';
 import {Observable} from "rxjs";
 import { UserMapper } from '../mapper/user.mapper';
 
@@ -10,6 +11,7 @@ import { UserMapper } from '../mapper/user.mapper';
 })
 export class UserService {
   private url: string;
+  private user?: User;
 
   constructor(private http: HttpClient) {
     this.url = `${environment.backendUrl}/user`;
@@ -34,6 +36,19 @@ export class UserService {
     }
 
     return this.http.put<CreateUser>(`${this.url}/update`, UpdateUserDto);
+  }
+
+  getUserByToken(): Observable<User> {
+    return this.http.get<User>(this.url);
+  }
+
+  setCurrentUser(user: User) {
+    this.user = user;
+  }
+
+  getCurrentUser(): User | undefined {
+    console.log(this.user);
+    return this.user;
   }
 
 }

@@ -6,6 +6,7 @@ import { TestpageComponent } from './pages/testPage/testpage.component';
 import {CreateClassgroupComponent} from "./pages/create-classgroup/create-classgroup.component";
 
 import { HomeComponent } from './pages/home/home/home.component';
+import {CreateModuleComponent} from "./pages/create-module/create-module.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,5 +15,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent}
+  {path: 'create-module', component: CreateModuleComponent},
+  {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent},
+
 ];

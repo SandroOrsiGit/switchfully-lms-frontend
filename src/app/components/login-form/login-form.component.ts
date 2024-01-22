@@ -1,10 +1,9 @@
-import { KeycloakService } from '../../services/keycloak.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { ButtonComponent } from '../../components/button/button.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-login-form',
@@ -14,15 +13,12 @@ import { ButtonComponent } from '../../components/button/button.component';
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-
   @Output() onSubmit = new EventEmitter<any>();
 
   // todo: delete pre-filled values
   email = new FormControl('test@lms.com', [Validators.required, Validators.email]);
   password = new FormControl('student', [Validators.required]);
   hide: boolean = true;
-
-  constructor(private keycloakService: KeycloakService) { }
 
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
@@ -43,6 +39,5 @@ export class LoginFormComponent {
 
   onLogin() {
     this.onSubmit.emit({email: this.email.value!, password: this.password.value!});
-    return this.keycloakService.login({email: this.email.value!, password: this.password.value!}).subscribe({ error: console.error });
   }
 }
