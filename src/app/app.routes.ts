@@ -15,6 +15,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent},
   {path: 'create-module', component: CreateModuleComponent},
+  {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent},
+
 ];
