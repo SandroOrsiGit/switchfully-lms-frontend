@@ -4,7 +4,7 @@ import { LoginFormComponent } from '../../components/login-form/login-form.compo
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import {UserService} from '../../services/user.service';
-import {ClassgroupService} from '../../services/classgroup.service';
+import {ClassGroupService} from '../../services/class-group.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ import {ClassgroupService} from '../../services/classgroup.service';
 export class LoginComponent {
   private keycloakService = inject(KeycloakService);
   private userService = inject(UserService);
-  private classGroupService = inject(ClassgroupService);
+  private classGroupService = inject(ClassGroupService);
 
   constructor() { }
 

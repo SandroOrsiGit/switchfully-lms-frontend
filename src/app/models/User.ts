@@ -1,10 +1,10 @@
-import {Classgroup} from './Classgroup';
+import {ClassGroup} from './ClassGroup';
 
 export interface User {
     id: number,
     email: string,
     displayName: string,
     role?: string,
-    classes?: Classgroup[],
+    classes?: ClassGroup[],
     password?: string
 }

@@ -4,31 +4,31 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonComponent} from "../../components/button/button.component";
 import {CommonModule} from "@angular/common";
-import {ClassgroupService} from "../../services/classgroup.service";
+import {ClassGroupService} from "../../services/class-group.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 
 
 @Component({
-  selector: 'app-create-classgroup',
+  selector: 'app-create-class-group',
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent, ReactiveFormsModule, CommonModule, MatCardModule, MatDatepickerModule, MatNativeDateModule],
-  templateUrl: './create-classgroup.component.html',
-  styleUrl: './create-classgroup.component.css',
+  templateUrl: './create-class-group.component.html',
+  styleUrl: './create-class-group.component.css',
 })
 
-export class CreateClassgroupComponent implements OnInit{
+export class CreateClassGroupComponent implements OnInit{
   buttonName = 'Submit';
 
-  createClassgroupForm: FormGroup;
+  createClassGroupForm: FormGroup;
 
-  private classgroupService: ClassgroupService = inject(ClassgroupService);
+  private classGroupService: ClassGroupService = inject(ClassGroupService);
   private formBuilder: FormBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
 
-    this.createClassgroupForm = this.formBuilder.group( {
+    this.createClassGroupForm = this.formBuilder.group( {
       name: ['name'],
       startDate: [''],
       endDate: ['']
@@ -36,11 +36,11 @@ export class CreateClassgroupComponent implements OnInit{
   }
 
   onSubmit() {
-    let newClassgroup = this.createClassgroupForm.value;
-    newClassgroup.startDate = this.convertDate(newClassgroup.startDate);// To fix timezone issue
-    newClassgroup.endDate = this.convertDate(newClassgroup.endDate);// To fix timezone issue
+    let newClassGroup = this.createClassGroupForm.value;
+    newClassGroup.startDate = this.convertDate(newClassGroup.startDate);// To fix timezone issue
+    newClassGroup.endDate = this.convertDate(newClassGroup.endDate);// To fix timezone issue
 
-    this.classgroupService.createClassgroup(newClassgroup)
+    this.classGroupService.createClassGroup(newClassGroup)
       .subscribe();
   }
 
