@@ -6,11 +6,12 @@ import { ButtonComponent } from "../../components/button/button.component";
 import { CommonModule } from "@angular/common";
 import { ClassgroupService } from "../../services/classgroup.service";
 import { log } from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-create-classgroup',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent, ReactiveFormsModule, CommonModule],
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent, ReactiveFormsModule, CommonModule, MatCardModule],
   templateUrl: './create-classgroup.component.html',
   styleUrl: './create-classgroup.component.css'
 })
