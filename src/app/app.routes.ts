@@ -17,4 +17,5 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create-module', component: CreateModuleComponent},
   {path: 'classgroup/create-classgroup', component: CreateClassgroupComponent},
+
 ];

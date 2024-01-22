@@ -23,12 +23,12 @@ export class KeycloakService {
     sessionStorage.setItem(this.TOKEN_KEY_NAME, accessToken);
   }
 
-  getToken(): string {
-    return sessionStorage.getItem(this.TOKEN_KEY_NAME)  || '';
+  getToken(): string | null {
+    return sessionStorage.getItem(this.TOKEN_KEY_NAME);
   }
 
   isLoggedIn(): boolean {
-    return this.getToken() !== null;
+    return !!this.getToken();
   }
 
   logout(): void {

@@ -6,10 +6,10 @@
     <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
 
       <mat-error *ngIf="emailInUseError$">{{emailInUseError$}}</mat-error>
-      
+
       <mat-form-field>
         <mat-label>Enter your email</mat-label>
-        <input matInput [formControl]="email" value="{{email}}"  [readonly]="!editing" [disabled]="!editing">
+        <input matInput [formControl]="email" formControlName="email"  [readonly]="!editing" [disabled]="!editing">
 
         @if (email.errors?.['required']) {
         <mat-error>Must provide email</mat-error>
@@ -19,13 +19,13 @@
         }
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
-      
+
 
       <mat-form-field>
         <mat-label>Display Name</mat-label>
         <input matInput [formControl]="displayName" value="{{displayName}}" [readonly]="!editing" [disabled]="!editing" />
       </mat-form-field>
-      
+
       <mat-form-field *ngIf="editing">
         <mat-label>Enter your password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
@@ -37,7 +37,7 @@
                 [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-      </mat-form-field>  
+      </mat-form-field>
 
       <mat-form-field *ngIf="editing">
         <mat-label>Confirm your password</mat-label>
@@ -55,17 +55,15 @@
             this.updateProfileForm.hasError('passwordsNotMatching')) {
           <mat-error>Passwords are not matching!</mat-error>
       }
-      
+
       <div class="class-list">
-        <h3>Your Class</h3>
-        <p>{{student$.classes[0]}}</p>
-        <!--    <select>-->
-        <!--      <option *ngFor="let class of classes$">{{class}}</option>-->
-        <!--    </select>-->
+        <h3>Your Classes</h3>
+        <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
       </div>
-    
+
       <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>
     </form>
 
+    <button mat-raised-button [disabled] = "!editing">Update Profile</button>
   </div>
 </div>

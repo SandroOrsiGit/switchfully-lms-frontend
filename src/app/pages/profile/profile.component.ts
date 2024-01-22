@@ -4,9 +4,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {KeycloakService} from '../../services/keycloak.service';
+import {Router} from '@angular/router';
+import { User } from '../../models/User';
+import {UserService} from '../../services/user.service';
 import { FormValidator } from '../../components/register/form-validator';
 import { MatIconModule } from '@angular/material/icon';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,24 +20,18 @@ import { UserService } from '../../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   userService: UserService = inject(UserService);
+  keycloakService = inject(KeycloakService);
+  router = inject(Router);
   editing: boolean = false;
   emailInUseError$?: string;
-  student$: any = {
-    id: 1,
-    displayName: 'test',
-    email: 'test@test',
-    password: 'test',
-    classes: ['Java', '.NET']
-  };
+  user?: User = this.userService.getCurrentUser();
 
   hide = true;
-  id = new FormControl(this.student$.id);
-  email = new FormControl(this.student$.email, [Validators.required, Validators.email]);
-  displayName = new FormControl(this.student$.displayName, [Validators.required])
-  password = new FormControl(this.student$.password, [Validators.required])
-  passwordConfirm = new FormControl(this.student$.password, [Validators.required])
-
-
+  id = new FormControl(this.user?.id);
+  email = new FormControl(this.user?.email, [Validators.required, Validators.email]);
+  displayName = new FormControl(this.user?.displayName, [Validators.required])
+  password = new FormControl(this.user?.password, [Validators.required])
+  passwordConfirm = new FormControl(this.user?.password, [Validators.required])
   updateProfileForm = new FormGroup({
     id: this.id,
     email: this.email,
@@ -47,7 +44,11 @@ export class ProfileComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(!this.keycloakService.isLoggedIn()){
+      this.router.navigate(['/login']);
+    }
+  }
 
   toggleEditing(): void {
     this.editing = !this.editing;
@@ -55,7 +56,6 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     // TODO no empty password allowed
-    console.log(this.updateProfileForm.value)
     this.userService.updateProfile(this.updateProfileForm.value).subscribe(
       {
         next: data => console.warn(data),
