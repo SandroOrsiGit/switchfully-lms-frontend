@@ -5,7 +5,7 @@ import {ProfileComponent} from './pages/profile/profile.component';
 import { TestpageComponent } from './pages/testPage/testpage.component';
 import {CreateClassgroupComponent} from "./pages/create-classgroup/create-classgroup.component";
 
-import { HomeComponent } from './pages/home/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import {CreateModuleComponent} from "./pages/create-module/create-module.component";
 
 export const routes: Routes = [
