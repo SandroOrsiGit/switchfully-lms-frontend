@@ -1,0 +1,41 @@
+mat-card {
+  height: 75%;
+  box-shadow: none;
+}
+
+
+mat-card-content {
+  margin: auto;
+}
+
+
+.create-classgroup-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+mat-form-field {
+  margin-bottom: 0.5em;
+}
+
+.mat-mdc-raised-button:not(:disabled){
+  padding: 0.5rem 1rem;
+  width: 80%;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  border-radius: 1.3rem;
+  background-color: #086074;
+  color: white;
+  text-transform: uppercase!important;
+}
+.mat-mdc-raised-button[disabled][disabled]{
+  padding: 0.5rem 1rem;
+  width: 80%;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  border-radius: 1.3rem!important;
+  background-color: #aaafb0!important;
+  color: white;
+  text-transform: uppercase!important;
+}

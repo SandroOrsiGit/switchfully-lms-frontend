@@ -1,0 +1,67 @@
+<div class="profile-wrapper">
+  <div class="profile-container">
+    <i class="material-icons settings-icon" (click)="toggleEditing()">settings</i>
+    <h2>Profile</h2>
+
+    <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
+
+      <mat-error *ngIf="emailInUseError$">{{emailInUseError$}}</mat-error>
+
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput [formControl]="email" formControlName="email"  [readonly]="!editing" [disabled]="!editing">
+
+        @if (email.errors?.['required']) {
+        <mat-error>Must provide email</mat-error>
+        }
+        @else if (email.errors?.['email']) {
+        <mat-error>Not a valid email</mat-error>
+        }
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-label>Display Name</mat-label>
+        <input matInput [formControl]="displayName" value="{{displayName}}" [readonly]="!editing" [disabled]="!editing" />
+      </mat-form-field>
+
+      <mat-form-field *ngIf="editing">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+        @if (password.invalid) {
+        <mat-error>Must provide password</mat-error>
+        }
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="editing">
+        <mat-label>Confirm your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passwordConfirm" required>
+
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
+      </mat-form-field>
+
+      @if ( (this.updateProfileForm.get('password')?.dirty ||
+            this.updateProfileForm.get('passwordConfirm')?.dirty) &&
+            this.updateProfileForm.hasError('passwordsNotMatching')) {
+          <mat-error>Passwords are not matching!</mat-error>
+      }
+
+      <div class="class-list">
+        <h3>Your Classes</h3>
+        <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
+      </div>
+
+      <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>
+    </form>
+  </div>
+</div>
