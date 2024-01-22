@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { KeycloakService } from '../../services/keycloak.service';
 import { LoginFormComponent } from '../../components/login-form/login-form.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
