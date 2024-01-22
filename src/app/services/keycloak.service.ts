@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpKeycloakService } from './http-keycloak.service';
 import { Observable, tap } from 'rxjs';
-import { KeycloakTokenResponse } from './KeycloakTokenResponse';
+import { KeycloakTokenResponse } from '../models/KeycloakTokenResponse';
 
 @Injectable({
   providedIn: 'root'

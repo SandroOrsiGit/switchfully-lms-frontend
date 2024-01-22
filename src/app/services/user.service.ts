@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
-import { CreateUser } from '../model/createUser';
+import { CreateUserDto } from '../dtos/CreateUserDto';
 import { User } from '../models/User';
 import {Observable} from "rxjs";
-import { UserMapper } from '../mapper/user.mapper';
+import { UserMapper } from '../mappers/user.mapper';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +17,8 @@ export class UserService {
     this.url = `${environment.backendUrl}/user`;
   }
 
-  addUser(user : CreateUser) : Observable<CreateUser> {
-    console.log(this.url)
-    console.log(user)
-    return this.http.post<CreateUser>(`${this.url}/register`, user)
+  addUser(user : CreateUserDto) : Observable<CreateUserDto> {
+    return this.http.post<CreateUserDto>(`${this.url}/register`, user)
   }
 
   updateProfile(updateProfileForm: Partial<any>): Observable<any> {
@@ -35,7 +33,7 @@ export class UserService {
       "displayName": user.displayName
     }
 
-    return this.http.put<CreateUser>(`${this.url}/update`, UpdateUserDto);
+    return this.http.put<CreateUserDto>(`${this.url}/update`, UpdateUserDto);
   }
 
   getUserByToken(): Observable<User> {
@@ -47,7 +45,6 @@ export class UserService {
   }
 
   getCurrentUser(): User | undefined {
-    console.log(this.user);
     return this.user;
   }
 

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KeycloakService } from './keycloak.service';
+import { KeycloakService } from '../keycloak.service';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('KeycloakService', () => {

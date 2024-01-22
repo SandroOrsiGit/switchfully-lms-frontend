@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {CreateModuleDto} from "../dto/CreateModuleDto";
+import {CreateModuleDto} from "../dtos/CreateModuleDto";
 import {Observable} from "rxjs";
 import {Module} from "../models/Module";
 

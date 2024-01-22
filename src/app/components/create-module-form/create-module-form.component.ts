@@ -4,7 +4,7 @@ import {ButtonComponent} from "../button/button.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
-import {CreateModuleDto} from "../../dto/CreateModuleDto";
+import {CreateModuleDto} from "../../dtos/CreateModuleDto";
 
 @Component({
   selector: 'app-create-module-form',
@@ -33,7 +33,6 @@ export class CreateModuleFormComponent {
   }
 
   onCreate() {
-    console.log('CreateModuleFormComponent.onCreate')
     this.onSubmit.emit({name: this.name.value!});
   }
 }

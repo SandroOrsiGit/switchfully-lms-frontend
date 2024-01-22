@@ -1,9 +1,9 @@
 import {inject, Injectable} from '@angular/core';
-import {Classgroup} from "../model/Classgroup";
+import {CreateClassgroupDto} from "../dtos/CreateClassgroupDto";
 import {environment} from "../../environments/environments";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ClassGroup} from '../models/ClassGroup';
+import {Classgroup} from '../models/Classgroup';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,11 @@ export class ClassgroupService {
   private http: HttpClient = inject(HttpClient);
   constructor() { }
 
-  createClassgroup(newClassgroup: Classgroup) {
-    console.log('service: ',newClassgroup);
-      return this.http.post<Classgroup>(this.url, newClassgroup);
+  createClassgroup(newClassgroup: CreateClassgroupDto) {
+    return this.http.post<CreateClassgroupDto>(this.url, newClassgroup);
   }
 
-  getClassGroupsByUserId(userId: number | undefined): Observable<ClassGroup[]>  {
-    return this.http.get<ClassGroup[]>(this.url + '?studentId=' + userId)
+  getClassGroupsByUserId(userId: number | undefined): Observable<Classgroup[]>  {
+    return this.http.get<Classgroup[]>(this.url + '?studentId=' + userId)
   }
 }

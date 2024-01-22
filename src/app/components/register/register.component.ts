@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormValidator } from "./form-validator";
 import { MatCardModule } from "@angular/material/card";
 import { UserService } from '../../services/user.service';
-import { UserMapper } from '../../mapper/user.mapper';
+import { UserMapper } from '../../mappers/user.mapper';
 
 
 
@@ -43,7 +43,6 @@ export class RegisterComponent {
   )
 
   register() {
-    console.log(this.registerForm.value)
     this.userService.addUser(UserMapper.toCreateUser(this.registerForm.value)).subscribe(
       data => {
         console.warn(data);

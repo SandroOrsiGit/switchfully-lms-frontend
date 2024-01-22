@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ClassgroupService } from './classgroup.service';
+import { ClassgroupService } from '../classgroup.service';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('ClassgroupService', () => {
   let service: ClassgroupService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ]
+    });
     service = TestBed.inject(ClassgroupService);
   });
 
