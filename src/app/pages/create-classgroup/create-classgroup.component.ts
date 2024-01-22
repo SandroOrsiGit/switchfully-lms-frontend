@@ -5,10 +5,9 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular
 import {ButtonComponent} from "../../components/button/button.component";
 import {CommonModule} from "@angular/common";
 import {ClassgroupService} from "../../services/classgroup.service";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @Component({
   selector: 'app-create-classgroup',
@@ -18,14 +17,13 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
   styleUrl: './create-classgroup.component.css',
 })
 export class CreateClassgroupComponent implements OnInit{
-  buttonName = '';
+  buttonName = 'Submit';
   createClassgroupForm: FormGroup;
 
   private classgroupService: ClassgroupService = inject(ClassgroupService);
   private formBuilder: FormBuilder= inject(FormBuilder);
 
   ngOnInit(): void {
-    this.buttonName = 'Submit';
     this.createClassgroupForm = this.formBuilder.group( {
       name: ['name'],
       startDate: [''],
@@ -34,9 +32,10 @@ export class CreateClassgroupComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log("submit button clicked")
     let newClassgroup = this.createClassgroupForm.value;
-    console.log("create onsubmit: ",newClassgroup);
+    newClassgroup.startDate = this.convertDate(newClassgroup.startDate);// To fix timezone issue
+    newClassgroup.endDate = this.convertDate(newClassgroup.endDate);// To fix timezone issue
+
     this.classgroupService.createClassgroup(newClassgroup)
           .subscribe(response => console.log("created",response));
 
@@ -44,5 +43,13 @@ export class CreateClassgroupComponent implements OnInit{
     //       .subscribe({error: console.error});
     //   this.classgroupService.createClassgroup(newClassgroup)
     //       .subscribe({complete: console.info});
+  }
+
+  convertDate(date: any) {
+    let year = date.getFullYear();
+    let month = String(date.getMonth() + 1).padStart(2, '0')
+    let day = String(date.getDate()).padStart(2, '0')
+
+    return year + '-' + month + '-' + day
   }
 }
