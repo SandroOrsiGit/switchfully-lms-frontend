@@ -24,12 +24,11 @@ export class LoginComponent {
   private userService = inject(UserService);
   private classGroupService = inject(ClassGroupService);
   router = inject(Router);
+  private _snackBar = inject(MatSnackBar);
 
   email = new FormControl('test@lms.com', [Validators.required, Validators.email]);
   password = new FormControl('student', [Validators.required]);
   hide: boolean = true;
-
-  constructor(private _snackBar: MatSnackBar) {}
 
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {

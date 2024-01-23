@@ -12,5 +12,8 @@ import {UserService} from "../../services/user.service";
 })
 export class NavbarComponent {
     userService = inject(UserService);
+  message() {
+    return 'Logged in as ' + this.userService.getCurrentUser()?.role + ' ' + this.userService.getCurrentUser()?.displayName;
+  }
 
 }
