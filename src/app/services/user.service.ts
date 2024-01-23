@@ -3,8 +3,9 @@ import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../dtos/CreateUserDto';
 import { User } from '../models/User';
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import { UserMapper } from '../mappers/user.mapper';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,14 @@ export class UserService {
   private url: string;
   private user?: User;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.url = `${environment.backendUrl}/user`;
   }
 
   addUser(user : CreateUserDto) : Observable<CreateUserDto> {
-    return this.http.post<CreateUserDto>(`${this.url}/register`, user)
+    return this.http.post<CreateUserDto>(`${this.url}/register`, user).pipe(
+      tap(() => this.router.navigate(['/login']))
+    )
   }
 
   updateProfile(updateProfileForm: Partial<any>): Observable<any> {
