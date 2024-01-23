@@ -32,3 +32,6 @@ mat-form-field {
   color: white;
   text-transform: uppercase!important;
 }
+h1 {
+  text-align: center;
+}

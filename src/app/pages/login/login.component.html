@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
 
-    <h1>Login to your account</h1>
+    <h1>Login</h1>
     <form>
       <div>
         <mat-form-field>
@@ -10,6 +10,7 @@
           @if (email.invalid) {
           <mat-error>{{getEmailErrorMessage()}}</mat-error>
           }
+          <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
       </div>
       <div>
@@ -19,7 +20,8 @@
           @if (password.invalid) {
           <mat-error>{{getPasswordErrorMessage()}}</mat-error>
           }
-          <button mat-icon-button matSuffix (click)="hide = !hide" aria-label="Hide password" [attr.aria-pressed]="hide">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
