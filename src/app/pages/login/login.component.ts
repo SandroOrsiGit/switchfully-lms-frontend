@@ -28,6 +28,7 @@ export class LoginComponent {
           this.userService.setCurrentUser(user);
         })
       },
-      error: _ => console.error });
+      error: _ => console.error
+    });
   }
 }
