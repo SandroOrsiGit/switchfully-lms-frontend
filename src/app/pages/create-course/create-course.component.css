@@ -1,0 +1,9 @@
+mat-card {
+  height: 75%;
+  box-shadow: none;
+}
+
+
+mat-card-content {
+  margin: auto;
+}
