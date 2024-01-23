@@ -1,8 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CreateModuleFormComponent } from './create-module-form.component';
-import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {FormControl} from "@angular/forms";
 
 describe('CreateModuleFormComponent', () => {

@@ -22,12 +22,12 @@ export class LoginComponent {
 
   onLogin(loginData: any) {
     return this.keycloakService.login(loginData).subscribe({
-      next: _ => {
+      next: () => {
         this.userService.getUserByToken().subscribe(user => {
           this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
           this.userService.setCurrentUser(user);
         })
       },
-      error: _ => console.error });
+      error: () => console.error });
   }
 }
