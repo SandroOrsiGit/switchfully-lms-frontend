@@ -2,7 +2,7 @@
   <div>
     <mat-form-field>
       <mat-label>Enter module name</mat-label>
-      <input matInput placeholder="Module name" [formControl]="name" required>
+      <input matInput placeholder="ModuleDto name" [formControl]="name" required>
       @if (name.invalid) {
       <mat-error>{{getNameErrorMessage()}}</mat-error>
       }
