@@ -8,7 +8,7 @@ import {KeycloakService} from '../../services/keycloak.service';
 import {Router} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
-import { FormValidator } from '../../components/register/form-validator';
+import { FormValidator } from '../register/form-validator';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
