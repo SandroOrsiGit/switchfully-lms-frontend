@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../dtos/CreateUserDto';
@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
 export class UserService {
   private url: string;
   private user?: User;
+  private http: HttpClient = inject(HttpClient);
+  private router: Router = inject(Router);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor() {
     this.url = `${environment.backendUrl}/user`;
   }
 
@@ -27,8 +29,6 @@ export class UserService {
   updateProfile(updateProfileForm: Partial<any>): Observable<any> {
 
     const user = UserMapper.toUser(updateProfileForm);
-
-    // TODO send password info to keycloak
 
     const UpdateUserDto = {
       "id": user.id,
