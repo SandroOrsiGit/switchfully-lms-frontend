@@ -6,6 +6,8 @@ import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} 
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {CourseService} from "../../services/course.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-create-course',
@@ -26,6 +28,8 @@ export class CreateCourseComponent {
   name = new FormControl('test', [Validators.required]);
   private formBuilder: FormBuilder = inject(FormBuilder);
   private courseService: CourseService = inject(CourseService);
+  private router = inject(Router);
+  private _snackBar = inject(MatSnackBar);
 
   getNameErrorMessage() {
     return 'You must enter a value';
@@ -34,8 +38,12 @@ export class CreateCourseComponent {
   onCreate() {
     return this.courseService.createCourse({name: this.name.value!}).subscribe({
       next: _ => {
-         console.log('hello')
+        this.router.navigate(['/profile']);
+      },
+      error: _ => {
+        this._snackBar.open('Only coaches can created a course','Close');
       }
     });
   }
+
 }
