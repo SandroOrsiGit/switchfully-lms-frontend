@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, MinValidator } from '@angular/forms';
@@ -10,14 +9,13 @@ import { MatCardModule } from "@angular/material/card";
 import { UserService } from '../../services/user.service';
 import { UserMapper } from '../../mappers/user.mapper';
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule,
+  imports: [
+    MatFormFieldModule,
     MatInputModule,
     MatIconModule,
     FormsModule,
@@ -31,7 +29,7 @@ export class RegisterComponent {
   displayName = new FormControl('', [Validators.required])
   password = new FormControl('', [Validators.required])
   passwordConfirm = new FormControl('', [Validators.required])
-  private userService = inject(UserService)
+  private userService = inject(UserService);
 
   registerForm = new FormGroup({
     email: this.email,
