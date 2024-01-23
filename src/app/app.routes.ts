@@ -14,6 +14,6 @@ export const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'create-module', component: CreateModuleComponent},
-  {path: 'class-group/create-class-group', component: CreateClassGroupComponent},
+  {path: 'class-group/create', component: CreateClassGroupComponent},
 
 ];
