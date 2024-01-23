@@ -43,12 +43,11 @@ export class RegisterComponent {
   )
 
   register() {
-    this.userService.addUser(UserMapper.toCreateUser(this.registerForm.value)).subscribe(
-      data => {
+    this.userService.addUser(UserMapper.toCreateUser(this.registerForm.value)).subscribe({
+      next: data => {
         console.warn(data);
       }
-    )
-
+    });
   }
 
 }
