@@ -8,12 +8,14 @@ import {ClassGroupService} from "../../services/class-group.service";
 import {MatCardModule} from "@angular/material/card";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {Router} from "@angular/router";
 
 
 @Component({
   selector: 'app-create-class-group',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent, ReactiveFormsModule, CommonModule, MatCardModule, MatDatepickerModule, MatNativeDateModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, ButtonComponent, ReactiveFormsModule,
+    CommonModule, MatCardModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './create-class-group.component.html',
   styleUrl: './create-class-group.component.css',
 })
@@ -25,6 +27,7 @@ export class CreateClassGroupComponent implements OnInit{
 
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private router: Router = inject(Router);
 
   ngOnInit(): void {
 
@@ -42,6 +45,7 @@ export class CreateClassGroupComponent implements OnInit{
 
     this.classGroupService.createClassGroup(newClassGroup)
       .subscribe();
+    this.gotoProfilePage();
   }
 
   convertDate(date: any) {
@@ -50,5 +54,9 @@ export class CreateClassGroupComponent implements OnInit{
     let day = String(date.getDate()).padStart(2, '0')
 
     return year + '-' + month + '-' + day
+  }
+
+  gotoProfilePage() {
+    this.router.navigate(['profile']);
   }
 }
