@@ -26,7 +26,7 @@ export class LoginComponent {
         this.userService.getUserByToken().subscribe(user => {
           this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
           this.userService.setCurrentUser(user);
-        })
+        });
       },
       error: _ => console.error
     });
