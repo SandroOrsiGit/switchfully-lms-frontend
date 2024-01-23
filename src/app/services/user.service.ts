@@ -45,6 +45,7 @@ export class UserService {
   }
 
   getCurrentUser(): User | undefined {
+    console.log('Hello')
     return this.user;
   }
 

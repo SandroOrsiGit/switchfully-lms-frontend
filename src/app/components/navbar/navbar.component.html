@@ -5,4 +5,8 @@
     <span routerLink='profile'>Profile</span>
     <span routerLink="class-group/create-class-group">Create CreateClassGroupDto</span>
     <span routerLink="create-module">Create Module</span>
+    @if (this.userService.getCurrentUser()) {
+    <div>Welcome {{this.userService.getCurrentUser().displayName}}</div>
+    console.log(this.userService.getCurrentUser())
+    }
 </mat-toolbar>
