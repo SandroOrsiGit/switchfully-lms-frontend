@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {ButtonComponent} from "../../components/button/button.component";
 import {CommonModule} from "@angular/common";
 import {ClassGroupService} from "../../services/class-group.service";
@@ -32,10 +32,23 @@ export class CreateClassGroupComponent implements OnInit{
   ngOnInit(): void {
 
     this.createClassGroupForm = this.formBuilder.group( {
-      name: ['name'],
-      startDate: [''],
-      endDate: ['']
-    });
+      name: ['name', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required]
+    }, { validator: this.dateLessThan('startDate', 'endDate') });
+  }
+
+  dateLessThan(from: string, to: string) {
+    return (group: FormGroup): ValidationErrors | null => {
+      let startDate = group.controls[from];
+      let endDate = group.controls[to];
+      if (startDate.value > endDate.value) {
+        return {
+          endDateBeforeStartDate: true  
+        };
+      }
+      return null
+    }
   }
 
   onSubmit() {

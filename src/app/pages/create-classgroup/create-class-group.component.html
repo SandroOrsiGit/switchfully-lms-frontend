@@ -27,9 +27,10 @@
           <mat-datepicker #endDate></mat-datepicker>
         </mat-form-field>
       </div>
-
+      @if (this.createClassGroupForm.get('endDate')?.dirty && createClassGroupForm.hasError('endDateBeforeStartDate')) {  
+        <mat-error>Start date should be less than end date</mat-error> }
       <div>
-        <app-button [buttonName]="buttonName" (buttonClick)="onSubmit()"></app-button>
+        <app-button [disabled]="createClassGroupForm.invalid" [buttonName]="buttonName" (buttonClick)="onSubmit()"></app-button>
       </div>
     </form>
   </mat-card-content>
