@@ -53,9 +53,9 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     if(this.user! !== null && this.user!.role === "coach") {
-      this.showCreateClassGroups = true;
-    }
+        this.showCreateClassGroups = true;
   }
+}
 
   toggleEditing(): void {
     this.editing = !this.editing;
