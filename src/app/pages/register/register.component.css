@@ -3,7 +3,6 @@ mat-card {
   box-shadow: none;
 }
 
-
 mat-card-content {
   margin: auto;
 }
@@ -32,6 +31,13 @@ mat-form-field {
   color: white;
   text-transform: uppercase!important;
 }
+
+.mat-mdc-card{
+  box-shadow: none;
+  /*margin-top: 9em!important;*/
+}
+
 h1 {
   text-align: center;
 }
+

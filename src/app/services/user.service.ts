@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../dtos/CreateUserDto';
 import { User } from '../models/User';
-import {Observable} from "rxjs";
+import { Observable, tap } from "rxjs";
 import { UserMapper } from '../mappers/user.mapper';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar'; // import MatSnackBar
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +14,28 @@ import { UserMapper } from '../mappers/user.mapper';
 export class UserService {
   private url: string;
   private user?: User;
+  private http: HttpClient = inject(HttpClient);
+  private router: Router = inject(Router);
+  private snackbar: MatSnackBar = inject(MatSnackBar);
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this.url = `${environment.backendUrl}/user`;
   }
 
-  addUser(user : CreateUserDto) : Observable<CreateUserDto> {
-    return this.http.post<CreateUserDto>(`${this.url}/register`, user)
+  addUser(user: CreateUserDto): Observable<CreateUserDto> {
+    return this.http.post<CreateUserDto>(`${this.url}/register`, user).pipe(
+      tap(() => {
+        this.router.navigate(['/login']);
+        this.snackbar.open('User created successfully', 'Close', {
+          duration: 5000
+        });
+      }) // Added closing parenthesis here
+    );
   }
 
   updateProfile(updateProfileForm: Partial<any>): Observable<any> {
 
     const user = UserMapper.toUser(updateProfileForm);
-
-    // TODO send password info to keycloak
 
     const UpdateUserDto = {
       "id": user.id,
