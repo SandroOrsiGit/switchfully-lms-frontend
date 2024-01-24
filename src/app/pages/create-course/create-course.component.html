@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-content>
+
+    <h1>Create course</h1>
+    <form>
+      <div>
+        <mat-form-field>
+          <mat-label>Enter course name</mat-label>
+          <input matInput placeholder="Course name" [formControl]="name" required>
+          @if (name.invalid) {
+          <mat-error>{{getNameErrorMessage()}}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <app-button mat-raised-button buttonName="Create" (buttonClick)="onCreate()"></app-button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
