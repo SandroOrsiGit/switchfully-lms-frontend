@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -23,9 +23,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class CreateClassGroupComponent implements OnInit {
-  buttonName = 'Submit';
+  buttonName: string = 'Create class group';
+  closeButtonName: string = "Close";
 
   createClassGroupForm: FormGroup;
+  @Input() showCreateClassGroupsModal: boolean = false;
+  @Output() closeCreateClassGroupModal = new EventEmitter<void>();
 
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private formBuilder: FormBuilder = inject(FormBuilder);
@@ -70,5 +73,9 @@ export class CreateClassGroupComponent implements OnInit {
     this._snackBar.open('Class group created successfully', 'Close', {
       duration: 5000
     });
+  }
+
+  onClose() {
+    this.closeCreateClassGroupModal.emit();
   }
 }

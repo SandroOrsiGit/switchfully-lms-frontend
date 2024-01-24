@@ -10,11 +10,13 @@ import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { FormValidator } from '../../utils/form-validators';
+import {CreateClassGroupComponent} from "../create-classgroup/create-class-group.component";
+import {ButtonComponent} from "../../components/button/button.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, CreateClassGroupComponent, ButtonComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -25,6 +27,8 @@ export class ProfileComponent implements OnInit {
   editing: boolean = false;
   emailInUseError$?: string;
   user?: User = this.userService.getCurrentUser();
+  showCreateClassGroups: boolean = false;
+  showModal: boolean = false;
 
   hide = true;
   id = new FormControl(this.user?.id);
@@ -48,6 +52,9 @@ export class ProfileComponent implements OnInit {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
+    if(this.user! !== null && this.user!.role === "coach") {
+      this.showCreateClassGroups = true;
+    }
   }
 
   toggleEditing(): void {
@@ -63,5 +70,14 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
 
 }

@@ -60,8 +60,17 @@
         <h3>Your Classes</h3>
         <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
       </div>
-
+      @if (showCreateClassGroups) {
+        <button (click)="openModal()">Create class groups</button>
+      }
       <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>
     </form>
+
   </div>
+</div>
+
+<div class="modal-container">
+@if (showCreateClassGroups) {
+  <app-create-class-group  [showCreateClassGroupsModal]="showModal" (closeCreateClassGroupModal)="closeModal()"></app-create-class-group>
+}
 </div>

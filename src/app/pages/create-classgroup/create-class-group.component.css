@@ -1,7 +1,16 @@
 mat-card {
   height: 75%;
   box-shadow: none;
+  z-index: 10;
+  position:absolute;
+  top: 25%;
+  left:30%;
+  max-height: 200px;
+  background-color: white;
+
 }
+
+
 
 
 mat-card-content {
@@ -39,3 +48,4 @@ mat-form-field {
   color: white;
   text-transform: uppercase!important;
 }
+
