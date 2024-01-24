@@ -1,14 +1,15 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
-import {ButtonComponent} from "../../components/button/button.component";
-import {CommonModule} from "@angular/common";
-import {ClassGroupService} from "../../services/class-group.service";
-import {MatCardModule} from "@angular/material/card";
-import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
-import {Router} from "@angular/router";
+import { Component, inject, OnInit } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { ButtonComponent } from "../../components/button/button.component";
+import { CommonModule } from "@angular/common";
+import { ClassGroupService } from "../../services/class-group.service";
+import { MatCardModule } from "@angular/material/card";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { Router } from "@angular/router";
+import { FormValidator } from '../../utils/form-validators';
 
 
 @Component({
@@ -20,7 +21,7 @@ import {Router} from "@angular/router";
   styleUrl: './create-class-group.component.css',
 })
 
-export class CreateClassGroupComponent implements OnInit{
+export class CreateClassGroupComponent implements OnInit {
   buttonName = 'Submit';
 
   createClassGroupForm: FormGroup;
@@ -31,24 +32,11 @@ export class CreateClassGroupComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.createClassGroupForm = this.formBuilder.group( {
+    this.createClassGroupForm = this.formBuilder.group({
       name: ['name', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required]
-    }, { validator: this.dateLessThan('startDate', 'endDate') });
-  }
-
-  dateLessThan(from: string, to: string) {
-    return (group: FormGroup): ValidationErrors | null => {
-      let startDate = group.controls[from];
-      let endDate = group.controls[to];
-      if (startDate.value > endDate.value) {
-        return {
-          endDateBeforeStartDate: true  
-        };
-      }
-      return null
-    }
+    }, { validator: FormValidator.dateLessThan('startDate', 'endDate') });
   }
 
   onSubmit() {
