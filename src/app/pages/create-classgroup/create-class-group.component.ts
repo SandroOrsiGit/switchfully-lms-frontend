@@ -47,7 +47,7 @@ export class CreateClassGroupComponent implements OnInit {
     newClassGroup.endDate = this.convertDate(newClassGroup.endDate);// To fix timezone issue
 
     this.classGroupService.createClassGroup(newClassGroup).pipe().subscribe({
-      next: data => {
+      next: () => {
         this.activateSnackBar();
       }
     })
