@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup, MinValidator } from '@angular/forms';
+import { FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormValidator } from "./form-validator";
@@ -47,5 +47,4 @@ export class RegisterComponent {
       }
     });
   }
-
 }

@@ -48,14 +48,14 @@ export class LoginComponent {
   }
   onLogin() {
     return this.keycloakService.login({email: this.email.value!, password: this.password.value!}).subscribe({
-      next: _ => {
+      next: () => {
         this.userService.getUserByToken().subscribe(user => {
           this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
           this.userService.setCurrentUser(user);
           this.router.navigate(['/profile']);
         });
       },
-      error: _ => {
+      error: () => {
         this._snackBar.open('Invalid credentials','Close');
       }
     });
