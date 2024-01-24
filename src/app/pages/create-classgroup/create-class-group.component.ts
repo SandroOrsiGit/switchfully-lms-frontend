@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from "../../components/button/button.component";
 import { CommonModule } from "@angular/common";
 import { ClassGroupService } from "../../services/class-group.service";
@@ -10,6 +10,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { Router } from "@angular/router";
 import { FormValidator } from '../../utils/form-validators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -29,6 +30,7 @@ export class CreateClassGroupComponent implements OnInit {
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private formBuilder: FormBuilder = inject(FormBuilder);
   private router: Router = inject(Router);
+  private _snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
 
@@ -44,8 +46,11 @@ export class CreateClassGroupComponent implements OnInit {
     newClassGroup.startDate = this.convertDate(newClassGroup.startDate);// To fix timezone issue
     newClassGroup.endDate = this.convertDate(newClassGroup.endDate);// To fix timezone issue
 
-    this.classGroupService.createClassGroup(newClassGroup)
-      .subscribe();
+    this.classGroupService.createClassGroup(newClassGroup).pipe().subscribe({
+      next: data => {
+        this.activateSnackBar();
+      }
+    })
     this.gotoProfilePage();
   }
 
@@ -59,5 +64,11 @@ export class CreateClassGroupComponent implements OnInit {
 
   gotoProfilePage() {
     this.router.navigate(['profile']);
+  }
+
+  activateSnackBar() {
+    this._snackBar.open('Class group created successfully', 'Close', {
+      duration: 5000
+    });
   }
 }
