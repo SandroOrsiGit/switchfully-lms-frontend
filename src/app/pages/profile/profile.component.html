@@ -61,9 +61,9 @@
         <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
       </div>
       @if (showCreateClassGroups) {
-        <button (click)="openModal()">Create class groups</button>
+        <app-button [buttonName]="modalButton" (click)="openModal()"></app-button>
       }
-      <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>
+      <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!editing || !updateProfileForm.valid"></app-button>
     </form>
 
   </div>

@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
   editing: boolean = false;
   emailInUseError$?: string;
   user?: User = this.userService.getCurrentUser();
+  modalButton: string = "Create class group";
+  updateProfileButton: string = "Update profile";
   showCreateClassGroups: boolean = false;
   showModal: boolean = false;
 
@@ -78,6 +80,5 @@ export class ProfileComponent implements OnInit {
   closeModal() {
     this.showModal = false;
   }
-
 
 }
