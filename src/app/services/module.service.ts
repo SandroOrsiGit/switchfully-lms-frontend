@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {CreateModuleDto} from "../dtos/CreateModuleDto";
 import {Observable} from "rxjs";
-import {Module} from "../models/Module";
+import {ModuleDto} from "../dtos/ModuleDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class ModuleService {
     this._url = `${environment.backendUrl}/modules`;
   }
 
-  createModule(createModuleDto: CreateModuleDto): Observable<Module> {
-    return this.http.post(this._url, createModuleDto);
+  createModule(createModuleDto: CreateModuleDto): Observable<ModuleDto> {
+    return this.http.post<ModuleDto>(this._url, createModuleDto);
   }
 }
