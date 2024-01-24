@@ -1,4 +1,6 @@
 export interface ModuleDto {
     id: number,
-    name: string
+    name: string,
+    codelabs: any[],
+    subModules: any[],
 }

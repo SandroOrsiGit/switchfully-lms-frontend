@@ -19,7 +19,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class CreateModuleComponent {
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
-  constructor(private moduleService: ModuleService) {}
+
+  private moduleService:ModuleService = inject(ModuleService);
 
   onCreate(createModuleDto: CreateModuleDto) {
     this.moduleService.createModule(createModuleDto).subscribe(
