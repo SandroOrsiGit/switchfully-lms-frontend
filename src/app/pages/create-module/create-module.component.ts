@@ -24,10 +24,10 @@ export class CreateModuleComponent {
   onCreate(createModuleDto: CreateModuleDto) {
     this.moduleService.createModule(createModuleDto).subscribe(
       {
-        next: _ => {
+        next: () => {
           this.router.navigate(['/profile']);
         },
-        error: _ => {
+        error: () => {
           this._snackBar.open('Only coaches can created a module','Close');
         }
       }
