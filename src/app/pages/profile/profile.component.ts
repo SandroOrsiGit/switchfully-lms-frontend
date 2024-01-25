@@ -48,7 +48,6 @@ export class ProfileComponent implements OnInit {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
-    console.log(this.user)
   }
 
   toggleEditing(): void {

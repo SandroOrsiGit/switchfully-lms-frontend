@@ -3,7 +3,6 @@ import { CreateCodelabFormComponent } from "../../components/create-codelab-form
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CreateModuleDto } from '../../dtos/CreateModuleDto';
 import { CodelabService } from '../../services/codelab.service';
 import { CreateCodelabDto } from '../../dtos/CreateCodelabDto';
 
@@ -21,7 +20,7 @@ export class CreateCodelabComponent {
     private router = inject(Router);
     private _snackBar = inject(MatSnackBar);
     private codelabService: CodelabService = inject(CodelabService);
-  
+
     onCreate(createCodelabDto: CreateCodelabDto) {
       this.codelabService.createCodelab(createCodelabDto).subscribe(
         {
