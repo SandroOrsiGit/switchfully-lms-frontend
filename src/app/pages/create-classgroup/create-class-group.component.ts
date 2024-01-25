@@ -11,6 +11,8 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { Router } from "@angular/router";
 import { FormValidator } from '../../utils/form-validators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 
 @Component({
@@ -31,6 +33,8 @@ export class CreateClassGroupComponent implements OnInit {
   @Output() closeCreateClassGroupModal = new EventEmitter<void>();
 
   private classGroupService: ClassGroupService = inject(ClassGroupService);
+  private userService: UserService = inject(UserService);
+  private currentUser?: User = this.userService.getCurrentUser();
   private formBuilder: FormBuilder = inject(FormBuilder);
   private router: Router = inject(Router);
   private _snackBar = inject(MatSnackBar);
@@ -48,6 +52,10 @@ export class CreateClassGroupComponent implements OnInit {
     const newClassGroup = this.createClassGroupForm.value;
     newClassGroup.startDate = this.convertDate(newClassGroup.startDate);// To fix timezone issue
     newClassGroup.endDate = this.convertDate(newClassGroup.endDate);// To fix timezone issue
+    newClassGroup.coachId = this.currentUser?.id;
+
+
+    console.log(newClassGroup)
 
     this.classGroupService.createClassGroup(newClassGroup).pipe().subscribe({
       next: () => {
