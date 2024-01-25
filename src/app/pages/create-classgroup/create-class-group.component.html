@@ -1,4 +1,4 @@
-<mat-card *ngIf="showCreateClassGroupsModal" (keydown.escape)="onClose()">
+<mat-card>
   <mat-card-content>
     <h1>Create class group</h1>
 
@@ -31,7 +31,6 @@
         <mat-error>Start date should be less than end date</mat-error> }
       <div>
         <app-button [disabled]="createClassGroupForm.invalid" [buttonName]="buttonName" (buttonClick)="onSubmit()"></app-button>
-        <app-button [buttonName]="closeButtonName" (buttonClick)="onClose()"></app-button>
       </div>
     </form>
   </mat-card-content>

@@ -27,10 +27,7 @@ export class ProfileComponent implements OnInit {
   editing: boolean = false;
   emailInUseError$?: string;
   user?: User = this.userService.getCurrentUser();
-  modalButton: string = "Create class group";
   updateProfileButton: string = "Update profile";
-  showCreateClassGroups: boolean = false;
-  showModal: boolean = false;
 
   hide = true;
   id = new FormControl(this.user?.id);
@@ -54,9 +51,6 @@ export class ProfileComponent implements OnInit {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
-    if(this.user! !== null && this.user!.role === "coach") {
-        this.showCreateClassGroups = true;
-  }
 }
 
   toggleEditing(): void {
@@ -72,13 +66,4 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
-  }
-
 }
