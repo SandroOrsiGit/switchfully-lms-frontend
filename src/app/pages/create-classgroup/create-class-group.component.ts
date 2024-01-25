@@ -54,9 +54,6 @@ export class CreateClassGroupComponent implements OnInit {
     newClassGroup.endDate = this.convertDate(newClassGroup.endDate);// To fix timezone issue
     newClassGroup.coachId = this.currentUser?.id;
 
-
-    console.log(newClassGroup)
-
     this.classGroupService.createClassGroup(newClassGroup).pipe().subscribe({
       next: () => {
         this.activateSnackBar();
