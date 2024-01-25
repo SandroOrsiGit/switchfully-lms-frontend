@@ -2,6 +2,7 @@
     <span routerLink='home'>Switchfully learning management system</span>
     <span routerLink='login'>Login</span>
     <span routerLink='register'>Register</span>
+    <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
     <span routerLink='profile'>Profile</span>
     <span routerLink="create-module">Create ModuleDto</span>
       @if (this.userService.getCurrentUser()) {
