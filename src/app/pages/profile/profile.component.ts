@@ -5,7 +5,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {KeycloakService} from '../../services/keycloak.service';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
 import { FormValidator } from '../register/form-validator';
@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
+    console.log(this.user)
   }
 
   toggleEditing(): void {
