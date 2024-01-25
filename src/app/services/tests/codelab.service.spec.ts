@@ -1,6 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { throwError } from 'rxjs';
 import { CodelabService } from '../codelab.service';
 import { CreateCodelabDto } from '../../dtos/CreateCodelabDto';
 import { environment } from '../../../environments/environment.development';

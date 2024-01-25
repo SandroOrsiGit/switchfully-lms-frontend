@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { throwError } from 'rxjs/internal/observable/throwError';
 
 describe('CreateCodelabComponent', () => {
   let component: CreateCodelabComponent;
