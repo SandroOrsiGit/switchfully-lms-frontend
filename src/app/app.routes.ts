@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {CreateModuleComponent} from "./pages/create-module/create-module.component";
 import {CreateClassGroupComponent} from "./pages/create-classgroup/create-class-group.component";
 import {CreateCourseComponent} from "./pages/create-course/create-course.component";
+import { CreateCodelabComponent } from './pages/create-codelab/create-codelab.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,4 +18,5 @@ export const routes: Routes = [
   {path: 'create-module', component: CreateModuleComponent},
   {path: 'class-group/create-class-group', component: CreateClassGroupComponent},
   {path: 'course/create', component: CreateCourseComponent},
+  {path: 'codelab/create', component: CreateCodelabComponent},
 ];

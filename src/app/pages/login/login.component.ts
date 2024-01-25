@@ -9,7 +9,6 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angula
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {appConfig} from "../../app.config";
 import {Router} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 
