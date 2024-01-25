@@ -37,10 +37,10 @@ export class CreateCourseComponent {
 
   onCreate() {
     return this.courseService.createCourse({name: this.name.value!}).subscribe({
-      next: _ => {
+      next: () => {
         this.router.navigate(['/profile']);
       },
-      error: _ => {
+      error: () => {
         this._snackBar.open('Only coaches can created a course','Close');
       }
     });

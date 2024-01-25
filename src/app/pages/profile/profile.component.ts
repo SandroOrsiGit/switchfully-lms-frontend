@@ -44,11 +44,11 @@ export class ProfileComponent implements OnInit {
 
   constructor() {}
 
+
   ngOnInit() {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
-    console.log(this.user)
   }
 
   toggleEditing(): void {
