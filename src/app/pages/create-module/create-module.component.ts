@@ -1,17 +1,23 @@
 import {Component, inject} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
-import {CreateModuleFormComponent} from "../../components/create-module-form/create-module-form.component";
 import {ModuleService} from "../../services/module.service";
-import {CreateModuleDto} from "../../dtos/CreateModuleDto";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ButtonComponent} from "../../components/button/button.component";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @Component({
   selector: 'app-create-module',
   standalone: true,
   imports: [
     MatCardModule,
-    CreateModuleFormComponent
+    ButtonComponent,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   templateUrl: './create-module.component.html',
   styleUrl: './create-module.component.css'
@@ -19,10 +25,17 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class CreateModuleComponent {
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+
+  name = new FormControl('test', [Validators.required]);
+
   constructor(private moduleService: ModuleService) {}
 
-  onCreate(createModuleDto: CreateModuleDto) {
-    this.moduleService.createModule(createModuleDto).subscribe(
+  getNameErrorMessage() {
+    return 'You must enter a value';
+  }
+
+  onCreate() {
+    this.moduleService.createModule({name: this.name.value!}).subscribe(
       {
         next: () => {
           this.router.navigate(['/profile']);
