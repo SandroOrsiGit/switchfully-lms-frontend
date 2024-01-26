@@ -5,7 +5,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {KeycloakService} from '../../services/keycloak.service';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
   )
 
   constructor() {}
+
 
   ngOnInit() {
     if(!this.keycloakService.isLoggedIn()){

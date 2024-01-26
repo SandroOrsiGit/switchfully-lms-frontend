@@ -57,11 +57,16 @@
       }
 
       <div class="class-list">
-        <h3>Your Classes</h3>
-        <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
+
+        <div *ngIf="!(user) || user.classes && user.classes.length > 0">
+          <h3>Your Classes</h3>
+          <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
+        </div>
+
       </div>
       <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!editing || !updateProfileForm.valid"></app-button>
     </form>
 
   </div>
+  <button mat-raised-button *ngIf="user?.role === 'coach'" routerLink="/class-group/create">Create Class Group</button>
 </div>
