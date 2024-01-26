@@ -17,9 +17,9 @@ import { CreateCodelabDto } from '../../dtos/CreateCodelabDto';
     ]
 })
 export class CreateCodelabComponent {
-    private router = inject(Router);
-    private _snackBar = inject(MatSnackBar);
-    private codelabService: CodelabService = inject(CodelabService);
+    router = inject(Router);
+    _snackBar = inject(MatSnackBar);
+    codelabService: CodelabService = inject(CodelabService);
 
     onCreate(createCodelabDto: CreateCodelabDto) {
       this.codelabService.createCodelab(createCodelabDto).subscribe(

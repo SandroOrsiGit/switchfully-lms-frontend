@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import {CreateModuleComponent} from "./pages/create-module/create-module.component";
 import {CreateClassGroupComponent} from "./pages/create-classgroup/create-class-group.component";
 import {CreateCourseComponent} from "./pages/create-course/create-course.component";
+import { CreateCodelabComponent } from './pages/create-codelab/create-codelab.component';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {coachGuard} from "./guards/coach.guard";
 import {authGuard} from "./guards/auth.guard";
@@ -17,10 +18,10 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'codelab/create', component: CreateCodelabComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'module/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'class-group/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'course/create', component: CreateCourseComponent, canActivate: [coachGuard]},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
-  // {path: 'codelab/create', component: CreateCodelabComponent},
 ];
