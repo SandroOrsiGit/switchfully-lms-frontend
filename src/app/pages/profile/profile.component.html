@@ -64,9 +64,9 @@
         </div>
 
       </div>
-
-      <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>
+      <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!editing || !updateProfileForm.valid"></app-button>
     </form>
+
   </div>
   <button mat-raised-button *ngIf="user?.role === 'coach'" routerLink="/class-group/create">Create Class Group</button>
 </div>

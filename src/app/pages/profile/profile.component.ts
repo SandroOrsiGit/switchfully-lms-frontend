@@ -8,13 +8,15 @@ import {KeycloakService} from '../../services/keycloak.service';
 import {Router, RouterLink} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
-import { FormValidator } from '../register/form-validator';
 import { MatIconModule } from '@angular/material/icon';
+import { FormValidator } from '../../utils/form-validators';
+import {CreateClassGroupComponent} from "../create-classgroup/create-class-group.component";
+import {ButtonComponent} from "../../components/button/button.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, RouterLink],
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, CreateClassGroupComponent, ButtonComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -25,6 +27,7 @@ export class ProfileComponent implements OnInit {
   editing: boolean = false;
   emailInUseError$?: string;
   user?: User = this.userService.getCurrentUser();
+  updateProfileButton: string = "Update profile";
 
   hide = true;
   id = new FormControl(this.user?.id);
@@ -49,7 +52,7 @@ export class ProfileComponent implements OnInit {
     if(!this.keycloakService.isLoggedIn()){
       this.router.navigate(['/login']);
     }
-  }
+}
 
   toggleEditing(): void {
     this.editing = !this.editing;
@@ -64,5 +67,4 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
 }
