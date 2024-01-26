@@ -5,7 +5,7 @@
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
 <!--    <span routerLink='dashboard'>Dashboard</span>-->
     <span routerLink='profile'>Profile</span>
-    <span routerLink="create-module">Create ModuleDto</span>
+    <span routerLink="modules/create">Create Module</span>
     <span routerLink="codelab/create">Create codelab</span>
       @if (this.userService.getCurrentUser()) {
         {{message()}}
