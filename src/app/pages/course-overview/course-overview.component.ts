@@ -25,8 +25,7 @@ export class CourseOverviewComponent implements OnInit {
 
   private getCourses() {
     this._courseService.getCourses().subscribe({
-      next: courses => this._courses = courses,
-      complete: () => console.log(this._courses)
+      next: courses => this._courses = courses
     });
   }
 
