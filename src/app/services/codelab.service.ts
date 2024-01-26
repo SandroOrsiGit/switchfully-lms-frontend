@@ -4,6 +4,7 @@ import {environment} from "../../environments/environment.development";
 import {Observable} from "rxjs";
 import { CreateCodelabDto } from '../dtos/CreateCodelabDto';
 import { CodelabDto } from '../dtos/CodelabDto';
+import {CodelabProgressDto} from "../dtos/CodelabProgressDto";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { CodelabDto } from '../dtos/CodelabDto';
 export class CodelabService {
 
   private _url: string;
+  private tempCourseId: number = 1;
 
   constructor(private http: HttpClient) {
     this._url = `${environment.backendUrl}/codelab`;
@@ -19,5 +21,8 @@ export class CodelabService {
   createCodelab(createCodelabDto: CreateCodelabDto): Observable<CodelabDto> {
     return this.http.post<CodelabDto>(this._url, createCodelabDto);
   }
-  
+
+  getCodelabs() {
+    return this.http.get<CodelabProgressDto[]>(this._url + '/progress?courseId=' + this.tempCourseId)
+  }
 }
