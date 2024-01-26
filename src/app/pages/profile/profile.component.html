@@ -57,8 +57,12 @@
       }
 
       <div class="class-list">
-        <h3>Your Classes</h3>
-        <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
+
+        <div *ngIf="!(user) || user.classes && user.classes.length > 0">
+          <h3>Your Classes</h3>
+          <p *ngFor="let classGroup of user?.classes">{{classGroup.name}}</p>
+        </div>
+
       </div>
 
       <button mat-raised-button [disabled]="!editing || !updateProfileForm.valid">Update Profile</button>

@@ -35,11 +35,7 @@ describe('ProfileComponent', () => {
 
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 
   it('should navigate to login when not logged in', () => {
@@ -50,12 +46,22 @@ describe('ProfileComponent', () => {
     expect(routerMock.navigate).toHaveBeenCalledWith(['/login']);
   })
 
+  it('should be invalid when fields are empty', () => {
+    component.id.setValue(null);
+    component.email.setValue('');
+    component.displayName.setValue('');
+    component.password.setValue('');
+    component.passwordConfirm.setValue('');
+    expect(component.updateProfileForm.valid).toBeFalsy();
+  });
+
   it('should initialize form controls with user data', () => {
     const userData: User = {
       id: 123,
       email: 'test@example.com',
       displayName: 'Test User',
       password: 'password123',
+      classes: [],
     };
     userServiceMock.getCurrentUser.and.returnValue(userData)
 
@@ -74,4 +80,82 @@ describe('ProfileComponent', () => {
     expect(component.passwordConfirm.value).toEqual(userData.password);
     expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
   });
-});
+
+  it('it should display one class-group', () => {
+    const userData: User = {
+      id: 123,
+      email: 'test@example.com',
+      displayName: 'Test User',
+      password: 'password123',
+      classes: [{id: 1, name: 'Classgroupt_test1', course_id: 1}],
+    };
+    userServiceMock.getCurrentUser.and.returnValue(userData);
+    component.user = userData;
+
+    fixture.detectChanges();
+
+    const classListHeading = fixture.nativeElement.querySelector('.class-list h3');
+    expect(classListHeading.textContent).toContain('Your Classes');
+
+    const classElements = fixture.nativeElement.querySelectorAll('.class-list p');
+    expect(classElements.length).toBe(userData.classes.length);
+
+    userData.classes.forEach((classGroup, index) => {
+      const expectedClassName = classGroup.name;
+      const actualClassName = classElements[index].textContent.trim();
+      expect(actualClassName).toContain(expectedClassName);
+    });
+  });
+
+  it('it should display multiples class-groups', () => {
+    const userData: User = {
+      id: 123,
+      email: 'test@example.com',
+      displayName: 'Test User',
+      password: 'password123',
+      classes: [{id: 1, name: 'Classgroupt_test1', course_id: 1},
+                {id: 2, name: 'Classgroupt_test2', course_id: 2},
+                {id: 3, name: 'Classgroupt_test3', course_id: 3}
+      ],
+    };
+    userServiceMock.getCurrentUser.and.returnValue(userData);
+    component.user = userData;
+
+    fixture.detectChanges();
+
+    const classListHeading = fixture.nativeElement.querySelector('.class-list h3');
+    expect(classListHeading.textContent).toContain('Your Classes');
+
+    const classElements = fixture.nativeElement.querySelectorAll('.class-list p');
+    expect(classElements.length).toBe(userData.classes.length);
+
+    userData.classes.forEach((classGroup, index) => {
+      const expectedClassName = classGroup.name;
+      const actualClassName = classElements[index].textContent.trim();
+      expect(actualClassName).toContain(expectedClassName);
+
+    });
+  });
+
+  it('if there are no class groups hide the title "Your Classes"', () => {
+    const userData: User = {
+      id: 123,
+      email: 'test@example.com',
+      displayName: 'Test User',
+      password: 'password123',
+      classes: [],
+    };
+    userServiceMock.getCurrentUser.and.returnValue(userData);
+    component.user = userData;
+
+    fixture.detectChanges();
+    const classListHeading = fixture.nativeElement.querySelector('.class-list h3');
+    const classElements = fixture.nativeElement.querySelectorAll('.class-list p');
+    expect(classListHeading).toBeNull();
+    expect(classElements.length).toBe(0);
+
+    });
+  });
+
+
+

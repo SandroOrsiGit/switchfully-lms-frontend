@@ -37,7 +37,7 @@ describe('UserService', () => {
   });
 
   it('should set and get the current user', () => {
-    const dummyUser: User = { id: 123, email: "test@test.test", displayName: "test" };
+    const dummyUser: User = { id: 123, email: "test@test.test", displayName: "test", classes: [] };
 
     service.setCurrentUser(dummyUser);
 
