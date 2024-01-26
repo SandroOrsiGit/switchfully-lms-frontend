@@ -2,7 +2,6 @@ import {Component, inject, OnInit} from '@angular/core';
 import {ModuleService} from "../../services/module.service";
 import {ModuleDto} from "../../dtos/ModuleDto";
 import {AsyncPipe, NgForOf} from "@angular/common";
-import {async} from "rxjs";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 

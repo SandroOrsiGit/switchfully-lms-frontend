@@ -18,6 +18,8 @@ export class ModuleService {
   createModule(createModuleDto: CreateModuleDto): Observable<ModuleDto> {
     return this.http.post<ModuleDto>(this._url, createModuleDto);
   }
+
+  //TODO adjust url based on the course that was clicked through from
   getModules(): Observable<ModuleDto[]> {
     return this.http.get<ModuleDto[]>(this._url);
 }

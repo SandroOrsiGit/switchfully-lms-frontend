@@ -31,7 +31,8 @@ describe('ClassGroupService', () => {
     const newClassGroup: CreateClassGroupDto = {
       name: 'testGroup',
       startDate: new Date(2024, 1, 23),
-      endDate: new Date(2024, 2, 23)
+      endDate: new Date(2024, 2, 23),
+      coachId: 1
     };
 
     service.createClassGroup(newClassGroup).subscribe();
