@@ -23,7 +23,7 @@ export const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'module/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'class-group/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
-  {path: 'class-group/overview/:id', component: ClassgroupOverviewComponent, canActivate: [coachGuard]},
+  {path: 'class-group/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
   {path: 'course/create', component: CreateCourseComponent, canActivate: [coachGuard]},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
 ];

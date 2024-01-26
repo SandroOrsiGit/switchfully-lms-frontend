@@ -1,0 +1,16 @@
+div {
+    width: 90%;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+mat-expansion-panel {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+mat-expansion-panel p {
+    display: flex;
+    justify-content: end;
+    margin-right: 3rem;
+}
