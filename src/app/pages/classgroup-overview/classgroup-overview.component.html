@@ -1,0 +1,6 @@
+<h2>Class group Name:</h2>
+<p>{{classGroup.name}}</p>
+<h2>Coaches:</h2>
+<p *ngFor="let coachDto of classGroup.coachDtoList">{{coachDto.displayName}}</p>
+<h2>Students:</h2>
+<p *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">{{studentDto.displayName}}</p>
