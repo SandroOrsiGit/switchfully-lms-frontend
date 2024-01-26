@@ -20,7 +20,7 @@ export class CreateCodelabComponent {
     router = inject(Router);
     _snackBar = inject(MatSnackBar);
     codelabService: CodelabService = inject(CodelabService);
-  
+
     onCreate(createCodelabDto: CreateCodelabDto) {
       this.codelabService.createCodelab(createCodelabDto).subscribe(
         {

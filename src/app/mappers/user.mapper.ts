@@ -13,6 +13,8 @@ export class UserMapper {
             id: form["id"],
             displayName: form["displayName"],
             email: form["email"],
+            classes: []
         }
+
     }
 }

@@ -24,4 +24,17 @@ describe('CreateClassGroupComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have an invalid form if end date comes before start date', () => {
+    component.createClassGroupForm.get('endDate')?.setValue("2024-01-01")
+    component.createClassGroupForm.get('startDate')?.setValue("2024-01-02")
+
+    expect(component.createClassGroupForm.valid).toBeFalsy();
+  })
+
+  it('should have an invalid form if the class group name is not set', () => {
+    component.createClassGroupForm.get('name')?.setValue("")
+
+    expect(component.createClassGroupForm.valid).toBeFalsy();
+  })
 });
