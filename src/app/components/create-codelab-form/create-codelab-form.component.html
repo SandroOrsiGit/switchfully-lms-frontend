@@ -1,9 +1,0 @@
-<form [formGroup]="createCodelabForm" (ngSubmit)="onCreate()">
-      <mat-form-field>
-        <mat-label>Enter codelab name</mat-label>
-        <input matInput placeholder="CodelabDto name" [formControl]="name" required>
-        <mat-error id="mat-error">{{ nameError }}</mat-error>
-      </mat-form-field>
-      <app-button mat-raised-button buttonName="Create"></app-button>
-  </form>
-  
