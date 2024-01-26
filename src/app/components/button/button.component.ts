@@ -18,6 +18,7 @@ import {MatDividerModule} from "@angular/material/divider";
 export class ButtonComponent {
 
   @Input() buttonName: string = '';
+  @Input() disabled: boolean = false;
   @Output() buttonClick = new EventEmitter<void>();
 
   onClick() {
