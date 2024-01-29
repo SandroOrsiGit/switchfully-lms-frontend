@@ -5,7 +5,7 @@
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
 <!--    <span routerLink='dashboard'>Dashboard</span>-->
     <span routerLink='profile'>Profile</span>
-    <span routerLink="modules">Modules</span>
+    <span [routerLink]="['/modules', 1]">Modules</span>
     <span routerLink="class-group/create-class-group">Create CreateClassGroupDto</span>
 
       @if (this.userService.getCurrentUser()) {
