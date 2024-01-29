@@ -11,6 +11,7 @@ import { CreateCodelabComponent } from './pages/create-codelab/create-codelab.co
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {coachGuard} from "./guards/coach.guard";
 import {authGuard} from "./guards/auth.guard";
+import {CodelabOverviewComponent} from "./pages/codelab/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'codelab', component: CodelabOverviewComponent},
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'codelab/create', component: CreateCodelabComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
