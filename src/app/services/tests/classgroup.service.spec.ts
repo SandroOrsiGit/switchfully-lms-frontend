@@ -36,7 +36,7 @@ describe('ClassGroupService', () => {
 
     service.createClassGroup(newClassGroup).subscribe();
 
-    const req = httpTestingController.expectOne(`${environment.backendUrl}/class-group`);
+    const req = httpTestingController.expectOne(`${environment.backendUrl}/class-groups`);
     expect(req.request.method).toEqual('POST');
     expect(req.request.body).toEqual(newClassGroup);
 
@@ -48,7 +48,7 @@ describe('ClassGroupService', () => {
 
     service.getClassGroupsByUserId(userId).subscribe();
 
-    const req = httpTestingController.expectOne(`${environment.backendUrl}/class-group?studentId=${userId}`);
+    const req = httpTestingController.expectOne(`${environment.backendUrl}/class-groups?studentId=${userId}`);
     expect(req.request.method).toEqual('GET');
 
     req.flush([]);

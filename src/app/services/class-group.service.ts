@@ -9,7 +9,7 @@ import {ClassGroup} from '../models/ClassGroup';
   providedIn: 'root'
 })
 export class ClassGroupService {
-  private readonly url: string  = `${environment.backendUrl}/class-group`
+  private readonly url: string  = `${environment.backendUrl}/class-groups`
 
   private http: HttpClient = inject(HttpClient);
   constructor() { }
