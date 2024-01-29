@@ -43,7 +43,7 @@ export class UserService {
       "displayName": user.displayName
     }
 
-    return this.http.put<CreateUserDto>(`${this.url}/update`, UpdateUserDto);
+    return this.http.put<CreateUserDto>(this.url, UpdateUserDto);
   }
 
   getUserByToken(): Observable<User> {
