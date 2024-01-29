@@ -19,4 +19,8 @@ export class CourseService {
   createCourse(createCourseDto: CreateCourseDto): Observable<CourseDto> {
     return this.http.post<CourseDto>(this._url, createCourseDto);
   }
+
+  getCourses(): Observable<CourseDto[]> {
+    return this.http.get<CourseDto[]>(this._url);
+  }
 }

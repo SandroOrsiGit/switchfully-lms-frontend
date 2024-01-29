@@ -3,7 +3,20 @@
 
     <h1>Create module</h1>
 
-    <app-create-module-form (onSubmit)="onCreate($event)"></app-create-module-form>
+    <form>
+      <div>
+        <mat-form-field>
+          <mat-label>Enter module name</mat-label>
+          <input matInput placeholder="ModuleDto name" [formControl]="name" required>
+          @if (name.invalid) {
+          <mat-error>{{getNameErrorMessage()}}</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <app-button mat-raised-button buttonName="Create" (buttonClick)="onCreate()"></app-button>
+      </div>
+    </form>
 
   </mat-card-content>
 </mat-card>

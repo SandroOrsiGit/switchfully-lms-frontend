@@ -1,36 +1,51 @@
-import { Component, inject } from '@angular/core';
-import { CreateCodelabFormComponent } from "../../components/create-codelab-form/create-codelab-form.component";
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { CodelabService } from '../../services/codelab.service';
-import { CreateCodelabDto } from '../../dtos/CreateCodelabDto';
+import {Component, inject} from '@angular/core';
+import {Router} from "@angular/router";
+import {MatCardModule} from "@angular/material/card";
+import {CodelabService} from "../../services/codelab.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {ButtonComponent} from "../../components/button/button.component";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @Component({
-    selector: 'app-create-codelab',
-    standalone: true,
-    templateUrl: './create-codelab.component.html',
-    styleUrl: './create-codelab.component.css',
-    imports: [
-        CreateCodelabFormComponent,
-        MatCardModule,
-    ]
+  selector: 'app-create-codelab',
+  standalone: true,
+  imports: [
+      MatCardModule,
+      ButtonComponent,
+      FormsModule,
+      MatFormFieldModule,
+      MatInputModule,
+      ReactiveFormsModule
+  ],
+  templateUrl: './create-codelab.component.html',
+  styleUrl: './create-codelab.component.css'
 })
 export class CreateCodelabComponent {
-    router = inject(Router);
-    _snackBar = inject(MatSnackBar);
-    codelabService: CodelabService = inject(CodelabService);
+  private router = inject(Router);
+  private _snackBar = inject(MatSnackBar);
 
-    onCreate(createCodelabDto: CreateCodelabDto) {
-      this.codelabService.createCodelab(createCodelabDto).subscribe(
-        {
-          next: () => {
-            this.router.navigate(['/profile']);
-          },
-          error: () => {
-            this._snackBar.open('Only coaches can created a codelab','Close');
-          }
+  name = new FormControl('test', [Validators.required]);
+
+  constructor(private codelabService: CodelabService) {}
+
+  getNameErrorMessage() {
+    return 'You must enter a value';
+  }
+
+  onCreate() {
+    this.codelabService.createCodelab({name: this.name.value!}).subscribe(
+      {
+        next: () => {
+          this.router.navigate(['/profile']);
+        },
+        error: () => {
+          this._snackBar.open('Only coaches can created a codelab','Close');
         }
-      );
-    }
+      }
+    );
+  }
+
+
 }

@@ -12,6 +12,8 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {coachGuard} from "./guards/coach.guard";
 import {authGuard} from "./guards/auth.guard";
 import { ClassgroupOverviewComponent } from './pages/classgroup-overview/classgroup-overview.component';
+import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
+import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,11 +21,13 @@ export const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'codelab/create', component: CreateCodelabComponent},
+  {path: 'codelabs/create', component: CreateCodelabComponent, canActivate: [coachGuard]},
+  {path: 'codelabs', component: CodelabOverviewComponent, canActivate: [authGuard]},
+  {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
+  {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
-  {path: 'module/create', component: CreateModuleComponent, canActivate: [coachGuard]},
-  {path: 'class-group/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-group/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
   {path: 'course/create', component: CreateCourseComponent, canActivate: [coachGuard]},
+  {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
 ];

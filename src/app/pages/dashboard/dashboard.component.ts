@@ -19,6 +19,6 @@ export class DashboardComponent {
   btn_create_course: string = "Create Course";
   btn_create_module: string = "Create Module";
   // btn_create_subModule: string = "Create SubModule";
-  // btn_create_codelab: string = "Create CodeLab";
+  btn_create_codelab: string = "Create CodeLab";
 
 }
