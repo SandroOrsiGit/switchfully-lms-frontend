@@ -6,8 +6,8 @@
     <form>
       <div>
         <mat-form-field>
-          <mat-label>Enter module name</mat-label>
-          <input matInput placeholder="CodelabDto name" [formControl]="name" required>
+          <mat-label>Enter codelab name</mat-label>
+          <input matInput placeholder="Codelab name" [formControl]="name" required>
           @if (name.invalid) {
           <mat-error>{{getNameErrorMessage()}}</mat-error>
           }

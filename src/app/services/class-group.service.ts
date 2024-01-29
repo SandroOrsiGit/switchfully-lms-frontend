@@ -23,7 +23,7 @@ export class ClassGroupService {
   }
 
   getClassGroupByClassGroupId(classGroupId: number | undefined): Observable<ClassGroup>  {
-    return this.http.get<ClassGroup>(this.url + '?id=' + classGroupId)
+    return this.http.get<ClassGroup>(this.url + '/' + classGroupId)
   }
 
 }
