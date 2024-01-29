@@ -1,5 +1,4 @@
 import {Component, inject} from '@angular/core';
-import {CreateModuleFormComponent} from "../../components/create-module-form/create-module-form.component";
 import {MatCardModule} from "@angular/material/card";
 import {ButtonComponent} from "../../components/button/button.component";
 import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -13,7 +12,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   selector: 'app-create-course',
   standalone: true,
   imports: [
-    CreateModuleFormComponent,
     MatCardModule,
     ButtonComponent,
     FormsModule,

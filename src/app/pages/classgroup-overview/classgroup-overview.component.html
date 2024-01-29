@@ -1,0 +1,40 @@
+<div>
+  <h2>Class group Name:</h2>
+  <h3>{{classGroup.name}}</h3>
+  
+  <mat-expansion-panel [expanded]="panelOpenState">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Coaches
+      </mat-panel-title>
+      <mat-panel-description>
+        Coaches assigned to this course
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-divider></mat-divider>
+
+    <span *ngIf="classGroup.coachDtoList.length > 0; else noCoaches">
+      <p *ngFor="let coachDto of classGroup.coachDtoList">{{coachDto.displayName}}</p>
+    </span>
+    <ng-template #noCoaches><p>No coaches assigned to this course group</p></ng-template>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="panelOpenState">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Students
+      </mat-panel-title>
+      <mat-panel-description>
+        Students assigned to this course
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-divider></mat-divider>
+
+    <span *ngIf="classGroup.studentNoCodelabProgressDtoList.length > 0; else noStudents">
+      <p *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">{{studentDto.displayName}}</p>
+    </span>
+    <ng-template #noStudents><p>No students assigned to this course group</p></ng-template>
+
+  </mat-expansion-panel>
+</div>

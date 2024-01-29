@@ -9,7 +9,7 @@ import {ClassGroup} from '../models/ClassGroup';
   providedIn: 'root'
 })
 export class ClassGroupService {
-  private readonly url: string  = `${environment.backendUrl}/class-group`
+  private readonly url: string  = `${environment.backendUrl}/class-groups`
 
   private http: HttpClient = inject(HttpClient);
   constructor() { }
@@ -21,4 +21,9 @@ export class ClassGroupService {
   getClassGroupsByUserId(userId: number | undefined): Observable<ClassGroup[]>  {
     return this.http.get<ClassGroup[]>(this.url + '?userId=' + userId)
   }
+
+  getClassGroupByClassGroupId(classGroupId: number | undefined): Observable<ClassGroup>  {
+    return this.http.get<ClassGroup>(this.url + '?id=' + classGroupId)
+  }
+
 }

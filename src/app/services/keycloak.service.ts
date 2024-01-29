@@ -20,11 +20,11 @@ export class KeycloakService {
   }
 
   private setToken(accessToken: string): void {
-    sessionStorage.setItem(this.TOKEN_KEY_NAME, accessToken);
+    localStorage.setItem(this.TOKEN_KEY_NAME, accessToken);
   }
 
   getToken(): string | null {
-    return sessionStorage.getItem(this.TOKEN_KEY_NAME);
+    return localStorage.getItem(this.TOKEN_KEY_NAME);
   }
 
   isLoggedIn(): boolean {
@@ -32,6 +32,6 @@ export class KeycloakService {
   }
 
   logout(): void {
-    sessionStorage.removeItem(this.TOKEN_KEY_NAME);
+    localStorage.removeItem(this.TOKEN_KEY_NAME);
   }
 }

@@ -16,7 +16,7 @@ import {ButtonComponent} from "../../components/button/button.component";
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, CreateClassGroupComponent, ButtonComponent],
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, CreateClassGroupComponent, ButtonComponent, RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
