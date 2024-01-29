@@ -61,7 +61,7 @@
         <div *ngIf="!(user) || user.classes && user.classes.length > 0">
           <h3>Your Classes</h3>
           <p *ngFor="let classGroup of user?.classes">
-            <a [routerLink]="['/class-group/overview', classGroup.id]">{{classGroup.name}}</a>
+            <a [routerLink]="['/class-groups/overview', classGroup.id]">{{classGroup.name}}</a>
           </p>
         </div>
 

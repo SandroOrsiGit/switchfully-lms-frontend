@@ -19,7 +19,7 @@ export class ClassGroupService {
   }
 
   getClassGroupsByUserId(userId: number | undefined): Observable<ClassGroup[]>  {
-    return this.http.get<ClassGroup[]>(this.url + '/classGroup?userId=' + userId)
+    return this.http.get<ClassGroup[]>(this.url + '?userId=' + userId)
   }
 
   getClassGroupByClassGroupId(classGroupId: number | undefined): Observable<ClassGroup>  {
