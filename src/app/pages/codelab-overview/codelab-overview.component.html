@@ -16,19 +16,11 @@
         <td mat-cell *matCellDef="let element"> {{element.codelab.name}} </td>
       </ng-container>
 
-
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef> Progress </th>
-          <td mat-cell *matCellDef="let element"> {{element.progress.name}} </td>
-        </ng-container>
-
-      <!--  &lt;!&ndash; Symbol Column &ndash;&gt;-->
-      <!--  <ng-container matColumnDef="symbol">-->
-      <!--    <th mat-header-cell *matHeaderCellDef> Symbol </th>-->
-      <!--    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>-->
-      <!--  </ng-container>-->
+      <!-- Weight Column -->
+      <ng-container matColumnDef="progress">
+        <th mat-header-cell *matHeaderCellDef> Progress </th>
+        <td mat-cell *matCellDef="let element"> {{element.progress.name}} </td>
+      </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
