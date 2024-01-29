@@ -27,7 +27,7 @@ export class LoginComponent {
   private _snackBar = inject(MatSnackBar);
 
   email = new FormControl('test@lms.com', [Validators.required, Validators.email]);
-  password = new FormControl('student', [Validators.required]);
+  password = new FormControl('test', [Validators.required]);
   hide: boolean = true;
 
   getEmailErrorMessage() {
