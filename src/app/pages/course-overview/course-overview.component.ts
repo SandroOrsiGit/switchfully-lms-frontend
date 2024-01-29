@@ -3,13 +3,15 @@ import {CourseDto} from "../../dtos/CourseDto";
 import {CourseService} from "../../services/course.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-course-overview',
   standalone: true,
   imports: [
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    RouterLink
   ],
   templateUrl: './course-overview.component.html',
   styleUrl: './course-overview.component.css'
@@ -17,7 +19,7 @@ import {MatCardModule} from "@angular/material/card";
 export class CourseOverviewComponent implements OnInit {
   private _courses: CourseDto[] = [];
   private _courseService: CourseService = inject(CourseService);
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'details'];
 
   ngOnInit() {
     this.getCourses();
