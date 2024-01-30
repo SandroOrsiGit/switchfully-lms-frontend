@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './module-overview.component.css'
 })
 export class ModuleOverviewComponent implements OnInit {
-  private _modules:any = [];
+  private _modules: ModuleDto[] = [];
   private moduleService: ModuleService = inject(ModuleService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   displayedColumns: string[] = ['id', 'name'];

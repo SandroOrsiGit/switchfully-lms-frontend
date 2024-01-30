@@ -1,6 +1,8 @@
+import { CodelabDto } from "./CodelabDto";
+
 export interface ModuleDto {
     id: number,
     name: string,
-    codelabs: any[],
+    codelabs: CodelabDto[],
     subModules: any[],
 }
