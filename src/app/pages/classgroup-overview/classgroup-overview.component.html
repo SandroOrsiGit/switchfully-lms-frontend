@@ -1,5 +1,5 @@
 <div>
-  <h2>Class group Name:</h2>
+  <h2>Class group name:</h2>
 
   <section *ngIf="classGroup">
     <h3>{{classGroup.name}}</h3>
@@ -16,7 +16,7 @@
       <mat-divider></mat-divider>
 
       <span *ngIf="classGroup.coachDtoList.length > 0; else noCoaches">
-      <p *ngFor="let coachDto of classGroup.coachDtoList">{{coachDto.displayName}}</p>
+      <div *ngFor="let coachDto of classGroup.coachDtoList">{{coachDto.displayName}}</div>
     </span>
       <ng-template #noCoaches><p>No coaches assigned to this course group</p></ng-template>
 
@@ -34,15 +34,15 @@
       <mat-divider></mat-divider>
 
       <span *ngIf="classGroup.studentNoCodelabProgressDtoList.length > 0; else noStudents">
-      <p *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">
-        <ng-container *ngIf="isCoach(); else studentName">
+        <div *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">
+          <ng-container *ngIf="isCoach(); else studentName">
             <a [routerLink]="['/student-overview', studentDto.id]">{{studentDto.displayName}}</a>
+            <p>{{studentDto.email}}</p>
           </ng-container>
-                  <ng-template #studentName>{{studentDto.displayName}}</ng-template>
-      </p>
-    </span>
+          <ng-template #studentName>{{studentDto.displayName}}</ng-template>
+        </div>
+      </span>
       <ng-template #noStudents><p>No students assigned to this course group</p></ng-template>
-
     </mat-expansion-panel>
   </section>
 

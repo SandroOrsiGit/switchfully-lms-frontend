@@ -7,11 +7,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
+import {MatTableModule} from "@angular/material/table";
+import {MatCardModule} from "@angular/material/card";
 
 @Component({
   selector: 'app-classgroup-overview',
   standalone: true,
-  imports: [CommonModule, MatExpansionModule, MatDividerModule, RouterLink],
+  imports: [CommonModule, MatExpansionModule, MatDividerModule, RouterLink, MatTableModule, MatCardModule],
   templateUrl: './classgroup-overview.component.html',
   styleUrl: './classgroup-overview.component.css'
 })
