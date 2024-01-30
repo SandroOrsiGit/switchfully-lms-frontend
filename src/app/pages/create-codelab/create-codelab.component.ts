@@ -34,16 +34,16 @@ export class CreateCodelabComponent implements OnInit {
   private _codelabService: CodelabService = inject(CodelabService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
 
-  name = new FormControl('test', [Validators.required]);
-  moduleIds: FormControl<number[] | null> = new FormControl([], [Validators.required]);
+  name = new FormControl(null, [Validators.required]);
+  moduleId: FormControl<number | null> = new FormControl(null, [Validators.required]);
 
   createCodelabForm = new FormGroup( {
     name: this.name,
-    moduleIds: this.moduleIds
+    moduleIds: this.moduleId
   });
 
   onCreate() {
-    this._codelabService.createCodelab({name: this.name.value!, moduleIds: this.moduleIds.value!}).subscribe(
+    this._codelabService.createCodelab({name: this.name.value!, moduleId: this.moduleId.value!}).subscribe(
       {
         next: () => {
           this.router.navigate(['/profile']);
