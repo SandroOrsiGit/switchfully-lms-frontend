@@ -15,8 +15,7 @@ export class LoginService {
     this._url = `${environment.keycloakUrl}`;
    }
 
-   login(): Observable<User> {
+  login(): Observable<User> {
     return this.http.get<User>(this._url);
-
-   }
+  }
 }

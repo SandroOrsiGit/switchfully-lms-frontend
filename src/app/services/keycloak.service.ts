@@ -45,7 +45,7 @@ export class KeycloakService {
     return !!this.userService.getCurrentUser();
   }
 
-  isTokenValid(): Observable<Boolean> {
+  isTokenValid(): Observable<boolean> {
     const token = this.getToken();
     if (!token) {
       return of(false);
