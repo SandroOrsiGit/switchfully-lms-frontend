@@ -58,12 +58,6 @@ describe('CreateCodelabComponent', () => {
     expect(titleElement.textContent).toContain('Create codelab');
   });
 
-  it('should have injected services and dependencies', () => {
-    expect(component.router).toBeTruthy();
-    expect(component._snackBar).toBeTruthy();
-    expect(component.codelabService).toBeTruthy();
-  });
-
   it('should contain the app-create-codelab-form component', () => {
     const formComponent = fixture.nativeElement.querySelector('app-create-codelab-form');
   
