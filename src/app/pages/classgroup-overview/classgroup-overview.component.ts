@@ -27,7 +27,7 @@ export class ClassgroupOverviewComponent implements OnInit {
     this.classGroupService.getClassGroupByClassGroupId(this.id).pipe().subscribe({
       next: (classGroup) => {
         this.classGroup = classGroup;
-        console.log(classGroup)
+        //console.log(classGroup)
       }
     })
   }
