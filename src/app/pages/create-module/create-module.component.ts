@@ -1,12 +1,18 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {ModuleService} from "../../services/module.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ButtonComponent} from "../../components/button/button.component";
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {CourseService} from "../../services/course.service";
+import {CourseDto} from "../../dtos/CourseDto";
+import {FormValidator} from "../../utils/form-validators";
+import {selectValidator} from "../../utils/select-validator";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-create-module',
@@ -17,25 +23,44 @@ import {MatInputModule} from "@angular/material/input";
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgForOf
   ],
   templateUrl: './create-module.component.html',
   styleUrl: './create-module.component.css'
 })
-export class CreateModuleComponent {
+export class CreateModuleComponent implements  OnInit {
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+  private _courseService: CourseService = inject(CourseService);
+  private _courses: CourseDto[] = [];
+  private _moduleService: ModuleService = inject(ModuleService);
 
-  name = new FormControl('test', [Validators.required]);
+  name = new FormControl('', [Validators.required]);
+  courseIds = new FormControl([], [Validators.required]);
 
-  constructor(private moduleService: ModuleService) {}
+  createModuleForm = new FormGroup( {
+    name: this.name,
+    courseIds: this.courseIds
+  })
 
-  getNameErrorMessage() {
-    return 'You must enter a value';
+  private getCourses() {
+    this._courseService.getCourses().subscribe({
+      next: courses => this._courses = courses
+    });
+  }
+
+  get courses(): CourseDto[] {
+    return this._courses;
+  }
+
+  ngOnInit() {
+    this.getCourses();
   }
 
   onCreate() {
-    this.moduleService.createModule({name: this.name.value!}).subscribe(
+    this._moduleService.createModule({name: this.name.value!, courseIds: this.courseIds.value!}).subscribe(
       {
         next: () => {
           this.router.navigate(['/profile']);
