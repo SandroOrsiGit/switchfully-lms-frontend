@@ -1,9 +1,9 @@
 import { CanActivateFn } from '@angular/router';
 import {inject} from "@angular/core";
 import {UserService} from "../services/user.service";
+import { KeycloakService } from '../services/keycloak.service';
 
 export const authGuard: CanActivateFn = () => {
-  const userService  = inject(UserService);
-  const currentUser = userService.getCurrentUser()
-  return (!!currentUser);
+  const keycloakService  = inject(KeycloakService);
+  return keycloakService.isLoggedIn();
 };
