@@ -18,7 +18,8 @@
 
       <ng-container matColumnDef="details">
         <th mat-header-cell *matHeaderCellDef> Details</th>
-        <td mat-cell *matCellDef="let element"><a [routerLink]="['/modules', element.id]">View Modules</a>
+        <td mat-cell *matCellDef="let element">
+          <a [routerLink]="['/modules', element.id]">View Modules</a>
         </td>
       </ng-container>
 
