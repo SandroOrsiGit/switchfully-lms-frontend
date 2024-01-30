@@ -34,7 +34,12 @@
       <mat-divider></mat-divider>
 
       <span *ngIf="classGroup.studentNoCodelabProgressDtoList.length > 0; else noStudents">
-      <p *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">{{studentDto.displayName}}</p>
+      <p *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">
+        <ng-container *ngIf="isCoach(); else studentName">
+            <a [routerLink]="['/student-overview', studentDto.id]">{{studentDto.displayName}}</a>
+          </ng-container>
+                  <ng-template #studentName>{{studentDto.displayName}}</ng-template>
+      </p>
     </span>
       <ng-template #noStudents><p>No students assigned to this course group</p></ng-template>
 
