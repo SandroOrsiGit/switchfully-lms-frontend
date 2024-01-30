@@ -7,6 +7,9 @@
     <span routerLink='profile'>Profile</span>
     <span routerLink='courses'>Courses</span>
     <span routerLink="codelabs">Codelabs</span>
+    <span [routerLink]="['/modules', 1]">Modules</span>
+    <span routerLink="class-group/create">Create CreateClassGroupDto</span>
+
       @if (this.userService.getCurrentUser()) {
         {{message()}}
       }

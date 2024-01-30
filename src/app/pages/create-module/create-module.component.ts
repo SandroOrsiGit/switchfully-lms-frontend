@@ -28,7 +28,7 @@ export class CreateModuleComponent {
 
   name = new FormControl('test', [Validators.required]);
 
-  constructor(private moduleService: ModuleService) {}
+  private moduleService:ModuleService = inject(ModuleService);
 
   getNameErrorMessage() {
     return 'You must enter a value';
