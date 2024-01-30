@@ -39,7 +39,7 @@ export class CreateCodelabComponent implements OnInit {
 
   createCodelabForm = new FormGroup( {
     name: this.name,
-    moduleIds: this.moduleId
+    moduleId: this.moduleId
   });
 
   onCreate() {
@@ -56,6 +56,7 @@ export class CreateCodelabComponent implements OnInit {
   }
 
   private getModules() {
+
     // this._moduleService.getModules().subscribe({
     //   next: modules => this._modules = modules
     // });
@@ -67,6 +68,13 @@ export class CreateCodelabComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this._route.snapshot)
+    // console.log(JSON.stringify(this._route.snapshot.queryParams))
+    const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
+    // console.log(moduleId)
+    if (moduleId !== null) {
+      this.moduleId.setValue(parseInt(moduleId));
+    }
     this.getModules();
   }
 
