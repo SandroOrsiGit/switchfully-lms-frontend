@@ -12,6 +12,16 @@
       </div>
       <div>
         <mat-form-field>
+          <mat-label>Available Courses</mat-label>
+          <mat-select [formControl]="courseIds" multiple required>
+            @for (course of courses; track course) {
+            <mat-option [value]="course.id">{{course.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
           <mat-label>Start date</mat-label>
 
           <input matInput [matDatepicker]="startDate" formControlName="startDate" >

@@ -18,16 +18,15 @@ export class FormValidator {
     }
 
     // Check if the end date is after the start date. If not then add the error endDateBeforeStartDate= true to the form
-    static dateLessThan(from: string, to: string) {
-        return (group: FormGroup): ValidationErrors | null => {
-            const startDate = group.controls[from];
-            const endDate = group.controls[to];
-            if (startDate.value > endDate.value) {
-                return {
-                    endDateBeforeStartDate: true
-                };
-            }
-            return null
-        }
+  static dateLessThan(control: AbstractControl) {
+    const startDate = control.get('startDate')?.value;
+    const endDate = control.get('endDate')?.value;
+    if (startDate > endDate) {
+      return {
+        endDateBeforeStartDate: true
+      };
     }
+
+    return null;
+  }
 }
