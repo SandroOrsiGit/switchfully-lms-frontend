@@ -10,8 +10,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {CourseService} from "../../services/course.service";
 import {CourseDto} from "../../dtos/CourseDto";
-import {FormValidator} from "../../utils/form-validators";
-import {selectValidator} from "../../utils/select-validator";
 import {NgForOf} from "@angular/common";
 
 @Component({

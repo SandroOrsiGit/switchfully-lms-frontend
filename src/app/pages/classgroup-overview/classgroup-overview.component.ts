@@ -28,7 +28,6 @@ export class ClassgroupOverviewComponent implements
     this.classGroupService.getClassGroupByClassGroupId(this.id).pipe().subscribe({
       next: (classGroup) => {
         this.classGroup = classGroup;
-        console.log(classGroup)
       }
     })
   }
