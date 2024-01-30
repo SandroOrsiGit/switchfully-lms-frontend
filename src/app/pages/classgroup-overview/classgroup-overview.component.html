@@ -34,7 +34,7 @@
       <mat-divider></mat-divider>
 
       <span *ngIf="classGroup.studentNoCodelabProgressDtoList.length > 0; else noStudents">
-        <div *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList">
+        <div *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList" class="horizontal-container">
           <ng-container *ngIf="isCoach(); else studentName">
             <a [routerLink]="['/student-overview', studentDto.id]">{{studentDto.displayName}}</a>
             <p>{{studentDto.email}}</p>

@@ -14,3 +14,9 @@ mat-expansion-panel p {
     justify-content: end;
     margin-right: 3rem;
 }
+
+.horizontal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
