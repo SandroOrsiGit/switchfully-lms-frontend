@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {ModuleService} from "../../services/module.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -33,10 +33,11 @@ export class CreateModuleComponent implements  OnInit {
   private _snackBar = inject(MatSnackBar);
   private _courseService: CourseService = inject(CourseService);
   private _moduleService: ModuleService = inject(ModuleService);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
   private _courses: CourseDto[] = [];
 
   name = new FormControl('', [Validators.required]);
-  courseIds = new FormControl([], [Validators.required]);
+  courseIds: FormControl<number[] | null> = new FormControl([], [Validators.required]);
 
   createModuleForm = new FormGroup( {
     name: this.name,
@@ -54,6 +55,10 @@ export class CreateModuleComponent implements  OnInit {
   }
 
   ngOnInit() {
+    const courseId = this._route.snapshot.queryParamMap.get('courseId');
+    if (courseId !== null) {
+      this.courseIds.setValue([parseInt(courseId)])
+    }
     this.getCourses();
   }
 
