@@ -182,8 +182,29 @@ describe('ProfileComponent', () => {
       id: 123,
       email: 'test@example.com',
       displayName: 'Test User',
+      role: 'student',
       password: 'password123',
-      classes: [],
+      classes: [
+        {
+          id: 1,
+          name: 'Classgroup_test1',
+          course_id: 1,
+          coachDtoList: [
+            {
+              id: 456,
+              email: 'coach@example.com',
+              displayName: 'Coach Name',
+            }
+          ],
+          studentNoCodelabProgressDtoList: [
+            {
+              id: 789,
+              email: 'student@example.com',
+              displayName: 'Student Name',
+            }
+          ],
+        }
+      ],
     };
     userServiceMock.getCurrentUser.and.returnValue(userData);
     component.user = userData;
