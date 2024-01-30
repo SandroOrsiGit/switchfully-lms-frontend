@@ -4,7 +4,7 @@ import { CourseOverviewComponent } from './course-overview.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {CourseService} from "../../services/course.service";
 import {KeycloakService} from "../../services/keycloak.service";
-//import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CourseDto} from "../../dtos/CourseDto";
