@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ButtonComponent } from "../../components/button/button.component";
 import { CommonModule } from "@angular/common";
 import { ClassGroupService } from "../../services/class-group.service";
@@ -76,8 +76,7 @@ export class CreateClassGroupComponent implements OnInit {
       name: this.name.value!,
       startDate: this.convertDate(this.startDate.value!),
       endDate: this.convertDate(this.endDate.value!),
-      courseIds: this.courseIds.value!,
-      coachId: this.currentUser?.id!
+      courseIds: this.courseIds.value!
     }
     this._classGroupService.createClassGroup(classGroup).pipe().subscribe({
       next: () => {

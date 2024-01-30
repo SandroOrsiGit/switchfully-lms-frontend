@@ -4,5 +4,4 @@ export interface CreateClassGroupDto {
   startDate: Date;
   endDate: Date;
   courseIds: number[];
-  coachId: number;
 }
