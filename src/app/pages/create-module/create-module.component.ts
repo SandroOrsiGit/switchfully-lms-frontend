@@ -29,11 +29,11 @@ import {NgForOf} from "@angular/common";
   styleUrl: './create-module.component.css'
 })
 export class CreateModuleComponent implements  OnInit {
-  private router = inject(Router);
+  private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
   private _courseService: CourseService = inject(CourseService);
-  private _courses: CourseDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
+  private _courses: CourseDto[] = [];
 
   name = new FormControl('', [Validators.required]);
   courseIds = new FormControl([], [Validators.required]);
@@ -41,7 +41,7 @@ export class CreateModuleComponent implements  OnInit {
   createModuleForm = new FormGroup( {
     name: this.name,
     courseIds: this.courseIds
-  })
+  });
 
   private getCourses() {
     this._courseService.getCourses().subscribe({
@@ -61,14 +61,13 @@ export class CreateModuleComponent implements  OnInit {
     this._moduleService.createModule({name: this.name.value!, courseIds: this.courseIds.value!}).subscribe(
       {
         next: () => {
-          this.router.navigate(['/profile']);
+          this._router.navigate(['/profile']);
         },
         error: () => {
-          this._snackBar.open('Only coaches can created a module','Close');
+          this._snackBar.open('Only coaches can create a module','Close');
         }
       }
     );
   }
-
 
 }
