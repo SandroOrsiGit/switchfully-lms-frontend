@@ -9,13 +9,13 @@
       <app-button [buttonName]="btn_create_classgroup" routerLink="/class-groups/create"></app-button>
     </div>
     <div>
-      <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1}"></app-button>
+      <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1, moduleId: 1}"></app-button>
     </div>
 <!--    <div>-->
 <!--      <app-button [buttonName]="btn_create_subModule" routerLink="/submodule/create"></app-button>-->
 <!--    </div>-->
     <div>
-      <app-button [buttonName]="btn_create_codelab" routerLink="/codelabs/create"></app-button>
+      <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ courseId: 1}"></app-button>
     </div>
   </mat-card-content>
 </mat-card>

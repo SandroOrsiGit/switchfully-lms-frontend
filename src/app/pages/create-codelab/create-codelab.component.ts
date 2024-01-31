@@ -33,6 +33,7 @@ export class CreateCodelabComponent implements OnInit {
   private _moduleService: ModuleService = inject(ModuleService);
   private _codelabService: CodelabService = inject(CodelabService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
+  courseId: number;
 
   name = new FormControl(null, [Validators.required]);
   moduleId: FormControl<number | null> = new FormControl(null, [Validators.required]);
@@ -57,9 +58,9 @@ export class CreateCodelabComponent implements OnInit {
 
   private getModules() {
 
-    // this._moduleService.getModules().subscribe({
-    //   next: modules => this._modules = modules
-    // });
+    this._moduleService.getModules(this.courseId).subscribe({
+      next: modules => this._modules = modules
+    });
   }
 
 
@@ -68,10 +69,10 @@ export class CreateCodelabComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this._route.snapshot)
-    // console.log(JSON.stringify(this._route.snapshot.queryParams))
+
     const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
-    // console.log(moduleId)
+    const courseId = this._route.snapshot.queryParamMap.get('courseId');
+
     if (moduleId !== null) {
       this.moduleId.setValue(parseInt(moduleId));
     }

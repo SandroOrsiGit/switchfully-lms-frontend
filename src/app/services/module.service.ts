@@ -19,8 +19,8 @@ export class ModuleService {
     return this.http.post<ModuleDto>(this._url, createModuleDto);
   }
 
-  getModules(courseId: string): Observable<ModuleDto[]> {
+  getModules(courseId: number): Observable<ModuleDto[]> {
     return this.http.get<ModuleDto[]>(`${this._url}/${courseId}`);
   }
-  
+
 }
