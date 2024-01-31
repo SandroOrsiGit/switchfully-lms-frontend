@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import { CreateCodelabDto } from '../dtos/CreateCodelabDto';
 import { CodelabDto } from '../dtos/CodelabDto';
 import {CodelabProgressDto} from "../dtos/CodelabProgressDto";
+import { UpdateCodelabProgressDto } from '../dtos/UpdateCodelabProgressDto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,9 @@ export class CodelabService {
   getCodelabs() {
     return this.http.get<CodelabProgressDto[]>(this._url + '/progress?courseId=' + this.tempCourseId)
   }
+
+  updateProgress(updateCodelabProgressDto: UpdateCodelabProgressDto): Observable<void> {
+    return this.http.post<void>(this._url + '/progress', updateCodelabProgressDto);
+  }
+
 }

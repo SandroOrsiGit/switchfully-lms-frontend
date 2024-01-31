@@ -4,22 +4,45 @@
     <h1>Codelabs</h1>
 
     <table mat-table [dataSource]="codelabs" class="mat-elevation-z8">
-      <!-- Position Column -->
+
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> Id</th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="codelab">
         <th mat-header-cell *matHeaderCellDef>Codelab</th>
         <td mat-cell *matCellDef="let element"> {{element.codelab.name}} </td>
       </ng-container>
 
-      <!-- Weight Column -->
+
+
       <ng-container matColumnDef="progress">
         <th mat-header-cell *matHeaderCellDef> Progress </th>
-        <td mat-cell *matCellDef="let element"> {{element.progress.name}} </td>
+        <td mat-cell *matCellDef="let element">
+
+
+          <mat-form-field>
+          <mat-select [value]="element.progress.id" required (valueChange)="updateProgress(element.id, $event)">
+            @for (progress of progressOptions; track progress) {
+              <mat-option [value]="progress.id">{{progress.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+
+      </td>
+      </ng-container>
+
+
+
+
+
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element">
+          <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
