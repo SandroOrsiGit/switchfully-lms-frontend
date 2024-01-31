@@ -33,6 +33,7 @@ export class KeycloakService {
   }
 
   isLoggedIn(): boolean {
+    this.isTokenValid().subscribe(boolean => console.log(boolean));
     if (!this.isTokenValid().subscribe()) {
       return false;
     }
@@ -51,11 +52,11 @@ export class KeycloakService {
       return of(false);
     }
   
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<boolean>(`${this._url}/validate-token`, {}, { headers });
+    return this.http.get<boolean>(`${this._url}/user/validate-token`);
   }
 
   logout(): void {
     localStorage.removeItem(this.TOKEN_KEY_NAME);
+    this.userService.setCurrentUser(undefined);
   }
 }
