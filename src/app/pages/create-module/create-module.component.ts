@@ -1,12 +1,16 @@
-import {Component, inject} from '@angular/core';
-import {Router} from "@angular/router";
+import {Component, inject, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {ModuleService} from "../../services/module.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ButtonComponent} from "../../components/button/button.component";
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {CourseService} from "../../services/course.service";
+import {CourseDto} from "../../dtos/CourseDto";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-create-module',
@@ -17,35 +21,58 @@ import {MatInputModule} from "@angular/material/input";
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    NgForOf
   ],
   templateUrl: './create-module.component.html',
   styleUrl: './create-module.component.css'
 })
-export class CreateModuleComponent {
-  private router = inject(Router);
+export class CreateModuleComponent implements  OnInit {
+  private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+  private _courseService: CourseService = inject(CourseService);
+  private _moduleService: ModuleService = inject(ModuleService);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
+  private _courses: CourseDto[] = [];
 
-  name = new FormControl('test', [Validators.required]);
+  name = new FormControl('', [Validators.required]);
+  courseIds: FormControl<number[] | null> = new FormControl([], [Validators.required]);
 
-  private moduleService:ModuleService = inject(ModuleService);
+  createModuleForm = new FormGroup( {
+    name: this.name,
+    courseIds: this.courseIds
+  });
 
-  getNameErrorMessage() {
-    return 'You must enter a value';
+  private getCourses() {
+    this._courseService.getCourses().subscribe({
+      next: courses => this._courses = courses
+    });
+  }
+
+  get courses(): CourseDto[] {
+    return this._courses;
+  }
+
+  ngOnInit() {
+    const courseId = this._route.snapshot.queryParamMap.get('courseId');
+    if (courseId !== null) {
+      this.courseIds.setValue([parseInt(courseId)])
+    }
+    this.getCourses();
   }
 
   onCreate() {
-    this.moduleService.createModule({name: this.name.value!}).subscribe(
+    this._moduleService.createModule({name: this.name.value!, courseIds: this.courseIds.value!}).subscribe(
       {
         next: () => {
-          this.router.navigate(['/profile']);
+          this._router.navigate(['/profile']);
         },
         error: () => {
-          this._snackBar.open('Only coaches can created a module','Close');
+          this._snackBar.open('Only coaches can create a module','Close');
         }
       }
     );
   }
-
 
 }

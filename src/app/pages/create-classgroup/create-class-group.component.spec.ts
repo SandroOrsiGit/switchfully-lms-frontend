@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateClassGroupComponent } from './create-class-group.component';
 import {HttpClientTestingModule} from "@angular/common/http/testing";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CreateClassGroupComponent', () => {
   let component: CreateClassGroupComponent;
@@ -12,6 +13,7 @@ describe('CreateClassGroupComponent', () => {
       imports: [
         CreateClassGroupComponent,
         HttpClientTestingModule,
+        NoopAnimationsModule
       ]
     })
     .compileComponents();
