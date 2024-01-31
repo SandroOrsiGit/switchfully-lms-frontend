@@ -23,4 +23,8 @@ export class ModuleService {
     return this.http.get<ModuleDto[]>(`${this._url}/${courseId}`);
   }
 
+  getAllModules(): Observable<ModuleDto[]> {
+    return this.http.get<ModuleDto[]>(this._url);
+  }
+
 }
