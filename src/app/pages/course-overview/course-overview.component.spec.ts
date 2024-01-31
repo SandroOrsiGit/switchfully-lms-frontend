@@ -28,8 +28,7 @@ describe('CourseOverviewComponent', () => {
     courseServiceMock = jasmine.createSpyObj('courseService', ['getCourses']);
 
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, HttpClientTestingModule,
-                RouterTestingModule, MatTableModule, MatCardModule, CourseOverviewComponent],
+      imports: [BrowserAnimationsModule, HttpClientTestingModule, MatTableModule, MatCardModule, CourseOverviewComponent],
       declarations: [],
       providers: [
         {provide: KeycloakService, useValue: keyCloakServiceMock},
