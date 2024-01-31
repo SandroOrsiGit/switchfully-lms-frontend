@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('CreateCodelabComponent', () => {
   let component: CreateCodelabComponent;
@@ -19,6 +20,7 @@ describe('CreateCodelabComponent', () => {
         MatInputModule,
         HttpClientTestingModule,
         NoopAnimationsModule,
+        RouterTestingModule
       ],
     }).compileComponents();
   });
