@@ -13,7 +13,7 @@
       <div>
         <mat-form-field>
           <mat-label>Available Courses</mat-label>
-          <mat-select [formControl]="courseIds" multiple required>
+          <mat-select [formControl]="courseId" required>
             @for (course of courses; track course) {
             <mat-option [value]="course.id">{{course.name}}</mat-option>
             }

@@ -42,13 +42,13 @@ export class CreateClassGroupComponent implements OnInit {
   name = new FormControl('', [Validators.required]);
   startDate: FormControl<Date | null> = new FormControl(null, [Validators.required]);
   endDate: FormControl<Date | null> = new FormControl(null, [Validators.required]);
-  courseIds: FormControl<number[] | null> = new FormControl([], [Validators.required]);
+  courseId: FormControl<number | null> = new FormControl(null, [Validators.required]);
 
   createClassGroupForm = new FormGroup({
       name: this.name,
       startDate: this.startDate,
       endDate: this.endDate,
-      courseIds: this.courseIds
+      courseId: this.courseId
     },
     { validators: FormValidator.dateLessThan }
   );
@@ -56,7 +56,7 @@ export class CreateClassGroupComponent implements OnInit {
   ngOnInit(): void {
     const courseId = this._route.snapshot.queryParamMap.get('courseId');
     if (courseId !== null) {
-      this.courseIds.setValue([parseInt(courseId)])
+      this.courseId.setValue(parseInt(courseId))
     }
     this.getCourses();
   }
@@ -76,7 +76,7 @@ export class CreateClassGroupComponent implements OnInit {
       name: this.name.value!,
       startDate: this.convertDate(this.startDate.value!),
       endDate: this.convertDate(this.endDate.value!),
-      courseIds: this.courseIds.value!
+      courseId: this.courseId.value!
     }
     this._classGroupService.createClassGroup(classGroup).pipe().subscribe({
       next: () => {
