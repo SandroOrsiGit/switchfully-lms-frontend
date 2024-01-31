@@ -6,7 +6,7 @@
 <!--    <span routerLink='dashboard'>Dashboard</span>-->
     <span routerLink='profile'>Profile</span>
     <span routerLink='courses'>Courses</span>
-    <span routerLink="codelabs">Codelabs</span>
+    <span [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
     <span [routerLink]="['/modules', 1]">Modules</span>
     <span routerLink="class-group/create">Create CreateClassGroupDto</span>
 

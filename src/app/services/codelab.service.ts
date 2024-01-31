@@ -11,9 +11,7 @@ import { UpdateCodelabProgressDto } from '../dtos/UpdateCodelabProgressDto';
   providedIn: 'root'
 })
 export class CodelabService {
-
   private _url: string;
-  private tempCourseId: number = 1;
 
   constructor(private http: HttpClient) {
     this._url = `${environment.backendUrl}/codelab`;
@@ -23,8 +21,12 @@ export class CodelabService {
     return this.http.post<CodelabDto>(this._url, createCodelabDto);
   }
 
-  getCodelabs() {
-    return this.http.get<CodelabProgressDto[]>(this._url + '/progress?courseId=' + this.tempCourseId)
+  getCodelabs(moduleId: number): Observable<CodelabDto[]> {
+    return this.http.get<CodelabDto[]>(`${this._url}?moduleId=${moduleId}`)
+  }
+
+  getCodelabProgresses(moduleId: number): Observable<CodelabProgressDto[]> {
+    return this.http.get<CodelabProgressDto[]>(`${this._url}/progress?moduleId=${moduleId}`)
   }
 
   updateProgress(updateCodelabProgressDto: UpdateCodelabProgressDto): Observable<void> {
