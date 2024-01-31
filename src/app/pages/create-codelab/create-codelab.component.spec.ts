@@ -43,24 +43,24 @@ describe('CreateCodelabComponent', () => {
 
   it('should bind the onCreate event to app-create-codelab-form', () => {
     const formElement = fixture.nativeElement.querySelector('form');
-  
+
     spyOn(component, 'onCreate');
-  
+
     formElement.dispatchEvent(new Event('ngSubmit'));
-  
+
     expect(component.onCreate).toHaveBeenCalled();
   });
 
   it('should render the CreateCodelabComponent with the correct title', () => {
     const titleElement = fixture.nativeElement.querySelector('h1');
-  
+
     expect(titleElement).toBeTruthy();
     expect(titleElement.textContent).toContain('Create codelab');
   });
 
   it('should contain the app-create-codelab-form component', () => {
     const formComponent = fixture.nativeElement.querySelector('app-create-codelab-form');
-  
+
     expect(formComponent).toBeTruthy();
   });
 
