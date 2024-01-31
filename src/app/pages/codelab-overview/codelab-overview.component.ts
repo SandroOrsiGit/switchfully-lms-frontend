@@ -70,8 +70,8 @@ export class CodelabOverviewComponent implements OnInit {
     }
     this.codelabService.updateProgress(updateCodelabProgressDto).subscribe(
       {
-        next: (succes: any) => console.log(succes),
-        error: (error: any) => console.log(error)
+        next: (succes: any) => console.error(succes),
+        error: (error: any) => console.error(error)
       }
     );
   }

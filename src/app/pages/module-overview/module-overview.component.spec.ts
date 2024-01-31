@@ -78,7 +78,6 @@ describe('ModuleOverviewComponent', () => {
   
     const debugElement = fixture.debugElement;
     const matRows = debugElement.queryAll(By.css('tr[mat-row]'));
-    console.log(matRows)
   
     expect(matRows.length).toBe(2);
   
