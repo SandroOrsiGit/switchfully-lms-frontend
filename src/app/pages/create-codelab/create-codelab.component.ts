@@ -56,9 +56,9 @@ export class CreateCodelabComponent implements OnInit {
     );
   }
 
-  private getModules() {
+  private getModules(courseId: number) {
 
-    this._moduleService.getModules(this.courseId).subscribe({
+    this._moduleService.getModules(courseId).subscribe({
       next: modules => this._modules = modules
     });
   }
@@ -76,7 +76,10 @@ export class CreateCodelabComponent implements OnInit {
     if (moduleId !== null) {
       this.moduleId.setValue(parseInt(moduleId));
     }
-    this.getModules();
+    if (courseId !== null) {
+      this.courseId = parseInt(courseId);
+      this.getModules(this.courseId);
+    }
   }
 
 
