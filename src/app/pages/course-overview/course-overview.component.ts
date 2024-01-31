@@ -4,6 +4,7 @@ import {CourseService} from "../../services/course.service";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import { RouterLink } from '@angular/router';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-course-overview',
@@ -11,7 +12,8 @@ import { RouterLink } from '@angular/router';
   imports: [
     MatTableModule,
     MatCardModule,
-    RouterLink
+    RouterLink,
+    ButtonComponent
   ],
   templateUrl: './course-overview.component.html',
   styleUrl: './course-overview.component.css'
@@ -19,19 +21,24 @@ import { RouterLink } from '@angular/router';
 export class CourseOverviewComponent implements OnInit {
   private _courses: CourseDto[] = [];
   private _courseService: CourseService = inject(CourseService);
-  displayedColumns: string[] = ['id', 'name', 'details'];
+  displayedColumns: string[] = ['id', 'name', 'details', 'create_module'];
+  btn_create_course: string = "Create Course";
+  btn_create_module: string = "Create Module";
 
   ngOnInit() {
     this.getCourses();
   }
 
   private getCourses() {
-    this._courseService.getCourses().subscribe({
-      next: courses => this._courses = courses
-    });
+    this._courseService.getCourses().subscribe(
+      {
+        next: courses => this._courses = courses
+      }
+    );
   }
 
   get courses(): CourseDto[] {
     return this._courses;
   }
+  
 }
