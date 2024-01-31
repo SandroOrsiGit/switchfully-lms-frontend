@@ -8,10 +8,8 @@ import { UserService } from "../../services/user.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CourseDto } from "../../dtos/CourseDto";
 import { of } from "rxjs";
-import { By } from "@angular/platform-browser";
 import { MatTableModule } from "@angular/material/table";
 import { MatCardModule } from "@angular/material/card";
-import { ModuleDto } from '../../dtos/ModuleDto';
 
 describe('CourseOverviewComponent', () => {
   let component: CourseOverviewComponent;
@@ -55,7 +53,7 @@ describe('CourseOverviewComponent', () => {
     expect(courseServiceMock.getCourses).toHaveBeenCalled();
     expect(component.courses).toEqual(courses);
   });
-  
+
   // it('should display two courses in the table', () => {
   //   const courses: CourseDto[] = [
   //     { id: 4, name: 'Java' },
