@@ -33,7 +33,11 @@ describe('ModuleOverviewComponent', () => {
     moduleServiceMock = jasmine.createSpyObj('moduleService', ['getModules']);
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, BrowserAnimationsModule, ModuleOverviewComponent],
+      imports: [
+        HttpClientTestingModule, 
+        BrowserAnimationsModule, 
+        ModuleOverviewComponent
+      ],
       declarations: [],
       providers: [
         { provide: KeycloakService, useValue: keyCloakServiceMock },
@@ -74,6 +78,7 @@ describe('ModuleOverviewComponent', () => {
   
     const debugElement = fixture.debugElement;
     const matRows = debugElement.queryAll(By.css('tr[mat-row]'));
+    console.log(matRows)
   
     expect(matRows.length).toBe(2);
   

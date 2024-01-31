@@ -26,12 +26,15 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   private getCourses() {
-    this._courseService.getCourses().subscribe({
-      next: courses => this._courses = courses
-    });
+    this._courseService.getCourses().subscribe(
+      {
+        next: courses => this._courses = courses
+      }
+    );
   }
 
   get courses(): CourseDto[] {
     return this._courses;
   }
+  
 }
