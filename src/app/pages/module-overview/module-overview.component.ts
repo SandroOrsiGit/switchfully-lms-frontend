@@ -23,7 +23,7 @@ export class ModuleOverviewComponent implements OnInit {
   private _moduleService: ModuleService = inject(ModuleService);
   private route: ActivatedRoute = inject(ActivatedRoute);
   displayedColumns: string[] = ['id', 'name'];
-  courseId: string;
+  courseId: number;
 
   ngOnInit() {
     this.getCourseId();
@@ -31,7 +31,7 @@ export class ModuleOverviewComponent implements OnInit {
   }
 
   private getModules() {
-    this._moduleService.getModules(this.courseId).subscribe( 
+    this._moduleService.getModules(this.courseId).subscribe(
       {
         next: modules => this._modules = modules,
       }
