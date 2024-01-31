@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateCourseComponent } from './create-course.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CreateCourseComponent', () => {
   let component: CreateCourseComponent;
@@ -8,7 +10,11 @@ describe('CreateCourseComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateCourseComponent]
+      imports: [
+        CreateCourseComponent,
+        HttpClientTestingModule,
+        NoopAnimationsModule,
+      ]
     })
     .compileComponents();
     

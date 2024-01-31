@@ -13,8 +13,7 @@ import {MatDividerModule} from '@angular/material/divider';
   templateUrl: './classgroup-overview.component.html',
   styleUrl: './classgroup-overview.component.css'
 })
-export class ClassgroupOverviewComponent implements
-  OnInit {
+export class ClassgroupOverviewComponent implements OnInit {
 
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
