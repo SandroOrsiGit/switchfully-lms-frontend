@@ -17,6 +17,7 @@ import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.c
 import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CourseEditComponent } from './pages/course-edit/course-edit.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +30,7 @@ export const routes: Routes = [
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
+  {path: 'courses/:id/edit', component: CourseEditComponent, canActivate: [coachGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},

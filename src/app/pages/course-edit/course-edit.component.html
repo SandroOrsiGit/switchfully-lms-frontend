@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-content>
+  
+      <h1>Edit course</h1>
+      <form>
+        <div>
+          <mat-form-field>
+            <mat-label>Enter new course name</mat-label>
+            <input matInput placeholder="Course name" [formControl]="name" required>
+          </mat-form-field>
+        </div>
+        <div>
+          <app-button mat-raised-button buttonName="Create" (buttonClick)="onEdit()"></app-button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+  

@@ -24,6 +24,7 @@ export class CourseOverviewComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'details', 'create_module'];
   btn_create_course: string = "Create Course";
   btn_create_module: string = "Create Module";
+  btn_edit_course: string = "Edit Course";
 
   ngOnInit() {
     this.getCourses();
