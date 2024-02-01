@@ -26,8 +26,8 @@ export class LoginComponent {
   router = inject(Router);
   private _snackBar = inject(MatSnackBar);
 
-  email = new FormControl('coach@lms.com', [Validators.required, Validators.email]);
-  password = new FormControl('coach', [Validators.required]);
+  email = new FormControl('student_progress@lms.com', [Validators.required, Validators.email]);
+  password = new FormControl('student_progress', [Validators.required]);
   hide: boolean = true;
 
   getEmailErrorMessage() {
@@ -55,7 +55,9 @@ export class LoginComponent {
         });
       },
       error: () => {
-        this._snackBar.open('Invalid credentials','Close');
+        this._snackBar.open('Invalid credentials','Close', {
+          duration: 1000
+        })
       }
     });
   }
