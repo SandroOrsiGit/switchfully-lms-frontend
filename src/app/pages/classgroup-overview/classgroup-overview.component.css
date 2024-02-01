@@ -20,3 +20,11 @@ mat-expansion-panel p {
     align-items: center;
     justify-content: space-between;
   }
+
+table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+td {
+  width: 33% ;
+}

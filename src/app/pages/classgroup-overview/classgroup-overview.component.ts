@@ -32,9 +32,7 @@ export class ClassgroupOverviewComponent implements OnInit {
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private userService: UserService = inject(UserService);
 
-  displayedCoachColumns: string[] = ['name', 'e-mail'];
-  displayedStudentForStudentColumns: string[] = ['name', 'e-mail'];
-  displayedStudentForCoachColumns: string[] = ['name', 'e-mail', 'view-details'];
+  displayedColumns: string[] = ['name', 'e-mail', 'view-details'];
 
   private id: number = 0;
   private _classGroup: ClassGroup;

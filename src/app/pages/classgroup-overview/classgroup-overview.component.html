@@ -22,8 +22,14 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedCoachColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedCoachColumns;"></tr>
+      <!--      do not remove code below - for styling purposes-->
+      <ng-container matColumnDef="view-details">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
 
@@ -51,8 +57,8 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedStudentForCoachColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedStudentForCoachColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
     <table *ngIf="!isCoach()" mat-table [dataSource]="classGroup.studentNoCodelabProgressDtoList" class="mat-elevation-z8">
@@ -69,8 +75,14 @@
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedStudentForStudentColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedStudentForStudentColumns;"></tr>
+<!--      do not remove code below - for styling purposes-->
+      <ng-container matColumnDef="view-details">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element"> </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
 
@@ -78,53 +90,3 @@
   </mat-card-content>
 </mat-card>
 
-
-<!--<div>-->
-<!--  <h2>Class group name:</h2>-->
-
-<!--  <section *ngIf="classGroup">-->
-<!--    <h3>{{classGroup.name}}</h3>-->
-
-<!--    <mat-expansion-panel [expanded]="panelOpenState">-->
-<!--      <mat-expansion-panel-header>-->
-<!--        <mat-panel-title>-->
-<!--          Coaches-->
-<!--        </mat-panel-title>-->
-<!--        <mat-panel-description>-->
-<!--          Coaches assigned to this course-->
-<!--        </mat-panel-description>-->
-<!--      </mat-expansion-panel-header>-->
-<!--      <mat-divider></mat-divider>-->
-
-<!--      <span *ngIf="classGroup.coachDtoList.length > 0; else noCoaches">-->
-<!--      <div *ngFor="let coachDto of classGroup.coachDtoList">{{coachDto.displayName}}</div>-->
-<!--    </span>-->
-<!--      <ng-template #noCoaches><p>No coaches assigned to this course group</p></ng-template>-->
-
-<!--    </mat-expansion-panel>-->
-
-<!--    <mat-expansion-panel [expanded]="panelOpenState">-->
-<!--      <mat-expansion-panel-header>-->
-<!--        <mat-panel-title>-->
-<!--          Students-->
-<!--        </mat-panel-title>-->
-<!--        <mat-panel-description>-->
-<!--          Students assigned to this course-->
-<!--        </mat-panel-description>-->
-<!--      </mat-expansion-panel-header>-->
-<!--      <mat-divider></mat-divider>-->
-
-<!--      <span *ngIf="classGroup.studentNoCodelabProgressDtoList.length > 0; else noStudents">-->
-<!--        <div *ngFor="let studentDto of classGroup.studentNoCodelabProgressDtoList" class="horizontal-container">-->
-<!--          <ng-container *ngIf="isCoach(); else studentName">-->
-<!--            <a [routerLink]="['/student-overview', studentDto.id]">{{studentDto.displayName}}</a>-->
-<!--            <p>{{studentDto.email}}</p>-->
-<!--          </ng-container>-->
-<!--          <ng-template #studentName>{{studentDto.displayName}}</ng-template>-->
-<!--        </div>-->
-<!--      </span>-->
-<!--      <ng-template #noStudents><p>No students assigned to this course group</p></ng-template>-->
-<!--    </mat-expansion-panel>-->
-<!--  </section>-->
-
-<!--</div>-->
