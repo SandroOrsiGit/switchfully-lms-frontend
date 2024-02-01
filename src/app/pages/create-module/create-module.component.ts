@@ -66,7 +66,7 @@ export class CreateModuleComponent implements  OnInit {
     this._moduleService.createModule({name: this.name.value!, courseIds: this.courseIds.value!}).subscribe(
       {
         next: () => {
-          this._router.navigate(['/profile']);
+          this._router.navigate(['/courses']);
         },
         error: () => {
           this._snackBar.open('Only coaches can create a module','Close', {

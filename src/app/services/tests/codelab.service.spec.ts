@@ -29,7 +29,8 @@ describe('CodelabService', () => {
 
   it('should send a POST request to create a codelab', () => {
     const createCodelabDto: CreateCodelabDto = {
-      name: 'testCodelab'
+      name: 'testCodelab',
+      moduleId: 1
     };
     const expectedUrl = `${environment.backendUrl}/codelab`;
 
@@ -43,7 +44,8 @@ describe('CodelabService', () => {
 
   it('should handle errors during codelab creation', () => {
     const createCodelabDto: CreateCodelabDto = {
-      name: 'testCodelab'
+      name: 'testCodelab',
+      moduleId: 1
     };
     const expectedUrl = `${environment.backendUrl}/codelab`;
 

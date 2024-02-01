@@ -53,7 +53,7 @@ describe('CourseOverviewComponent', () => {
     expect(courseServiceMock.getCourses).toHaveBeenCalled();
     expect(component.courses).toEqual(courses);
   });
-  
+
   // it('should display two courses in the table', () => {
   //   const courses: CourseDto[] = [
   //     { id: 4, name: 'Java' },
