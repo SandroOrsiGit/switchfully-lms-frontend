@@ -3,7 +3,26 @@
 
     <h1>Classgroup Overview</h1>
 
-    <h3>Currently viewing: {{classGroup?.name}}</h3>
+    <h3>Currently viewing: {{classGroup.name}}</h3>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Student</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <app-button [buttonName]="btn_add_student" (click)="addStudent()"></app-button>
+    </form>
 
     <h5>List of coaches</h5>
 
@@ -50,7 +69,6 @@
       </ng-container>
 
       <ng-container matColumnDef="view-details">
-        <p>test</p>
         <th mat-header-cell *matHeaderCellDef>View student details</th>
         <td mat-cell *matCellDef="let element">
           <app-button [buttonName]="btn_view_details" [routerLink]="['/student-overview', element.id]"></app-button>
