@@ -26,10 +26,10 @@ import {CourseDto} from "../../dtos/CourseDto";
 })
 export class CourseEditComponent implements OnInit {
 
-  private courseService: CourseService = inject(CourseService);
-  private router = inject(Router);
+  private _courseService: CourseService = inject(CourseService);
+  private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
-  private route: ActivatedRoute = inject(ActivatedRoute);
+  private _route: ActivatedRoute = inject(ActivatedRoute);
   private _course: CourseDto;
 
   ngOnInit() {
@@ -43,12 +43,12 @@ export class CourseEditComponent implements OnInit {
   });
 
   onEdit() {
-    return this.courseService.editCourse(this._course.id, { name: this.name.value! }).subscribe({
+    return this._courseService.editCourse(this._course.id, { name: this.name.value! }).subscribe({
       next: () => {
         this._snackBar.open('Successfully edited course', 'Close', {
           duration: 1000
         });
-        this.router.navigate(['/courses']);
+        this._router.navigate(['/courses']);
       },
       error: () => {
         this._snackBar.open('Only coaches can edit a course', 'Close', {
@@ -59,10 +59,10 @@ export class CourseEditComponent implements OnInit {
   }
 
   private getCourse() {
-    this.route.params.subscribe(params => {
+    this._route.params.subscribe(params => {
       const courseId = params['courseId'];
 
-      this.courseService.getCourse(courseId).subscribe({
+      this._courseService.getCourse(courseId).subscribe({
         next: courseDto => {
           this._course = courseDto;
           this.name.setValue(this._course.name);
