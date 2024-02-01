@@ -1,3 +1,4 @@
 export interface CreateModuleDto {
-  name: string
+  name: string;
+  courseIds: number[];
 }
