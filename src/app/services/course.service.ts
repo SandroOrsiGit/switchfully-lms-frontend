@@ -25,6 +25,10 @@ export class CourseService {
     return this.http.put<void>(this._url +'/' + courseId, updateCourseDto);
   }
 
+  getCourse(courseId: number): Observable<CourseDto> {
+    return this.http.get<CourseDto>(this._url +'/' + courseId);
+  }
+
   getCourses(): Observable<CourseDto[]> {
     return this.http.get<CourseDto[]>(this._url);
   }
