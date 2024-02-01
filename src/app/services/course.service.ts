@@ -21,8 +21,8 @@ export class CourseService {
     return this.http.post<CourseDto>(this._url, createCourseDto);
   }
 
-  editCourse(id: number, updateCourseDto : UpdateCourseDto): Observable<void> {
-    return this.http.put<void>(this._url + id, updateCourseDto);
+  editCourse(courseId: number, updateCourseDto : UpdateCourseDto): Observable<void> {
+    return this.http.put<void>(this._url +'/' + courseId, updateCourseDto);
   }
 
   getCourses(): Observable<CourseDto[]> {

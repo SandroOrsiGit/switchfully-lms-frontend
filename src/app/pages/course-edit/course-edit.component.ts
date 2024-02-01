@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { inject } from '@angular/core';
 import { MatCardModule } from "@angular/material/card";
 import { ButtonComponent } from "../../components/button/button.component";
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { CourseService } from "../../services/course.service";
@@ -24,7 +24,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrl: './course-edit.component.css'
 })
 export class CourseEditComponent implements OnInit {
-  name = new FormControl('test', [Validators.required]);
+  
   private formBuilder: FormBuilder = inject(FormBuilder);
   private courseService: CourseService = inject(CourseService);
   private router = inject(Router);
@@ -35,6 +35,12 @@ export class CourseEditComponent implements OnInit {
   ngOnInit() {
     this.getCourseId();
   }
+
+  name = new FormControl(null, [Validators.required]);
+
+  editCourseForm = new FormGroup( {
+    name: this.name,
+  });
 
   onEdit() {
     return this.courseService.editCourse(this._courseId, { name: this.name.value! }).subscribe({

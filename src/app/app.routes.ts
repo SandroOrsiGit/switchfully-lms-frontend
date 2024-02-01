@@ -30,7 +30,7 @@ export const routes: Routes = [
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
-  {path: 'courses/:id/edit', component: CourseEditComponent, canActivate: [coachGuard]},
+  {path: 'courses/:courseId/edit', component: CourseEditComponent, canActivate: [coachGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
