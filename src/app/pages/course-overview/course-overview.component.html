@@ -28,8 +28,10 @@
       <ng-container matColumnDef="create_module">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
-          <app-button [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
+          <div *ngIf="isCoach()" >
+            <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
+            <app-button [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
+          </div>
         </td>
       </ng-container>
 
