@@ -1,4 +1,4 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import {ComponentFixture, TestBed, tick} from '@angular/core/testing';
 // import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 // import { ClassgroupOverviewComponent } from './classgroup-overview.component';
 // import { ClassGroupService } from '../../services/class-group.service';
@@ -6,19 +6,37 @@
 // import { of } from 'rxjs';
 // import { ClassGroup } from '../../models/ClassGroup';
 // import { User } from '../../models/User';
+// import {HttpClientTestingModule} from "@angular/common/http/testing";
+// import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+//
+// class ActivatedRouteStub {
+//   private subject = of({ paramMap: convertToParamMap({ courseId: '1' }) });
+//
+//   get params() {
+//     return this.subject;
+//   }
+// }
 //
 // describe('ClassgroupOverviewComponent', () => {
 //   let component: ClassgroupOverviewComponent;
 //   let fixture: ComponentFixture<ClassgroupOverviewComponent>;
-//   let classGroupService: jasmine.SpyObj<ClassGroupService>;
-//   let userService: jasmine.SpyObj<UserService>;
-//   let router: jasmine.SpyObj<Router>;
+//   let classGroupServiceMock: jasmine.SpyObj<ClassGroupService>;
+//   let userServiceMock: jasmine.SpyObj<UserService>;
+//   let routerMock: jasmine.SpyObj<Router>;
 //   let activatedRoute: ActivatedRoute;
+//   let classGroup: ClassGroup;
 //
 //   beforeEach(() => {
-//     classGroupService = jasmine.createSpyObj('ClassGroupService', ['getClassGroupByClassGroupId']);
-//     userService = jasmine.createSpyObj('UserService', ['getCurrentUser']);
-//     router = jasmine.createSpyObj('Router', ['navigate']);
+//     classGroupServiceMock = jasmine.createSpyObj('ClassGroupService', ['getClassGroupByClassGroupId']);
+//     userServiceMock = jasmine.createSpyObj('UserService', ['getCurrentUser']);
+//     routerMock = jasmine.createSpyObj('Router', ['navigate']);
+//     classGroup = {
+//       id: 1,
+//       name: 'Java Testing Classgroup',
+//       course_id: 1,
+//       coachDtoList: [],
+//       studentNoCodelabProgressDtoList: []
+//     };
 //     activatedRoute = {
 //       snapshot: {
 //         paramMap: convertToParamMap({ id: '1' })
@@ -26,12 +44,17 @@
 //     } as any;
 //
 //     TestBed.configureTestingModule({
-//       declarations: [ClassgroupOverviewComponent],
+//       declarations: [],
+//       imports: [
+//         HttpClientTestingModule,
+//         BrowserAnimationsModule,
+//         ClassgroupOverviewComponent
+//       ],
 //       providers: [
-//         { provide: ClassGroupService, useValue: classGroupService },
-//         { provide: UserService, useValue: userService },
-//         { provide: Router, useValue: router },
-//         { provide: ActivatedRoute, useValue: activatedRoute },
+//         { provide: ClassGroupService, useValue: classGroupServiceMock },
+//         { provide: UserService, useValue: userServiceMock },
+//         { provide: Router, useValue: routerMock },
+//         { provide: ActivatedRoute, useValue: ActivatedRouteStub },
 //       ]
 //     })
 //       .compileComponents();
@@ -40,7 +63,7 @@
 //     component = fixture.componentInstance;
 //
 //
-//     classGroupService.getClassGroupByClassGroupId.and.returnValue(of(classGroup));
+//     classGroupServiceMock.getClassGroupByClassGroupId.and.returnValue(of(classGroup));
 //   });
 //
 //   it('should create', () => {
@@ -49,38 +72,40 @@
 //
 //   it('should fetch class group details on init', () => {
 //     component.ngOnInit();
+//     tick();
+//     fixture.detectChanges();
 //
-//     expect(classGroupService.getClassGroupByClassGroupId).toHaveBeenCalledWith(1);
+//     expect(classGroupServiceMock.getClassGroupByClassGroupId).toHaveBeenCalledWith(1);
 //     expect(component.classGroup).toEqual(classGroup);
 //   });
 //
 //   it('should set loggedInUser on init', () => {
-//     const loggedInUser: User = { id: 1, name: 'John Doe', role: 'coach' }; // Provide sample user data
-//     userService.getCurrentUser.and.returnValue(loggedInUser);
+//     const loggedInUser: User = { id: 1, email: 'john@gmail.com', displayName: 'John Doe', role: 'coach', classes: [], password: 'password' };
+//     userServiceMock.getCurrentUser.and.returnValue(loggedInUser);
 //
 //     component.ngOnInit();
 //
-//     expect(userService.getCurrentUser).toHaveBeenCalled();
+//     expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
 //     expect(component.loggedInUser).toEqual(loggedInUser);
 //   });
 //
 //   it('should check if the user is a coach', () => {
-//     const loggedInUser: User = { id: 1, name: 'John Doe', role: 'coach' }; // Provide sample user data
-//     userService.getCurrentUser.and.returnValue(loggedInUser);
+//     const loggedInUser: User = { id: 1, email: 'john@gmail.com', displayName: 'John Doe', role: 'coach', classes: [], password: 'password' };
+//     userServiceMock.getCurrentUser.and.returnValue(loggedInUser);
 //
 //     const isCoach = component.isCoach();
 //
 //     expect(isCoach).toBeTruthy();
 //   });
 //
-//   it('should navigate to student overview page when a student name is clicked by a coach', () => {
-//     const studentId = 2;
-//     const loggedInUser: User = { id: 1, name: 'John Doe', role: 'coach' }; // Provide sample user data
-//     userService.getCurrentUser.and.returnValue(loggedInUser);
-//     const navigateSpy = spyOn(router, 'navigate');
-//
-//     component.redirectToStudentOverviewPage(studentId);
-//
-//     expect(navigateSpy).toHaveBeenCalledWith(['/student-overview', studentId]);
-//   });
+//   // it('should navigate to student overview page when a student name is clicked by a coach', () => {
+//   //   const studentId = 2;
+//   //   const loggedInUser: User = { id: 1, email: 'john@gmail.com', displayName: 'John Doe', role: 'coach', classes: [], password: 'password' };
+//   //   userServiceMock.getCurrentUser.and.returnValue(loggedInUser);
+//   //   const navigateSpy = spyOn(routerMock, 'navigate');
+//   //
+//   //   component.redirectToStudentOverviewPage(studentId);
+//   //
+//   //   expect(navigateSpy).toHaveBeenCalledWith(['/student-overview', studentId]);
+//   // });
 // });
