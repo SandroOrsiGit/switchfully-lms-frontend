@@ -35,10 +35,6 @@ export class KeycloakService {
   isLoggedIn(): boolean {
     if (!this.isTokenValid().subscribe()) {
       return false;
-    } else {
-      this.userService.getUserByToken().subscribe(
-        user => this.userService.setCurrentUser(user)
-      );
     }
     
     if (this.userService.getCurrentUser() == null) {

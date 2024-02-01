@@ -3,7 +3,6 @@ import {RegisterComponent} from "./pages/register/register.component";
 import { LoginComponent } from './pages/login/login.component';
 import {ProfileComponent} from './pages/profile/profile.component';
 
-import { HomeComponent } from './pages/home/home.component';
 import {CreateModuleComponent} from "./pages/create-module/create-module.component";
 import {CreateClassGroupComponent} from "./pages/create-classgroup/create-class-group.component";
 import {CreateCourseComponent} from "./pages/create-course/create-course.component";
@@ -17,12 +16,12 @@ import {CourseOverviewComponent} from "./pages/course-overview/course-overview.c
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
 import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
   {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'codelabs/create', component: CreateCodelabComponent, canActivate: [coachGuard]},
   {path: 'codelabs', component: CodelabOverviewComponent, canActivate: [authGuard]},
