@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   constructor(private keycloakService: KeycloakService, private router: Router) {}
 
   ngOnInit(): void {
+    // promise
     if(this.keycloakService.isLoggedIn()){
       this.router.navigate(['/profile']);
     }
