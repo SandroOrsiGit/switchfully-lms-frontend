@@ -65,11 +65,9 @@ describe('CourseOverviewComponent', () => {
 
   //   const debugElement = fixture.debugElement;
   //   const matRows = debugElement.queryAll(By.css('tr[mat-row]'));
-  //   console.log(matRows)
     // expect(component.courses).toEqual(courses);
 
     // let test: any[] = fixture.debugElement.nativeElement.querySelector('tr[mat-row]')
-    // console.log(test)
 
     // expect(matRows.length).toBe(2);
 

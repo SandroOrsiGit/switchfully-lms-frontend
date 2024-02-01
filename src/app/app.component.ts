@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import {RegisterComponent} from "./pages/register/register.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { KeycloakService } from './services/keycloak.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +12,6 @@ import { KeycloakService } from './services/keycloak.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'switchfully-lms-frontend';
-
-  constructor(private keycloakService: KeycloakService, private router: Router) {}
-
-  ngOnInit(): void {
-    // promise
-    if(this.keycloakService.isLoggedIn()){
-      this.router.navigate(['/profile']);
-    }
-  }
 }
