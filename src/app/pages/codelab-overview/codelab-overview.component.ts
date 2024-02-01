@@ -11,6 +11,8 @@ import { ProgressDto } from '../../dtos/ProgressDto';
 import { ProgressService } from '../../services/progress.service';
 import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {CodelabDto} from "../../dtos/CodelabDto";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-codelab',
@@ -30,7 +32,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './codelab-overview.component.css'
 })
 export class CodelabOverviewComponent implements OnInit {
-  private _codelabs: CodelabWithProgressDto[] = [];
+  private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   displayedColumns: string[] = ['id', 'name', 'progress', 'details'];
   private codelabService : CodelabService = inject(CodelabService);
   private progressService: ProgressService = inject(ProgressService);
@@ -39,7 +41,9 @@ export class CodelabOverviewComponent implements OnInit {
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _moduleId: number;
   private _snackBar = inject(MatSnackBar);
-
+  btn_update_codelab: string = "Update Codelab";
+  private _codelabs: CodelabDto[] = [];
+  userService = inject(UserService);
 
   ngOnInit() {
     const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
@@ -53,13 +57,16 @@ export class CodelabOverviewComponent implements OnInit {
 
   private getCodelabs() {
     this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
-      next: codelabsWithProgress => this._codelabs = codelabsWithProgress
+      next: codelabsWithProgress => this._codelabsWithProgress = codelabsWithProgress
     });
   }
 
-  get codelabs(): CodelabWithProgressDto[] {
-    return this._codelabs;
+
+  get codelabsWithProgress(): CodelabWithProgressDto[] {
+    return this._codelabsWithProgress;
   }
+
+
 
   private getProgressOptions() {
     this.progressService.getProgressOptions().subscribe(
@@ -93,5 +100,4 @@ export class CodelabOverviewComponent implements OnInit {
       }
     );
   }
-
 }

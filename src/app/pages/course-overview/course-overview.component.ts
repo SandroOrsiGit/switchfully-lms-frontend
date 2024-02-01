@@ -25,6 +25,7 @@ export class CourseOverviewComponent implements OnInit {
   btn_create_course: string = "Create Course";
   btn_create_module: string = "Create Module";
 
+
   ngOnInit() {
     this.getCourses();
   }
@@ -40,5 +41,5 @@ export class CourseOverviewComponent implements OnInit {
   get courses(): CourseDto[] {
     return this._courses;
   }
-  
+
 }
