@@ -15,6 +15,7 @@ import { ClassgroupOverviewComponent } from './pages/classgroup-overview/classgr
 import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
+import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
 
 export const routes: Routes = [
@@ -33,5 +34,6 @@ export const routes: Routes = [
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
   {path: 'modules/:courseId', component: ModuleOverviewComponent},
+  {path: 'student-overview/:id', component: StudentOverviewComponent},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
 ];
