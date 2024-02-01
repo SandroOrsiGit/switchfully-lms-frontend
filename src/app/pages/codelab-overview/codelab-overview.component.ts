@@ -3,14 +3,12 @@ import {AsyncPipe, NgForOf} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {CodelabService} from "../../services/codelab.service";
-import {CodelabProgressDto} from "../../dtos/CodelabProgressDto";
 import { ButtonComponent } from '../../components/button/button.component';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ProgressDto } from '../../dtos/ProgressDto';
 import { ProgressService } from '../../services/progress.service';
-import {CodelabDto} from "../../dtos/CodelabDto";
 import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
 
 @Component({
@@ -51,38 +49,42 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   private getCodelabs() {
-    this.codelabService.getCodelabs(this._moduleId).subscribe({
-      next: (codelabs) => {
-        this.codelabService.getCodelabProgresses(this._moduleId).subscribe({
-          next: (codelabProgresses) => {
-            for (const codelab of codelabs) {
-              const codelabWithProgressDto: CodelabWithProgressDto = {
-                id: codelab.id,
-                name: codelab.name,
-                progress: this.getCodelabProgress(codelab, codelabProgresses)
-              }
-
-              this._codelabs.push(codelabWithProgressDto);
-            }
-          }
-        });
-      }
+    this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
+      next: codelabsWithProgress => this._codelabs = codelabsWithProgress
     });
 
+    // this.codelabService.getCodelabs(this._moduleId).subscribe({
+    //   next: (codelabs) => {
+    //     this.codelabService.getCodelabProgresses(this._moduleId).subscribe({
+    //       next: (codelabProgresses) => {
+    //         for (const codelab of codelabs) {
+    //           const codelabWithProgressDto: CodelabWithProgressDto = {
+    //             id: codelab.id,
+    //             name: codelab.name,
+    //             progress: this.getCodelabProgress(codelab, codelabProgresses)
+    //           }
+    //
+    //           this._codelabs.push(codelabWithProgressDto);
+    //         }
+    //       }
+    //     });
+    //   }
+    // });
+
   }
 
-  private getCodelabProgress(codelab: CodelabDto, codelabProgresses: CodelabProgressDto[]) {
-    for (const codelabProgress of codelabProgresses) {
-      if (codelabProgress.codelab.id === codelab.id) {
-        return codelabProgress.progress;
-      }
-    }
-
-    return {
-      id: 1,
-      name: 'NOT_STARTED'
-    }
-  }
+  // private getCodelabProgress(codelab: CodelabDto, codelabProgresses: CodelabProgressDto[]) {
+  //   for (const codelabProgress of codelabProgresses) {
+  //     if (codelabProgress.codelab.id === codelab.id) {
+  //       return codelabProgress.progress;
+  //     }
+  //   }
+  //
+  //   return {
+  //     id: 1,
+  //     name: 'NOT_STARTED'
+  //   }
+  // }
 
   get codelabs(): CodelabWithProgressDto[] {
     return this._codelabs;
