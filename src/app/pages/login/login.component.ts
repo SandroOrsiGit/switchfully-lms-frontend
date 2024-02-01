@@ -55,7 +55,9 @@ export class LoginComponent {
         });
       },
       error: () => {
-        this._snackBar.open('Invalid credentials','Close');
+        this._snackBar.open('Invalid credentials','Close', {
+          duration: 1000
+        })
       }
     });
   }

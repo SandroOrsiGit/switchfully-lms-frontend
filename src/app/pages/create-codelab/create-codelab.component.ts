@@ -41,7 +41,9 @@ export class CreateCodelabComponent {
           this.router.navigate(['/profile']);
         },
         error: () => {
-          this._snackBar.open('Only coaches can created a codelab','Close');
+          this._snackBar.open('Only coaches can created a codelab','Close', {
+            duration: 1000
+          })
         }
       }
     );

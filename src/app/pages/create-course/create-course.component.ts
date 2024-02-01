@@ -39,7 +39,9 @@ export class CreateCourseComponent {
         this.router.navigate(['/profile']);
       },
       error: () => {
-        this._snackBar.open('Only coaches can created a course','Close');
+        this._snackBar.open('Only coaches can created a course','Close', {
+          duration: 1000
+        })
       }
     });
   }

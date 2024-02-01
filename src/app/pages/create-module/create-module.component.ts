@@ -69,7 +69,9 @@ export class CreateModuleComponent implements  OnInit {
           this._router.navigate(['/profile']);
         },
         error: () => {
-          this._snackBar.open('Only coaches can create a module','Close');
+          this._snackBar.open('Only coaches can create a module','Close', {
+            duration: 1000
+          })
         }
       }
     );

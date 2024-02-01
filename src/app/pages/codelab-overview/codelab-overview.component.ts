@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProgressDto } from '../../dtos/ProgressDto';
 import { ProgressService } from '../../services/progress.service';
 import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-codelab',
@@ -37,6 +38,8 @@ export class CodelabOverviewComponent implements OnInit {
   private _progressOptions: ProgressDto[] = [];
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _moduleId: number;
+  private _snackBar = inject(MatSnackBar);
+
 
   ngOnInit() {
     const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
@@ -52,39 +55,7 @@ export class CodelabOverviewComponent implements OnInit {
     this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
       next: codelabsWithProgress => this._codelabs = codelabsWithProgress
     });
-
-    // this.codelabService.getCodelabs(this._moduleId).subscribe({
-    //   next: (codelabs) => {
-    //     this.codelabService.getCodelabProgresses(this._moduleId).subscribe({
-    //       next: (codelabProgresses) => {
-    //         for (const codelab of codelabs) {
-    //           const codelabWithProgressDto: CodelabWithProgressDto = {
-    //             id: codelab.id,
-    //             name: codelab.name,
-    //             progress: this.getCodelabProgress(codelab, codelabProgresses)
-    //           }
-    //
-    //           this._codelabs.push(codelabWithProgressDto);
-    //         }
-    //       }
-    //     });
-    //   }
-    // });
-
   }
-
-  // private getCodelabProgress(codelab: CodelabDto, codelabProgresses: CodelabProgressDto[]) {
-  //   for (const codelabProgress of codelabProgresses) {
-  //     if (codelabProgress.codelab.id === codelab.id) {
-  //       return codelabProgress.progress;
-  //     }
-  //   }
-  //
-  //   return {
-  //     id: 1,
-  //     name: 'NOT_STARTED'
-  //   }
-  // }
 
   get codelabs(): CodelabWithProgressDto[] {
     return this._codelabs;
@@ -109,8 +80,16 @@ export class CodelabOverviewComponent implements OnInit {
     }
     this.codelabService.updateProgress(updateCodelabProgressDto).subscribe(
       {
-        next: (succes: any) => console.error(succes),
-        error: (error: any) => console.error(error)
+        next: () => {
+          this._snackBar.open('Progress saved', 'Close', {
+            duration: 1000
+          });
+        },
+        error: () => {
+          this._snackBar.open('Something went wrong', 'Close', {
+            duration: 1000
+          });
+        }
       }
     );
   }
