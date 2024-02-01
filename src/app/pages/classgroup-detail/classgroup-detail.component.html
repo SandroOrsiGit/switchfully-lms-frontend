@@ -1,7 +1,7 @@
 <mat-card *ngIf="classGroup">
   <mat-card-content>
 
-    <h1>Classgroup Overview</h1>
+    <h1>Classgroup Detail</h1>
 
     <h3>Currently viewing: {{classGroup.name}}</h3>
 
@@ -16,7 +16,7 @@
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           @for (option of filteredOptions | async; track option) {
-            <mat-option [value]="option">{{option}}</mat-option>
+            <mat-option [value]="option">{{option.displayName}}</mat-option>
           }
         </mat-autocomplete>
       </mat-form-field>

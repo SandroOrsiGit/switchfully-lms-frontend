@@ -83,7 +83,6 @@ export class ClassgroupDetailComponent implements OnInit {
       {
         next: studentDtoList => {
           this._options = studentDtoList
-          console.log(this._options)
         },
         error: error => {
           console.error(error)
@@ -93,6 +92,9 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   private _filter(value: string): StudentDto[] {
+    if (!this._options) {
+      return [];
+    }
     const filterValue = value.toLowerCase();
     return this._options.filter(option => option.displayName.toLowerCase().includes(filterValue));
   }
