@@ -37,5 +37,8 @@ export class CodelabService {
   updateProgress(updateCodelabProgressDto: UpdateCodelabProgressDto): Observable<void> {
     return this.http.post<void>(this._url + '/progress', updateCodelabProgressDto);
   }
+  getAllCodelabs(): Observable<CodelabDto[]> {
+    return this.http.get<CodelabDto[]>(`${this._url}/all`)
+  }
 
 }
