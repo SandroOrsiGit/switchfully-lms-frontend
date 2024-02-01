@@ -1,21 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
+import { ProgressDto } from '../dtos/ProgressDto';
 import { Observable } from 'rxjs';
-import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class ProgressService {
 
   private _url: string;
 
   constructor(private http: HttpClient) {
-    this._url = `${environment.keycloakUrl}`;
-   }
-
-  login(): Observable<User> {
-    return this.http.get<User>(this._url);
+    this._url = `${environment.backendUrl}/progresses`;
   }
+
+  getProgressOptions(): Observable<ProgressDto[]> {
+    return this.http.get<ProgressDto[]>(this._url)
+  }
+
 }
