@@ -4,6 +4,7 @@ import {environment} from "../../environments/environments";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ClassGroup} from '../models/ClassGroup';
+import {ClassGroupOverviewDto} from "../dtos/ClassGroupOverviewDto";
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,7 @@ export class ClassGroupService {
     return this.http.get<ClassGroup>(this.url + '/' + classGroupId)
   }
 
+  getAllClassGroups(): Observable<ClassGroupOverviewDto[]> {
+    return this.http.get<ClassGroupOverviewDto[]>(this.url + '/all');
+  }
 }

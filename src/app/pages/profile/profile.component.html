@@ -56,16 +56,6 @@
           <mat-error>Passwords are not matching!</mat-error>
       }
 
-      <div class="class-list">
-
-        <div *ngIf="!(user) || user.classes && user.classes.length > 0">
-          <h3>Your Classes</h3>
-          <p *ngFor="let classGroup of user?.classes">
-            <a [routerLink]="['/class-groups/overview', classGroup.id]">{{classGroup.name}}</a>
-          </p>
-        </div>
-
-      </div>
       <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!editing || !updateProfileForm.valid"></app-button>
     </form>
 

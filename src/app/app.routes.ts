@@ -11,12 +11,13 @@ import { CreateCodelabComponent } from './pages/create-codelab/create-codelab.co
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {coachGuard} from "./guards/coach.guard";
 import {authGuard} from "./guards/auth.guard";
-import { ClassgroupOverviewComponent } from './pages/classgroup-overview/classgroup-overview.component';
+import { ClassgroupDetailComponent } from './pages/classgroup-detail/classgroup-detail.component';
 import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
 import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
+import {ClassgroupOverviewComponent} from "./pages/classgroup-overview/classgroup-overview.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +33,8 @@ export const routes: Routes = [
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
-  {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
+  {path: 'class-groups/detail/:id', component: ClassgroupDetailComponent, canActivate: [authGuard]},
+  {path: 'class-groups/overview', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
   {path: 'modules/:courseId', component: ModuleOverviewComponent},
   {path: 'student-overview/:id', component: StudentOverviewComponent},
   // {path: 'submodule/create', component: CreateSubModuleComponent},

@@ -1,22 +1,17 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {ClassGroupService} from '../../services/class-group.service';
-import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {ClassGroup} from '../../models/ClassGroup';
-import {AsyncPipe, CommonModule} from '@angular/common';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDividerModule} from '@angular/material/divider';
-import {UserService} from "../../services/user.service";
-import {User} from "../../models/User";
+import {Component, inject, OnInit} from '@angular/core';
+import {AsyncPipe, CommonModule} from "@angular/common";
+import {ActivatedRoute, Params, RouterLink} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {ButtonComponent} from "../../components/button/button.component";
+import {ClassGroupService} from "../../services/class-group.service";
+import {UserService} from "../../services/user.service";
+import {ClassGroupOverviewDto} from "../../dtos/ClassGroupOverviewDto";
 
 @Component({
   selector: 'app-classgroup-overview',
   standalone: true,
   imports: [CommonModule,
-    MatExpansionModule,
-    MatDividerModule,
     RouterLink,
     MatTableModule,
     MatCardModule,
@@ -26,40 +21,23 @@ import {ButtonComponent} from "../../components/button/button.component";
   templateUrl: './classgroup-overview.component.html',
   styleUrl: './classgroup-overview.component.css'
 })
-export class ClassgroupOverviewComponent implements OnInit {
-
+export class ClassgroupOverviewComponent implements OnInit{
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private userService: UserService = inject(UserService);
 
-  displayedColumns: string[] = ['name', 'e-mail', 'view-details'];
+  private _classGroups: ClassGroupOverviewDto[];
 
-  private id: number = 0;
-  private _classGroup: ClassGroup;
-  public loggedInUser: User | undefined;
-  panelOpenState = true;
-  btn_view_details: string = "View details";
-
-  ngOnInit(): void {
-    this.activeRoute.params.subscribe(
-      (params: Params) => {
-        this.id += params["id"]
-      });
-    this.classGroupService.getClassGroupByClassGroupId(this.id).pipe().subscribe({
-      next: (classGroup) => {
-        this._classGroup = classGroup;
+  displayedColumns: string[] = ['name', 'start-date', 'end-date']
+    ngOnInit() {
+    this.classGroupService.getAllClassGroups().pipe().subscribe({
+      next: (classGroups: ClassGroupOverviewDto[]) => {
+        this._classGroups = classGroups;
       }
     })
-
-    this.loggedInUser = this.userService.getCurrentUser();
   }
 
-  isCoach(): boolean {
-    return this.loggedInUser?.role === 'coach';
-  }
-
-
-  get classGroup(): ClassGroup {
-    return this._classGroup;
+  get classGroups(): ClassGroupOverviewDto[] {
+    return this._classGroups;
   }
 }
