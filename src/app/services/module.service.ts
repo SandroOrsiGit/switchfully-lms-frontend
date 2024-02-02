@@ -27,4 +27,8 @@ export class ModuleService {
     return this.http.get<ModuleDto[]>(this._url);
   }
 
+  getModuleByCodelabId(codelabId: number): Observable<ModuleDto> {
+    return this.http.get<ModuleDto>(`${this._url}/codelab/${codelabId}`);
+  }
+
 }
