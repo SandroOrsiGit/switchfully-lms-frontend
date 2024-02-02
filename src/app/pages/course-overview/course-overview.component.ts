@@ -30,6 +30,7 @@ export class CourseOverviewComponent implements OnInit {
   btn_create_module: string = "Create Module";
   btn_edit_course: string = "Edit Course";
 
+
   ngOnInit() {
     this.getCourses();
   }
@@ -49,5 +50,4 @@ export class CourseOverviewComponent implements OnInit {
   isCoach() {
     return this._userService.getCurrentUser()?.role === 'coach';
   }
-
 }
