@@ -14,11 +14,11 @@ import { ClassgroupOverviewComponent } from './pages/classgroup-overview/classgr
 import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
-import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
 import {UpdateCodelabComponent} from "./pages/update-codelab/update-codelab.component";
 import { HomeComponent } from './pages/home/home.component';
 import { CourseEditComponent } from './pages/course-edit/course-edit.component';
+import {StudentDetailComponent} from "./pages/student-detail/student-detail.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,6 +37,6 @@ export const routes: Routes = [
   {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
   {path: 'modules/:courseId', component: ModuleOverviewComponent},
   {path: 'codelab/update/:codelabId', component: UpdateCodelabComponent},
-  {path: 'student-overview/:id', component: StudentOverviewComponent},
+  {path: 'students/:studentId', component: StudentDetailComponent, canActivate: [authGuard]},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
 ];
