@@ -79,7 +79,7 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-    console.log(this.studentListAutoComplete.getRawValue())
+   
 
   }
 
