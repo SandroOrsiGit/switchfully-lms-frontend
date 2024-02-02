@@ -9,13 +9,13 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angula
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatCardModule, ButtonComponent, FormsModule, MatIconModule, MatInputModule, ReactiveFormsModule, MatButtonModule],
+  imports: [MatFormFieldModule, MatCardModule, ButtonComponent, FormsModule, MatIconModule, MatInputModule, ReactiveFormsModule, MatButtonModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
