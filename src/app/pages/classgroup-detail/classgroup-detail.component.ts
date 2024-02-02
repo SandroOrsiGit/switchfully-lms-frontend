@@ -79,7 +79,7 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-
+    console.log(this.studentListAutoComplete.getRawValue())
 
   }
 
@@ -102,7 +102,8 @@ export class ClassgroupDetailComponent implements OnInit {
       return [];
     }
     const filterValue = value.toLowerCase();
-    return this._studentDtoList.filter(option => option.displayName.toLowerCase().includes(filterValue));
+    return this._studentDtoList
+      .filter(studentDto => studentDto.displayName.toLowerCase().includes(filterValue));
   }
   get classGroup(): ClassGroup {
     return this._classGroup;
