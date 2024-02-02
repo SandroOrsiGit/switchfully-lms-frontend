@@ -26,7 +26,8 @@ import {map, Observable, startWith} from "rxjs";
     ButtonComponent,
     AsyncPipe,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+
   ],
   templateUrl: './classgroup-detail.component.html',
   styleUrl: './classgroup-detail.component.css'
@@ -111,5 +112,9 @@ export class ClassgroupDetailComponent implements OnInit {
 
   get studentDtoList(): StudentDto[] {
     return this._studentDtoList;
+  }
+
+  displayFn(student: StudentDto): string {
+    return student && student.displayName ? student.displayName : '';
   }
 }
