@@ -3,6 +3,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import {UserService} from "../../services/user.service";
 import {NgIf} from "@angular/common";
+import { KeycloakService } from '../../services/keycloak.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import {NgIf} from "@angular/common";
 })
 export class NavbarComponent {
     userService = inject(UserService);
+    keycloackService = inject(KeycloakService);
   message() {
     return 'Logged in as ' + this.userService.getCurrentUser()?.role + ' ' + this.userService.getCurrentUser()?.displayName;
   }

@@ -50,7 +50,7 @@ export class UserService {
     return this.http.get<User>(this.url);
   }
 
-  setCurrentUser(user: User) {
+  setCurrentUser(user: User | undefined)   {
     this.user = user;
   }
 

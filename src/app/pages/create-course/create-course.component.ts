@@ -29,10 +29,6 @@ export class CreateCourseComponent {
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
 
-  getNameErrorMessage() {
-    return 'You must enter a value';
-  }
-
   onCreate() {
     return this.courseService.createCourse({name: this.name.value!}).subscribe({
       next: () => {
