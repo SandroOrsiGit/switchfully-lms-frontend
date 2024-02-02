@@ -22,7 +22,7 @@ export class ModuleOverviewComponent implements OnInit {
   private _modules: ModuleDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['name'];
   courseId: number;
 
   ngOnInit() {

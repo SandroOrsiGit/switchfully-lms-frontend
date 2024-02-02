@@ -7,6 +7,7 @@ import { CodelabDto } from '../dtos/CodelabDto';
 import {CodelabProgressDto} from "../dtos/CodelabProgressDto";
 import { UpdateCodelabProgressDto } from '../dtos/UpdateCodelabProgressDto';
 import {CodelabWithProgressDto} from "../dtos/CodelabWithProgressDto";
+import { UpdateCodelabDto } from '../dtos/UpdateCodelabDto';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,18 @@ export class CodelabService {
 
   updateProgress(updateCodelabProgressDto: UpdateCodelabProgressDto): Observable<void> {
     return this.http.post<void>(this._url + '/progress', updateCodelabProgressDto);
+  }
+
+  getAllCodelabs(): Observable<CodelabDto[]> {
+    return this.http.get<CodelabDto[]>(`${this._url}/all`)
+  }
+
+  getCodelabById(codelabId: number): Observable<CodelabDto> {
+    return this.http.get<CodelabDto>(`${this._url}/${codelabId}`);
+  }
+
+  editCodelab(codelabId: number, updateCodelabDto : UpdateCodelabDto): Observable<void> {
+    return this.http.put<void>(this._url +'/update', updateCodelabDto);
   }
 
 }
