@@ -30,4 +30,6 @@ export class ClassGroupService {
   getAllClassGroups(): Observable<ClassGroupOverviewDto[]> {
     return this.http.get<ClassGroupOverviewDto[]>(this.url + '/all');
   }
+
+
 }

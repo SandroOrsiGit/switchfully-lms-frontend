@@ -8,6 +8,7 @@
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
     <span routerLink='profile'>Profile</span>
     <span routerLink='courses'>Courses</span>
+    <span routerLink='/class-groups'>Class groups</span>
     <span [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
     <span [routerLink]="['/modules', 1]">Modules</span>
 

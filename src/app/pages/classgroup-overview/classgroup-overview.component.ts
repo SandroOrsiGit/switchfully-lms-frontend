@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {AsyncPipe, CommonModule} from "@angular/common";
-import {ActivatedRoute, Params, RouterLink} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {ButtonComponent} from "../../components/button/button.component";

@@ -5,14 +5,14 @@
 
     <h3>Currently viewing: {{classGroup.name}}</h3>
 
-    <form class="example-form">
+    <form class="example-form" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">
       <mat-form-field class="example-full-width">
         <mat-label>Student</mat-label>
         <input type="text"
                placeholder="Pick one"
                aria-label="Number"
                matInput
-               [formControl]="myControl"
+               [formControl]="studentListAutoComplete"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete">
           @for (option of filteredOptions | async; track option) {
@@ -21,7 +21,7 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <app-button [buttonName]="btn_add_student" (click)="addStudent()"></app-button>
+      <app-button [buttonName]="btn_add_student" ></app-button>
     </form>
 
     <h5>List of coaches</h5>
