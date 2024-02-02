@@ -27,7 +27,7 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'codelabs/create', component: CreateCodelabComponent, canActivate: [coachGuard]},
   {path: 'codelabs', component: CodelabOverviewComponent, canActivate: [authGuard]},
-  {path: 'codelabs/:id', component: CodelabDetailComponent, canActivate: [authGuard]},
+  {path: 'codelabs/:codelabId', component: CodelabDetailComponent, canActivate: [authGuard]},
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
