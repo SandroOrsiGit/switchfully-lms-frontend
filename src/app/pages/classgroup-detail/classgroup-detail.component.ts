@@ -1,18 +1,18 @@
-import {Component, OnInit, inject} from '@angular/core';
-import {ClassGroupService} from '../../services/class-group.service';
-import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {ClassGroup} from '../../models/ClassGroup';
-import {AsyncPipe, CommonModule} from '@angular/common';
-import {UserService} from "../../services/user.service";
-import {User} from "../../models/User";
-import {MatTableModule} from "@angular/material/table";
-import {MatCardModule} from "@angular/material/card";
-import {ButtonComponent} from "../../components/button/button.component";
-import {MatInputModule} from "@angular/material/input";
-import {MatAutocompleteModule} from "@angular/material/autocomplete";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {StudentDto} from "../../dtos/StudentDto";
-import {map, Observable, startWith} from "rxjs";
+import { Component, OnInit, inject } from '@angular/core';
+import { ClassGroupService } from '../../services/class-group.service';
+import { ActivatedRoute, Params, RouterLink } from '@angular/router';
+import { ClassGroup } from '../../models/ClassGroup';
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { UserService } from "../../services/user.service";
+import { User } from "../../models/User";
+import { MatTableModule } from "@angular/material/table";
+import { MatCardModule } from "@angular/material/card";
+import { ButtonComponent } from "../../components/button/button.component";
+import { MatInputModule } from "@angular/material/input";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { StudentDto } from "../../dtos/StudentDto";
+import { map, Observable, startWith } from "rxjs";
 
 @Component({
   selector: 'app-classgroup-overview',
@@ -43,6 +43,7 @@ export class ClassgroupDetailComponent implements OnInit {
   private id: number = 0;
   private _classGroup: ClassGroup;
   private _studentDtoList: StudentDto[] = [];
+  private _studentId: number;
   studentListAutoComplete = new FormControl('');
   addStudentForm = new FormGroup({
     studentListAutoComplete: this.studentListAutoComplete
@@ -80,8 +81,10 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-   
-
+    this._classGroupService.addStudentToClassGroup({
+      studentId: this._studentId,
+      classGroupId: this._classGroup?.id
+    }).subscribe();
   }
 
   private getStudents() {
@@ -98,11 +101,12 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
 
-  private _filter(value: string): StudentDto[] {
+  private _filter(value: any): StudentDto[] {
     if (!this._studentDtoList) {
       return [];
     }
-    const filterValue = value.toLowerCase();
+    const filterValue = value.displayName ? value.displayName.toLowerCase() : '';
+
     return this._studentDtoList
       .filter(studentDto => studentDto.displayName.toLowerCase().includes(filterValue));
   }
@@ -114,7 +118,12 @@ export class ClassgroupDetailComponent implements OnInit {
     return this._studentDtoList;
   }
 
-  displayFn(student: StudentDto): string {
-    return student && student.displayName ? student.displayName : '';
+  displayFn(value: StudentDto): any {
+    if (value && value.displayName) {
+      this._studentId = value.studentId;
+      return value.displayName;
+    } else {
+      return '';
+    }
   }
 }

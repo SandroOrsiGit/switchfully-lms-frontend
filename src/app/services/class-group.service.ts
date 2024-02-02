@@ -31,5 +31,8 @@ export class ClassGroupService {
     return this.http.get<ClassGroupOverviewDto[]>(this.url + '/all');
   }
 
+  addStudentToClassGroup(linkStudent: {classGroupId: number, studentId: number}) {
+    return this.http.post(this.url + '/add-student', linkStudent);
+  }
 
 }
