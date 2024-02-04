@@ -32,7 +32,7 @@ export class CodelabDetailComponent implements OnInit{
   private _codelabService: CodelabService = inject(CodelabService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _codelab: CodelabDto;
-  dataSource = new MatTableDataSource<CommentDto>();
+  private _dataSource = new MatTableDataSource<CommentDto>();
   displayedColumns: string[] = ['name', 'comments'];
 
   ngOnInit() {
@@ -42,6 +42,10 @@ export class CodelabDetailComponent implements OnInit{
     return this._codelab;
   }
 
+  get dataSource() {
+    return this._dataSource;
+  }
+
   private getCodelab() {
     this._route.params.subscribe(params => {
       const codelabId = params['codelabId'];
@@ -49,7 +53,7 @@ export class CodelabDetailComponent implements OnInit{
       this._codelabService.getCodelabById(codelabId).subscribe({
         next: codelabDto => {
           this._codelab = codelabDto;
-          this.dataSource.data = codelabDto.comments;
+          this._dataSource.data = codelabDto.comments;
         }
       })
     });

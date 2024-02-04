@@ -43,8 +43,8 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumns: string[];
   displayedColumnsStudent: string[] = ['name', 'progress', 'details'];
   displayedColumnsCoach: string[] = ['name', 'details', 'update'];
-  btn_codelab_details: string = "Codelab Details";
-  btn_update_codelab: string = "Update Codelab";
+  btn_codelab_details: string = "Details";
+  btn_update_codelab: string = "Update";
   private _snackBar = inject(MatSnackBar);
 
   // Data from backend
@@ -52,7 +52,7 @@ export class CodelabOverviewComponent implements OnInit {
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-  
+
   private _moduleId: number;
 
   ngOnInit() {
