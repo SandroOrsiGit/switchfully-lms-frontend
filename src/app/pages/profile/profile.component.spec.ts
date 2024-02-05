@@ -50,8 +50,6 @@ describe('ProfileComponent', () => {
     component.id.setValue(null);
     component.email.setValue('');
     component.displayName.setValue('');
-    component.password.setValue('');
-    component.passwordConfirm.setValue('');
     expect(component.updateProfileForm.valid).toBeFalsy();
   });
 
@@ -70,14 +68,10 @@ describe('ProfileComponent', () => {
     component.id.setValue(userData.id);
     component.email.setValue(userData.email);
     component.displayName.setValue(userData.displayName);
-    component.password.setValue(userData.password);
-    component.passwordConfirm.setValue(userData.password);
 
     expect(component.updateProfileForm.value.id).toEqual(userData.id);
     expect(component.email.value).toEqual(userData.email);
     expect(component.displayName.value).toEqual(userData.displayName);
-    expect(component.password.value).toEqual(userData.password);
-    expect(component.passwordConfirm.value).toEqual(userData.password);
     expect(userServiceMock.getCurrentUser).toHaveBeenCalled();
   });
 

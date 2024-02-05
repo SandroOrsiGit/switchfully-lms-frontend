@@ -8,6 +8,7 @@ import { MatCardModule } from "@angular/material/card";
 import { UserService } from '../../services/user.service';
 import { UserMapper } from '../../mappers/user.mapper';
 import { FormValidator } from '../../utils/form-validators';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,9 @@ import { FormValidator } from '../../utils/form-validators';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatCardModule],
+    MatCardModule,
+    ButtonComponent
+  ],
 })
 export class RegisterComponent {
   hide = true;

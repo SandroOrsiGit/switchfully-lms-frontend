@@ -1,12 +1,13 @@
-import {Injectable, inject} from '@angular/core';
-import {environment} from '../../environments/environments';
-import {HttpClient} from '@angular/common/http';
-import {CreateUserDto} from '../dtos/CreateUserDto';
-import {User} from '../models/User';
-import {Observable, tap} from 'rxjs';
-import {UserMapper} from '../mappers/user.mapper';
-import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar'; // import MatSnackBar
+import { Injectable, inject } from '@angular/core';
+import { environment } from '../../environments/environments';
+import { HttpClient } from '@angular/common/http';
+import { CreateUserDto } from '../dtos/CreateUserDto';
+import { User } from '../models/User';
+import { Observable, tap } from "rxjs";
+import { UserMapper } from '../mappers/user.mapper';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { StudentDto } from "../dtos/StudentDto"; // import MatSnackBar
 
 @Injectable({
   providedIn: 'root'
@@ -66,4 +67,7 @@ export class UserService {
     return this.getCurrentUser()?.role === 'student';
   }
 
+  getAllStudents(): Observable<StudentDto[]> {
+    return this.http.get<StudentDto[]>(this.url + '/students')
+  }
 }
