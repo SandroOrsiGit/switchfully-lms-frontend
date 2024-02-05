@@ -56,6 +56,9 @@ export class CodelabOverviewComponent implements OnInit {
   private _moduleId: number;
 
   ngOnInit() {
+    if(this._route.snapshot.queryParamMap.get('moduleId') !== null) {
+      this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
+    }
 
     if (this.userService.getCurrentUser()?.role == 'coach') {
       this.setCoachSettings();
@@ -76,18 +79,14 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   getCodelabs() {
-    this._route.params.subscribe(params => {
-      this._moduleId = params['moduleId'];
-      this.codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
+      this.codelabService.getCodelabsByModuleId(this._moduleId!).subscribe({
         next: (codelabs) => {
           this._codelabs = codelabs;
           this.codelabDataSource = this._codelabs;
           this.displayedColumns = this.displayedColumnsCoach;
         },
       });
-
-    });
-  }
+    };
 
 
   private getCodelabsWithProgress() {
