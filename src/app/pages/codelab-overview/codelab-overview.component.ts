@@ -79,24 +79,24 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   getCodelabs() {
-      this.codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
-        next: (codelabs) => {
-          this._codelabs = codelabs;
-          this.codelabDataSource = this._codelabs;
-          this.displayedColumns = this.displayedColumnsCoach;
-        },
-      });
-    }
+    this.codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
+      next: (codelabs) => {
+        this._codelabs = codelabs;
+        this.codelabDataSource = this._codelabs;
+        this.displayedColumns = this.displayedColumnsCoach;
+      },
+    });
+  }
 
 
   private getCodelabsWithProgress() {
-      this.codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
-        next: (codelabsWithProgress) => {
-          this._codelabsWithProgress = codelabsWithProgress;
-          this.codelabDataSource = this._codelabsWithProgress;
-          this.displayedColumns = this.displayedColumnsStudent;
-        }
-      });
+    this.codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
+      next: (codelabsWithProgress) => {
+        this._codelabsWithProgress = codelabsWithProgress;
+        this.codelabDataSource = this._codelabsWithProgress;
+        this.displayedColumns = this.displayedColumnsStudent;
+      }
+    });
   }
 
   private getProgressOptions() {
