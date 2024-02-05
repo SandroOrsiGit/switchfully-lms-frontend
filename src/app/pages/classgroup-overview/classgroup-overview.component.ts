@@ -30,11 +30,19 @@ export class ClassgroupOverviewComponent implements OnInit{
 
   displayedColumns: string[] = ['name', 'start-date', 'end-date']
   ngOnInit() {
-    this.classGroupService.getAllClassGroups().pipe().subscribe({
-      next: (classGroups: ClassGroupOverviewDto[]) => {
-        this._classGroups = classGroups;
-      }
-    })
+    if (this.userService.getCurrentUser()?.role === 'coach') {
+      this.classGroupService.getAllClassGroups().pipe().subscribe({
+        next: (classGroups: ClassGroupOverviewDto[]) => {
+          this._classGroups = classGroups;
+        }
+      })
+    } else {
+      this.classGroupService.getClassGroupsByUserId(this.userService.getCurrentUser()?.id).pipe().subscribe({
+        next: (classGroups: ClassGroupOverviewDto[]) => {
+          this._classGroups = classGroups;
+        }
+      })
+    }
   }
 
   get classGroups(): ClassGroupOverviewDto[] {
