@@ -90,8 +90,6 @@ export class CodelabOverviewComponent implements OnInit {
 
 
   private getCodelabsWithProgress() {
-    this._route.params.subscribe(params => {
-      this._moduleId = params['moduleId'];
       this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
         next: (codelabsWithProgress) => {
           this._codelabsWithProgress = codelabsWithProgress;
@@ -99,7 +97,6 @@ export class CodelabOverviewComponent implements OnInit {
           this.displayedColumns = this.displayedColumnsStudent;
         }
       });
-    })
   }
 
   private getProgressOptions() {
