@@ -26,29 +26,15 @@ export class ClassgroupOverviewComponent implements OnInit{
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private userService: UserService = inject(UserService);
 
-
   private _classGroups: ClassGroupOverviewDto[];
-  private id: number = 0;
-  private _classGroup: ClassGroup;
-  public loggedInUser: User | undefined;
-  panelOpenState = true;
-  btn_view_details: string = "View details";
-  displayedColumns: string[] = ['name', 'start-date', 'end-date']
-    ngOnInit() {
-      if (this.userService.getCurrentUser()?.role === 'coach') {
-        this.classGroupService.getAllClassGroups().pipe().subscribe({
-          next: (classGroups: ClassGroupOverviewDto[]) => {
-            this._classGroups = classGroups;
-          }
-        })
-      } else {
-        this.classGroupService.getClassGroupsByUserId(this.userService.getCurrentUser()?.id).pipe().subscribe({
-          next: (classGroups: ClassGroupOverviewDto[]) => {
-            this._classGroups = classGroups;
-          }
-        })
 
+  displayedColumns: string[] = ['name', 'start-date', 'end-date']
+  ngOnInit() {
+    this.classGroupService.getAllClassGroups().pipe().subscribe({
+      next: (classGroups: ClassGroupOverviewDto[]) => {
+        this._classGroups = classGroups;
       }
+    })
   }
 
   get classGroups(): ClassGroupOverviewDto[] {

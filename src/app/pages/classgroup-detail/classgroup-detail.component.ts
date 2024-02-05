@@ -80,7 +80,6 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-    console.log(this.studentListAutoComplete.getRawValue())
 
     this._classGroupService.addStudentToClassGroup({
       studentId: this.currentStudentId,

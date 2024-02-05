@@ -86,7 +86,7 @@ export class CodelabOverviewComponent implements OnInit {
           this.displayedColumns = this.displayedColumnsCoach;
         },
       });
-    };
+    }
 
 
   private getCodelabsWithProgress() {
