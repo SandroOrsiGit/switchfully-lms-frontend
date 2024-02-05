@@ -1,5 +1,6 @@
 export interface CommentDto {
     id: number,
     text: string,
-    studentName: string
+    studentName: string,
+    createdDate: Date
 }
