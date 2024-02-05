@@ -39,7 +39,8 @@ export class ClassgroupDetailComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'e-mail', 'view-details'];
 
-  private id: number = 0;
+  private classGroupId: number = 0;
+  private currentStudentId: number;
   private _classGroup: ClassGroup;
   private _studentDtoList: StudentDto[] = [];
   studentListAutoComplete = new FormControl('');
@@ -56,9 +57,9 @@ export class ClassgroupDetailComponent implements OnInit {
   ngOnInit(): void {
     this._activeRoute.params.subscribe(
       (params: Params) => {
-        this.id += params["id"]
+        this.classGroupId += params["id"]
       });
-    this._classGroupService.getClassGroupByClassGroupId(this.id).pipe().subscribe({
+    this._classGroupService.getClassGroupByClassGroupId(this.classGroupId).pipe().subscribe({
       next: (classGroup) => {
         this._classGroup = classGroup;
       }
@@ -79,8 +80,16 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-    // console.log(this.studentListAutoComplete.getRawValue())
+    console.log(this.studentListAutoComplete.getRawValue())
 
+    this._classGroupService.addStudentToClassGroup({
+      studentId: this.currentStudentId,
+      classGroupId: this._classGroup.id
+    }).subscribe({
+      next: (classGroup) => {
+        this._classGroup = classGroup;
+      }
+    });
   }
 
   private getStudents() {
@@ -96,14 +105,16 @@ export class ClassgroupDetailComponent implements OnInit {
     )
   }
 
-
   private _filter(value: string): StudentDto[] {
     if (!this._studentDtoList) {
       return [];
     }
     const filterValue = value.toLowerCase();
     return this._studentDtoList
-      .filter(studentDto => studentDto.displayName.toLowerCase().includes(filterValue));
+      .filter(studentDto => {
+        this.currentStudentId = studentDto.id;
+        return studentDto.displayName.toLowerCase().includes(filterValue)
+      });
   }
   get classGroup(): ClassGroup {
     return this._classGroup;
