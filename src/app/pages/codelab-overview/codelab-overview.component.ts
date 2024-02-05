@@ -36,15 +36,15 @@ export class CodelabOverviewComponent implements OnInit {
   // Services
   private codelabService: CodelabService = inject(CodelabService);
   private progressService: ProgressService = inject(ProgressService);
-  userService = inject(UserService);
+  private _userService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
 
   // Html attributes
   displayedColumns: string[];
-  displayedColumnsStudent: string[] = ['name', 'progress', 'details'];
-  displayedColumnsCoach: string[] = ['name', 'details', 'update'];
-  btn_codelab_details: string = "Details";
-  btn_update_codelab: string = "Update";
+  displayedColumnsStudent: string[] = ['name', 'progress', 'actions'];
+  displayedColumnsCoach: string[] = ['name', 'actions'];
+  btn_codelab_details: string = "Codelab Details";
+  btn_edit_codelab: string = "Edit Codelab";
   private _snackBar = inject(MatSnackBar);
 
   // Data from backend
@@ -60,7 +60,7 @@ export class CodelabOverviewComponent implements OnInit {
       this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
     }
 
-    if (this.userService.isCoach()) {
+    if (this._userService.isCoach()) {
       this.setCoachSettings();
     } else {
       this.setStudentSettings();
@@ -88,7 +88,6 @@ export class CodelabOverviewComponent implements OnInit {
     });
   }
 
-
   private getCodelabsWithProgress() {
     this.codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
       next: (codelabsWithProgress) => {
@@ -105,6 +104,10 @@ export class CodelabOverviewComponent implements OnInit {
         next: progressOptions => this._progressOptions = progressOptions,
       }
     )
+  }
+
+  get progressOptions() {
+    return this._progressOptions;
   }
 
   updateProgress(codelabId: number, progressId: number) {
@@ -128,13 +131,12 @@ export class CodelabOverviewComponent implements OnInit {
     );
   }
 
-  // ---------------- Getters ----------------
-  get codelabsWithProgress(): CodelabWithProgressDto[] {
-    return this._codelabsWithProgress;
+  isStudent() {
+    return this._userService.isStudent();
   }
 
-  get progressOptions() {
-    return this._progressOptions;
+  isCoach() {
+    return this._userService.isCoach();
   }
 
 }

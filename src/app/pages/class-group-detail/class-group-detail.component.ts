@@ -28,10 +28,10 @@ import {map, Observable, startWith} from "rxjs";
     MatInputModule,
     MatAutocompleteModule
   ],
-  templateUrl: './classgroup-detail.component.html',
-  styleUrl: './classgroup-detail.component.css'
+  templateUrl: './class-group-detail.component.html',
+  styleUrl: './class-group-detail.component.css'
 })
-export class ClassgroupDetailComponent implements OnInit {
+export class ClassGroupDetailComponent implements OnInit {
 
   private _classGroupService: ClassGroupService = inject(ClassGroupService);
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);

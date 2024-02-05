@@ -71,4 +71,8 @@ export class CourseEditComponent implements OnInit {
     });
   }
 
+  get course() {
+    return this._course;
+  }
+
 }

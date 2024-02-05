@@ -18,10 +18,10 @@ import {ClassGroupOverviewDto} from "../../dtos/ClassGroupOverviewDto";
     ButtonComponent,
     AsyncPipe
   ],
-  templateUrl: './classgroup-overview.component.html',
-  styleUrl: './classgroup-overview.component.css'
+  templateUrl: './class-group-overview.component.html',
+  styleUrl: './class-group-overview.component.css'
 })
-export class ClassgroupOverviewComponent implements OnInit{
+export class ClassGroupOverviewComponent implements OnInit{
   private classGroupService: ClassGroupService = inject(ClassGroupService);
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private userService: UserService = inject(UserService);

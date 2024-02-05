@@ -9,7 +9,7 @@ import {Router, RouterLink} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
-import {CreateClassGroupComponent} from "../create-classgroup/create-class-group.component";
+import {CreateClassGroupComponent} from "../create-class-group/create-class-group.component";
 import {ButtonComponent} from "../../components/button/button.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 

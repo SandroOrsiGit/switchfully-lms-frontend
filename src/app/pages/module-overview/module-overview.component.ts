@@ -25,9 +25,9 @@ export class ModuleOverviewComponent implements OnInit {
   private _modules: ModuleDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  displayedColumns: string[] = ['name', 'view-codelabs'];
+  displayedColumns: string[] = ['name', 'actions'];
   courseId: number;
-  btn_view_codelabs: string = "View Codelabs";
+  btn_module_details: string = "Module Details";
 
   ngOnInit() {
     this.getCourseId();

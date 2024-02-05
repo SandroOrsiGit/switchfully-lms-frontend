@@ -36,7 +36,7 @@ export class KeycloakService {
     if (!this.isTokenValid().subscribe()) {
       return false;
     }
-    
+
     if (this.userService.getCurrentUser() == null) {
       this.userService.getUserByToken().subscribe(
         user => this.userService.setCurrentUser(user)
@@ -50,9 +50,9 @@ export class KeycloakService {
     if (!token) {
       return of(false);
     }
-  
+
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<boolean>(`${this._url}/user/validate-token`, { headers });
+    return this.http.get<boolean>(`${this._url}/users/validate-token`, { headers });
   }
 
   logout(): void {

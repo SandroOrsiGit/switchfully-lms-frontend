@@ -23,17 +23,12 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="details">
+      <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
-        </td>
-      </ng-container>
+          <app-button [buttonName]="btn_edit_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
 
-      <ng-container matColumnDef="update">
-        <th mat-header-cell *matHeaderCellDef>Update Codelab</th>
-        <td mat-cell *matCellDef="let element">
-          <app-button [buttonName]="btn_update_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
         </td>
       </ng-container>
 

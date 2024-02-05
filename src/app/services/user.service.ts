@@ -20,7 +20,7 @@ export class UserService {
   private snackbar: MatSnackBar = inject(MatSnackBar);
 
   constructor() {
-    this.url = `${environment.backendUrl}/user`;
+    this.url = `${environment.backendUrl}/users`;
   }
 
   addUser(user: CreateUserDto): Observable<CreateUserDto> {

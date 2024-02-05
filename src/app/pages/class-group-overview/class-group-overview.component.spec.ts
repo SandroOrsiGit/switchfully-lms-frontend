@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClassgroupOverviewComponent } from './classgroup-overview.component';
+import { ClassGroupOverviewComponent } from './class-group-overview.component';
 
 describe('ClassgroupOverviewComponent', () => {
-  let component: ClassgroupOverviewComponent;
-  let fixture: ComponentFixture<ClassgroupOverviewComponent>;
+  let component: ClassGroupOverviewComponent;
+  let fixture: ComponentFixture<ClassGroupOverviewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ClassgroupOverviewComponent]
+      imports: [ClassGroupOverviewComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(ClassgroupOverviewComponent);
+
+    fixture = TestBed.createComponent(ClassGroupOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,6 +2,9 @@
     <mat-card-content>
 
       <h1>Edit course</h1>
+
+      <p>You are currently editing: {{course.name}}</p>
+
       <form>
         <div>
           <mat-form-field>
@@ -9,8 +12,9 @@
             <input matInput placeholder="Course name" [formControl]="name" required>
           </mat-form-field>
         </div>
+
         <div>
-          <app-button buttonName="Edit" [disabled]="!editCourseForm.valid" (buttonClick)="onEdit()"></app-button>
+          <app-button buttonName="Save" [disabled]="!editCourseForm.valid" (buttonClick)="onEdit()"></app-button>
         </div>
       </form>
     </mat-card-content>

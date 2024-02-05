@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-content>
 
-    <h1>Update codelab</h1>
+    <h1>Edit codelab</h1>
 
-    <p>You are currently editing: {{codelab.name}}</p>
-    <p>This codelab is currently assigned to module: {{currentModule.name}}</p>
+    <p>You are currently editing: {{codelab?.name}}</p>
+    <p>This codelab is currently assigned to module: {{currentModule?.name}}</p>
 
     <form>
       <div>
@@ -23,11 +23,10 @@
             }
           </mat-select>
         </mat-form-field>
-
       </div>
+
       <div>
         <app-button buttonName="Save" [disabled]="toggleButton()"  (buttonClick)="onEdit()"></app-button>
-        <app-button buttonName="Cancel" [routerLink]="['/codelabs']" [queryParams]="{ moduleId: 1}"></app-button>
       </div>
     </form>
 

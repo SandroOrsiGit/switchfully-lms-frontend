@@ -16,7 +16,7 @@ export class CodelabService {
   private http = inject(HttpClient)
 
   constructor() {
-    this._url = `${environment.backendUrl}/codelab`;
+    this._url = `${environment.backendUrl}/codelabs`;
   }
 
   createCodelab(createCodelabDto: CreateCodelabDto): Observable<CodelabDto> {
