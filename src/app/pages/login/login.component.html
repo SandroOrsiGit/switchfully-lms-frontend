@@ -21,11 +21,14 @@
           <mat-error>{{getPasswordErrorMessage()}}</mat-error>
           }
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                  [attr.aria-pressed]="hide">
+            [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-
+      </div>
+      <div class="register-link">
+        <p>No account yet?</p>
+        <a routerLink="/register">Register</a>
       </div>
       <div>
         <app-button mat-raised-button buttonName="Login" (buttonClick)="onLogin()"></app-button>
@@ -34,4 +37,3 @@
 
   </mat-card-content>
 </mat-card>
-

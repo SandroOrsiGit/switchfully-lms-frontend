@@ -26,8 +26,13 @@ export class ClassgroupOverviewComponent implements OnInit{
   private activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private userService: UserService = inject(UserService);
 
-  private _classGroups: ClassGroupOverviewDto[];
 
+  private _classGroups: ClassGroupOverviewDto[];
+  private id: number = 0;
+  private _classGroup: ClassGroup;
+  public loggedInUser: User | undefined;
+  panelOpenState = true;
+  btn_view_details: string = "View details";
   displayedColumns: string[] = ['name', 'start-date', 'end-date']
     ngOnInit() {
       if (this.userService.getCurrentUser()?.role === 'coach') {
@@ -42,6 +47,7 @@ export class ClassgroupOverviewComponent implements OnInit{
             this._classGroups = classGroups;
           }
         })
+
       }
   }
 

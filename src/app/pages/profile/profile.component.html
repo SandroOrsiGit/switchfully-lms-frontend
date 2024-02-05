@@ -23,7 +23,7 @@
         <div *ngIf="!(user) || user.classes && user.classes.length > 0">
           <h3>Your Classes</h3>
           <p *ngFor="let classGroup of user?.classes">
-            <a [routerLink]="['/class-groups/overview', classGroup.id]">{{classGroup.name}}</a>
+            <a [routerLink]="['/class-groups', classGroup.id]">{{classGroup.name}}</a>
           </p>
         </div>
 
@@ -32,5 +32,4 @@
     </form>
 
   </div>
-  <button mat-raised-button *ngIf="user?.role === 'coach'" routerLink="/class-groups/create">Create Class Group</button>
 </div>

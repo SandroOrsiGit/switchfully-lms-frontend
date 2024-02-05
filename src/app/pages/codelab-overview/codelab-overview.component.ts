@@ -3,14 +3,14 @@ import {AsyncPipe, NgForOf} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {CodelabService} from "../../services/codelab.service";
-import { ButtonComponent } from '../../components/button/button.component';
+import {ButtonComponent} from '../../components/button/button.component';
 import {ActivatedRoute, RouterLink} from '@angular/router';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import { ProgressDto } from '../../dtos/ProgressDto';
-import { ProgressService } from '../../services/progress.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {ProgressDto} from '../../dtos/ProgressDto';
+import {ProgressService} from '../../services/progress.service';
 import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {CodelabDto} from "../../dtos/CodelabDto";
 import {UserService} from "../../services/user.service";
 
@@ -34,7 +34,7 @@ import {UserService} from "../../services/user.service";
 export class CodelabOverviewComponent implements OnInit {
 
   // Services
-  private codelabService : CodelabService = inject(CodelabService);
+  private codelabService: CodelabService = inject(CodelabService);
   private progressService: ProgressService = inject(ProgressService);
   userService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
@@ -43,8 +43,8 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumns: string[];
   displayedColumnsStudent: string[] = ['name', 'progress', 'details'];
   displayedColumnsCoach: string[] = ['name', 'details', 'update'];
-  btn_codelab_details: string = "Codelab Details";
-  btn_update_codelab: string = "Update Codelab";
+  btn_codelab_details: string = "Details";
+  btn_update_codelab: string = "Update";
   private _snackBar = inject(MatSnackBar);
 
   // Data from backend
@@ -52,10 +52,13 @@ export class CodelabOverviewComponent implements OnInit {
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-  
+
   private _moduleId: number;
 
   ngOnInit() {
+    if(this._route.snapshot.queryParamMap.get('moduleId') !== null) {
+      this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
+    }
 
     if (this.userService.getCurrentUser()?.role == 'coach') {
       this.setCoachSettings();
@@ -64,6 +67,7 @@ export class CodelabOverviewComponent implements OnInit {
     }
 
     this.getProgressOptions();
+
   }
 
   setCoachSettings() {
@@ -74,32 +78,25 @@ export class CodelabOverviewComponent implements OnInit {
     this.getCodelabsWithProgress();
   }
 
-  getModuleId() {
-    const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
-    if (moduleId !== null) {
-      this._moduleId = parseInt(moduleId);
-    }
-  }
+  getCodelabs() {
+      this.codelabService.getCodelabsByModuleId(this._moduleId!).subscribe({
+        next: (codelabs) => {
+          this._codelabs = codelabs;
+          this.codelabDataSource = this._codelabs;
+          this.displayedColumns = this.displayedColumnsCoach;
+        },
+      });
+    };
 
-  private getCodelabs() {
-    this.codelabService.getAllCodelabs().subscribe({
-      next: (codelabs) => {
-        this._codelabs = codelabs;
-        this.codelabDataSource = this._codelabs;
-        this.displayedColumns = this.displayedColumnsCoach;
-      },
-    });
-  }
 
   private getCodelabsWithProgress() {
-    this.getModuleId();
-    this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
-      next: (codelabsWithProgress) => {
-        this._codelabsWithProgress = codelabsWithProgress;
-        this.codelabDataSource = this._codelabsWithProgress;
-        this.displayedColumns = this.displayedColumnsStudent;
-      }
-    });
+      this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
+        next: (codelabsWithProgress) => {
+          this._codelabsWithProgress = codelabsWithProgress;
+          this.codelabDataSource = this._codelabsWithProgress;
+          this.displayedColumns = this.displayedColumnsStudent;
+        }
+      });
   }
 
   private getProgressOptions() {

@@ -5,11 +5,6 @@
 
     <table mat-table [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
-      <!-- <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container> -->
-
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
@@ -19,17 +14,17 @@
         <th mat-header-cell *matHeaderCellDef>Progress</th>
         <td mat-cell *matCellDef="let element">
           <mat-form-field>
-          <mat-select [value]="element.progress.id" (valueChange)="updateProgress(element.id, $event)" required>
-            @for (progress of progressOptions; track progress) {
+            <mat-select [value]="element.progress.id" (valueChange)="updateProgress(element.id, $event)" required>
+              @for (progress of progressOptions; track progress) {
               <mat-option [value]="progress.id">{{progress.name}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </td>
+              }
+            </mat-select>
+          </mat-form-field>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="details">
-        <th mat-header-cell *matHeaderCellDef>Details</th>
+        <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
         </td>
@@ -38,7 +33,7 @@
       <ng-container matColumnDef="update">
         <th mat-header-cell *matHeaderCellDef>Update Codelab</th>
         <td mat-cell *matCellDef="let element">
-          <app-button [buttonName]="btn_update_codelab" [routerLink]="['/codelab/update', element.id]"></app-button>
+          <app-button [buttonName]="btn_update_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
         </td>
       </ng-container>
 
