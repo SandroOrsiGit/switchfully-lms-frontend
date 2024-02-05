@@ -27,7 +27,7 @@ import { ModuleDto } from '../../dtos/ModuleDto';
         RouterLink,
     ],
   templateUrl: './codelab-edit.component.html',
-  styleUrl: './update-codelab.component.css'
+  styleUrl: './codelab-edit.component.css'
 })
 export class CodelabEditComponent implements OnInit {
 
