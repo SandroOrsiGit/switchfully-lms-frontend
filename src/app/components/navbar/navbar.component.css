@@ -12,11 +12,6 @@ mat-toolbar span {
     font-size: large;
 }
 
-login-message {
-  font-weight: normal;
-  font-family: "Times New Roman", Times, serif;
- }
-
  ::ng-deep .custom-menu {
   width: 180px; /* Replace with your desired width */
 }
