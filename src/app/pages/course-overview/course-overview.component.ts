@@ -26,10 +26,10 @@ export class CourseOverviewComponent implements OnInit {
   private _courseService: CourseService = inject(CourseService);
   private _userService: UserService = inject(UserService);
   displayedColumns: string[] = ['name', 'actions'];
-  btn_details_course: string = "Course details";
-  btn_create_course: string = "Create Course";
-  btn_create_module: string = "Create Module";
-  btn_edit_course: string = "Edit Course";
+  btn_details_course: string = "Course Details";
+  btn_create_course: string = "Course Create";
+  btn_create_module: string = "Module Create";
+  btn_edit_course: string = "Course Edit";
 
 
   ngOnInit() {

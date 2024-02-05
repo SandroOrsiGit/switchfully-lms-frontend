@@ -18,8 +18,8 @@
         <td mat-cell *matCellDef="let element">
           <div>
             <app-button [buttonName]="btn_details_course" [routerLink]="['/modules', element.id]"></app-button>
-            <app-button *ngIf="isCoach()" [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
             <app-button *ngIf="isCoach()" [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
+            <app-button *ngIf="isCoach()" [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
           </div>
         </td>
       </ng-container>
