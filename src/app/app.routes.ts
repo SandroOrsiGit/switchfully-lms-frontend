@@ -10,7 +10,6 @@ import { CreateCodelabComponent } from './pages/create-codelab/create-codelab.co
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {coachGuard} from "./guards/coach.guard";
 import {authGuard} from "./guards/auth.guard";
-import { ClassgroupDetailComponent } from './pages/classgroup-detail/classgroup-detail.component';
 import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
