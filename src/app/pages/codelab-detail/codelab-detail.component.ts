@@ -3,7 +3,7 @@ import {CodelabService} from "../../services/codelab.service";
 import {ActivatedRoute} from "@angular/router";
 import {CodelabDto} from "../../dtos/CodelabDto";
 import {ButtonComponent} from "../../components/button/button.component";
-import {FormsModule} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -22,7 +22,8 @@ import {CommentDto} from "../../dtos/CommentDto";
     MatInputModule,
     MatTableModule,
     NgIf,
-    AsyncPipe
+    AsyncPipe,
+    ReactiveFormsModule,
   ],
   templateUrl: './codelab-detail.component.html',
   styleUrl: './codelab-detail.component.css'
@@ -33,6 +34,7 @@ export class CodelabDetailComponent implements OnInit{
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _codelab: CodelabDto;
   private _dataSource = new MatTableDataSource<CommentDto>();
+  comment = new FormControl('test', [Validators.required]);
   displayedColumns: string[] = ['name', 'comments'];
 
   ngOnInit() {
@@ -44,6 +46,10 @@ export class CodelabDetailComponent implements OnInit{
 
   get dataSource() {
     return this._dataSource;
+  }
+
+  onCreate() {
+
   }
 
   private getCodelab() {

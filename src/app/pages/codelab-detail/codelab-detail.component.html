@@ -4,6 +4,18 @@
     <h1>Codelab Detail</h1>
     <p>You are currently viewing: {{codelab?.name}}</p>
 
+    <form>
+      <div>
+        <mat-form-field>
+          <mat-label>Add new comment</mat-label>
+          <textarea matInput placeholder="Comment" [formControl]="comment" required rows="8"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <app-button buttonName="Create" (buttonClick)="onCreate()"></app-button>
+      </div>
+    </form>
+
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">

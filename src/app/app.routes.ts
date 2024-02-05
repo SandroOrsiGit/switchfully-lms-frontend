@@ -16,7 +16,7 @@ import {CourseOverviewComponent} from "./pages/course-overview/course-overview.c
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
 import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
-import {UpdateCodelabComponent} from "./pages/update-codelab/update-codelab.component";
+import {CodelabEditComponent} from "./pages/codelab-edit/codelab-edit.component";
 import { HomeComponent } from './pages/home/home.component';
 import { CourseEditComponent } from './pages/course-edit/course-edit.component';
 
@@ -30,7 +30,7 @@ export const routes: Routes = [
   {path: 'codelabs', component: CodelabOverviewComponent, canActivate: [authGuard]},
   {path: 'codelabs/create', component: CreateCodelabComponent, canActivate: [coachGuard]},
   {path: 'codelabs/:codelabId', component: CodelabDetailComponent, canActivate: [authGuard]},
-  {path: 'codelabs/:codelabId/edit', component: UpdateCodelabComponent},
+  {path: 'codelabs/:codelabId/edit', component: CodelabEditComponent},
 
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
   {path: 'modules/:courseId', component: ModuleOverviewComponent},
