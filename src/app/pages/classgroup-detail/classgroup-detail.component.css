@@ -1,0 +1,30 @@
+div {
+    width: 90%;
+    margin: auto;
+    margin-top: 3rem;
+}
+
+mat-expansion-panel {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+mat-expansion-panel p {
+    display: flex;
+    justify-content: end;
+    margin-right: 3rem;
+}
+
+.horizontal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+table {
+  table-layout: fixed ;
+  width: 100% ;
+}
+td {
+  width: 33% ;
+}

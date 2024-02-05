@@ -9,13 +9,13 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angula
 import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router, RouterLink} from "@angular/router";
+import {Router} from "@angular/router";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatFormFieldModule, MatCardModule, ButtonComponent, FormsModule, MatIconModule, MatInputModule, ReactiveFormsModule, MatButtonModule, RouterLink],
+  imports: [MatFormFieldModule, MatCardModule, ButtonComponent, FormsModule, MatIconModule, MatInputModule, ReactiveFormsModule, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -49,7 +49,7 @@ export class LoginComponent {
     return this.keycloakService.login({email: this.email.value!, password: this.password.value!}).subscribe({
       next: () => {
         this.userService.getUserByToken().subscribe(user => {
-          this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
+          // this.classGroupService.getClassGroupsByUserId(user.id).subscribe(classes => user.classes = classes);
           this.userService.setCurrentUser(user);
           this.router.navigate(['/profile']);
         });
