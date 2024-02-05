@@ -102,7 +102,7 @@ describe('ProfileComponent', () => {
           ],
           studentNoCodelabProgressDtoList: [
             {
-              studentId: 789,
+              id: 789,
               email: 'student@example.com',
               displayName: 'Student Name',
             }
@@ -150,7 +150,7 @@ describe('ProfileComponent', () => {
           ],
           studentNoCodelabProgressDtoList: [
             {
-              studentId: 789,
+              id: 789,
               email: 'student@example.com',
               displayName: 'Student Name',
             }
@@ -198,7 +198,7 @@ describe('ProfileComponent', () => {
           ],
           studentNoCodelabProgressDtoList: [
             {
-              studentId: 789,
+              id: 789,
               email: 'student@example.com',
               displayName: 'Student Name',
             }
