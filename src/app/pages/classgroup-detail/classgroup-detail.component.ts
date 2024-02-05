@@ -44,9 +44,9 @@ export class ClassgroupDetailComponent implements OnInit {
   private _classGroup: ClassGroup;
   private _studentDtoList: StudentDto[] = [];
   private _studentId: number;
-  studentListAutoComplete = new FormControl('');
+  selectedStudent: FormControl<StudentDto | null> = new FormControl(null);
   addStudentForm = new FormGroup({
-    studentListAutoComplete: this.studentListAutoComplete
+  selectedStudent: this.selectedStudent
   })
   btn_add_student: string = "Add To Classgroup";
 
@@ -66,9 +66,10 @@ export class ClassgroupDetailComponent implements OnInit {
       }
     })
 
-    this.filteredOptions = this.studentListAutoComplete.valueChanges.pipe(
+    this.filteredOptions = this.selectedStudent.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),
+      map(value => typeof value === 'string' ? value : value?.displayName || ''),
+      map(name => this._filter(name)),
     );
 
     this.getStudents();
@@ -81,10 +82,14 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
+    this._studentId = this.selectedStudent.value?.id;
+    if (this._studentId !== undefined) {
     this._classGroupService.addStudentToClassGroup({
+      
       studentId: this._studentId,
       classGroupId: this._classGroup?.id
     }).subscribe();
+    }
   }
 
   private getStudents() {
@@ -99,7 +104,6 @@ export class ClassgroupDetailComponent implements OnInit {
       }
     )
   }
-
 
   private _filter(value: any): StudentDto[] {
     if (!this._studentDtoList) {
@@ -118,10 +122,10 @@ export class ClassgroupDetailComponent implements OnInit {
     return this._studentDtoList;
   }
 
-  displayFn(value: StudentDto): any {
-    if (value && value.displayName) {
-      this._studentId = value.studentId;
-      return value.displayName;
+  displayFn(student: StudentDto): any {
+    if (student && student.displayName) {
+       
+      return student.displayName;
     } else {
       return '';
     }

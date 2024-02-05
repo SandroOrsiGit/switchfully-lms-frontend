@@ -12,12 +12,12 @@
                placeholder="Pick one"
                aria-label="Number"
                matInput
-               [formControl]="studentListAutoComplete"
+               [formControl]="selectedStudent"
                [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <ng-container *ngFor="let option of filteredOptions | async">
-            <mat-option [value]="{studentId: option.studentId, displayName: option.displayName}">
-              {{option.displayName}}
+          <ng-container *ngFor="let studentDto of filteredOptions | async">
+            <mat-option [value]="{id: studentDto.id, displayName: studentDto.displayName}">
+              {{studentDto.displayName}}
             </mat-option>
           </ng-container>
         </mat-autocomplete>
