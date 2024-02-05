@@ -12,6 +12,7 @@ import {AsyncPipe, NgIf} from "@angular/common";
 import {CommentDto} from "../../dtos/CommentDto";
 import {CommentService} from '../../services/comment.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-codelab-detail',
@@ -36,6 +37,8 @@ export class CodelabDetailComponent implements OnInit{
   private _commentService: CommentService = inject(CommentService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _snackBar = inject(MatSnackBar)
+  private _userService = inject(UserService);
+
   private _codelab: CodelabDto;
   private _dataSource = new MatTableDataSource<CommentDto>();
   text = new FormControl('test', [Validators.required]);
@@ -50,6 +53,10 @@ export class CodelabDetailComponent implements OnInit{
 
   get dataSource() {
     return this._dataSource;
+  }
+
+  isStudent() {
+    return this._userService.isStudent();
   }
 
   onCreate() {

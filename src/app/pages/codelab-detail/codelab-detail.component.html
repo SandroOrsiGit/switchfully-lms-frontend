@@ -4,7 +4,7 @@
     <h1>Codelab Detail</h1>
     <p>You are currently viewing: {{codelab?.name}}</p>
 
-    <form>
+    <form *ngIf="isStudent()">
       <div>
         <mat-form-field>
           <mat-label>Add new comment</mat-label>
