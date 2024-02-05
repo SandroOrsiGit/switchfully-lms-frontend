@@ -51,4 +51,8 @@ export class CodelabService {
     return this.http.put<void>(this._url +'/update', updateCodelabDto);
   }
 
+  getCodelabsByModuleId(moduleId: number): Observable<CodelabDto[]> {
+    return this.http.get<CodelabDto[]>(`${this._url}/module/${moduleId}`)
+  }
+
 }

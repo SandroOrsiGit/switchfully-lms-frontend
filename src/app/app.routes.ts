@@ -43,5 +43,6 @@ export const routes: Routes = [
   {path: 'class-groups/:classGroupId', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
 
   {path: 'student-overview/:id', component: StudentOverviewComponent},
+  {path: 'codelabs/module/:moduleId', component: CodelabOverviewComponent},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
 ];

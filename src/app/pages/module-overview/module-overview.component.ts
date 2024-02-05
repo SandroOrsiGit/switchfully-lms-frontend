@@ -4,7 +4,8 @@ import {ModuleDto} from "../../dtos/ModuleDto";
 import {AsyncPipe, NgForOf} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
+import {ButtonComponent} from "../../components/button/button.component";
 
 @Component({
   selector: 'app-module-overview',
@@ -13,7 +14,9 @@ import { ActivatedRoute } from '@angular/router';
     NgForOf,
     AsyncPipe,
     MatTableModule,
-    MatCardModule
+    MatCardModule,
+    ButtonComponent,
+    RouterLink
   ],
   templateUrl: './module-overview.component.html',
   styleUrl: './module-overview.component.css'
@@ -22,8 +25,9 @@ export class ModuleOverviewComponent implements OnInit {
   private _modules: ModuleDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
   private route: ActivatedRoute = inject(ActivatedRoute);
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'view-codelabs'];
   courseId: number;
+  btn_view_codelabs: string = "View Codelabs";
 
   ngOnInit() {
     this.getCourseId();
@@ -40,8 +44,7 @@ export class ModuleOverviewComponent implements OnInit {
 
   private getCourseId() {
     this.route.params.subscribe(params => {
-      const courseId = params['courseId'];
-      this.courseId = courseId;
+      this.courseId = params['courseId'];
     });
   }
 
