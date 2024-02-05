@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
 import {Observable} from "rxjs";
@@ -14,8 +14,9 @@ import { UpdateCodelabDto } from '../dtos/UpdateCodelabDto';
 })
 export class CodelabService {
   private _url: string;
+  private http = inject(HttpClient)
 
-  constructor(private http: HttpClient) {
+  constructor() {
     this._url = `${environment.backendUrl}/codelab`;
   }
 

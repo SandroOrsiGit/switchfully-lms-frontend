@@ -8,10 +8,10 @@
       <div>
         <mat-form-field>
           <mat-label>Add new comment</mat-label>
-          <textarea matInput placeholder="Comment" [formControl]="comment" required rows="8"></textarea>
+          <textarea matInput placeholder="Comment" [formControl]="text" required rows="8"></textarea>
         </mat-form-field>
       </div>
-      <div>
+      <div class="add-comment-button" >
         <app-button buttonName="Create" (buttonClick)="onCreate()"></app-button>
       </div>
     </form>

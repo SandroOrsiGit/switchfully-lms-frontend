@@ -10,6 +10,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {CommentDto} from "../../dtos/CommentDto";
+import {CommentService} from '../../services/comment.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-codelab-detail',
@@ -31,10 +33,12 @@ import {CommentDto} from "../../dtos/CommentDto";
 
 export class CodelabDetailComponent implements OnInit{
   private _codelabService: CodelabService = inject(CodelabService);
+  private _commentService: CommentService = inject(CommentService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
+  private _snackBar = inject(MatSnackBar)
   private _codelab: CodelabDto;
   private _dataSource = new MatTableDataSource<CommentDto>();
-  comment = new FormControl('test', [Validators.required]);
+  text = new FormControl('test', [Validators.required]);
   displayedColumns: string[] = ['name', 'comments'];
 
   ngOnInit() {
@@ -49,7 +53,16 @@ export class CodelabDetailComponent implements OnInit{
   }
 
   onCreate() {
-
+    this._commentService.createComment({text: this.text.value!, codelabId: this._codelab.id}).subscribe(
+      {
+        next: () => {
+          this._snackBar.open('Comment added','Close', {
+            duration: 1000
+          })
+          this.getCodelab();
+    }
+      }
+    )
   }
 
   private getCodelab() {
