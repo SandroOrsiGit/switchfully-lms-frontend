@@ -7,7 +7,7 @@ import { Observable, tap } from "rxjs";
 import { UserMapper } from '../mappers/user.mapper';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {StudentDto} from "../dtos/StudentDto"; // import MatSnackBar
+import { StudentDto } from "../dtos/StudentDto"; // import MatSnackBar
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class UserService {
   }
 
   addUser(user: CreateUserDto): Observable<CreateUserDto> {
-    return this.http.post<CreateUserDto>(`${this.url}/register`, user).pipe(
+    return this.http.post<CreateUserDto>(this.url, user).pipe(
       tap(() => {
         this.router.navigate(['/login']);
         this.snackbar.open('User created successfully', 'Close', {
@@ -39,9 +39,9 @@ export class UserService {
     const user = UserMapper.toUser(updateProfileForm);
 
     const UpdateUserDto = {
-      "id": user.id,
-      "email": user.email,
-      "displayName": user.displayName
+      'id': user.id,
+      'email': user.email,
+      'displayName': user.displayName
     }
 
     return this.http.put<CreateUserDto>(this.url, UpdateUserDto);
@@ -51,12 +51,20 @@ export class UserService {
     return this.http.get<User>(this.url);
   }
 
-  setCurrentUser(user: User | undefined)   {
+  setCurrentUser(user: User | undefined) {
     this.user = user;
   }
 
   getCurrentUser(): User | undefined {
     return this.user;
+  }
+
+  isCoach() {
+    return this.getCurrentUser()?.role === 'coach';
+  }
+
+  isStudent() {
+    return this.getCurrentUser()?.role === 'student';
   }
 
   getAllStudents(): Observable<StudentDto[]> {

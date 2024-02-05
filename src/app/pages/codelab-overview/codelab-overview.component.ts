@@ -60,10 +60,10 @@ export class CodelabOverviewComponent implements OnInit {
       this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
     }
 
-    if (this.userService.getCurrentUser()?.role == 'coach') {
+    if (this.userService.isCoach()) {
       this.setCoachSettings();
     } else {
-      this.setUserSettings();
+      this.setStudentSettings();
     }
 
     this.getProgressOptions();
@@ -74,12 +74,12 @@ export class CodelabOverviewComponent implements OnInit {
     this.getCodelabs();
   }
 
-  setUserSettings() {
+  setStudentSettings() {
     this.getCodelabsWithProgress();
   }
 
   getCodelabs() {
-      this.codelabService.getCodelabsByModuleId(this._moduleId!).subscribe({
+      this.codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
         next: (codelabs) => {
           this._codelabs = codelabs;
           this.codelabDataSource = this._codelabs;
@@ -90,7 +90,7 @@ export class CodelabOverviewComponent implements OnInit {
 
 
   private getCodelabsWithProgress() {
-      this.codelabService.getCodelabsWithProgress(this._moduleId).subscribe({
+      this.codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
         next: (codelabsWithProgress) => {
           this._codelabsWithProgress = codelabsWithProgress;
           this.codelabDataSource = this._codelabsWithProgress;

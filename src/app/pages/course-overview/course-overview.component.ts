@@ -49,6 +49,6 @@ export class CourseOverviewComponent implements OnInit {
   }
 
   isCoach() {
-    return this._userService.getCurrentUser()?.role === 'coach';
+    return this._userService.isCoach();
   }
 }

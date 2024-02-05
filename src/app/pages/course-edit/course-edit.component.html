@@ -1,6 +1,6 @@
 <mat-card>
     <mat-card-content>
-  
+
       <h1>Edit course</h1>
       <form>
         <div>
@@ -10,10 +10,9 @@
           </mat-form-field>
         </div>
         <div>
-          <app-button mat-raised-button buttonName="Edit" [disabled]="!editCourseForm.valid" (buttonClick)="onEdit()"></app-button>
+          <app-button buttonName="Edit" [disabled]="!editCourseForm.valid" (buttonClick)="onEdit()"></app-button>
         </div>
       </form>
     </mat-card-content>
   </mat-card>
-  
-  
+
