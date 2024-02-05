@@ -111,8 +111,11 @@ export class ClassgroupDetailComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this._studentDtoList
       .filter(studentDto => {
-        this.currentStudentId = studentDto.id;
-        return studentDto.displayName.toLowerCase().includes(filterValue)
+        if (studentDto.displayName.toLowerCase().includes(filterValue)) {
+          this.currentStudentId = studentDto.id;
+          return true;
+        }
+        return false;
       });
   }
   get classGroup(): ClassGroup {
