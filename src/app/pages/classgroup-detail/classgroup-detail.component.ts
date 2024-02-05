@@ -1,18 +1,18 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ClassGroupService } from '../../services/class-group.service';
-import { ActivatedRoute, Params, RouterLink } from '@angular/router';
-import { ClassGroup } from '../../models/ClassGroup';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { UserService } from "../../services/user.service";
-import { User } from "../../models/User";
-import { MatTableModule } from "@angular/material/table";
-import { MatCardModule } from "@angular/material/card";
-import { ButtonComponent } from "../../components/button/button.component";
-import { MatInputModule } from "@angular/material/input";
-import { MatAutocompleteModule } from "@angular/material/autocomplete";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { StudentDto } from "../../dtos/StudentDto";
-import { map, Observable, startWith } from "rxjs";
+import {Component, OnInit, inject} from '@angular/core';
+import {ClassGroupService} from '../../services/class-group.service';
+import {ActivatedRoute, Params, RouterLink} from '@angular/router';
+import {ClassGroup} from '../../models/ClassGroup';
+import {AsyncPipe, CommonModule} from '@angular/common';
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
+import {MatTableModule} from "@angular/material/table";
+import {MatCardModule} from "@angular/material/card";
+import {ButtonComponent} from "../../components/button/button.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {StudentDto} from "../../dtos/StudentDto";
+import {map, Observable, startWith} from "rxjs";
 
 @Component({
   selector: 'app-classgroup-overview',
@@ -26,8 +26,7 @@ import { map, Observable, startWith } from "rxjs";
     ButtonComponent,
     AsyncPipe,
     MatInputModule,
-    MatAutocompleteModule,
-
+    MatAutocompleteModule
   ],
   templateUrl: './classgroup-detail.component.html',
   styleUrl: './classgroup-detail.component.css'
@@ -43,7 +42,6 @@ export class ClassgroupDetailComponent implements OnInit {
   private id: number = 0;
   private _classGroup: ClassGroup;
   private _studentDtoList: StudentDto[] = [];
-  private _studentId: number;
   studentListAutoComplete = new FormControl('');
   addStudentForm = new FormGroup({
     studentListAutoComplete: this.studentListAutoComplete
@@ -81,10 +79,8 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
   addStudent() {
-    this._classGroupService.addStudentToClassGroup({
-      studentId: this._studentId,
-      classGroupId: this._classGroup?.id
-    }).subscribe();
+    // console.log(this.studentListAutoComplete.getRawValue())
+
   }
 
   private getStudents() {
@@ -101,12 +97,11 @@ export class ClassgroupDetailComponent implements OnInit {
   }
 
 
-  private _filter(value: any): StudentDto[] {
+  private _filter(value: string): StudentDto[] {
     if (!this._studentDtoList) {
       return [];
     }
-    const filterValue = value.displayName ? value.displayName.toLowerCase() : '';
-
+    const filterValue = value.toLowerCase();
     return this._studentDtoList
       .filter(studentDto => studentDto.displayName.toLowerCase().includes(filterValue));
   }
@@ -116,14 +111,5 @@ export class ClassgroupDetailComponent implements OnInit {
 
   get studentDtoList(): StudentDto[] {
     return this._studentDtoList;
-  }
-
-  displayFn(value: StudentDto): any {
-    if (value && value.displayName) {
-      this._studentId = value.studentId;
-      return value.displayName;
-    } else {
-      return '';
-    }
   }
 }

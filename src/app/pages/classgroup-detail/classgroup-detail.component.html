@@ -14,11 +14,9 @@
                matInput
                [formControl]="studentListAutoComplete"
                [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-autocomplete #auto="matAutocomplete">
           <ng-container *ngFor="let option of filteredOptions | async">
-            <mat-option [value]="{studentId: option.studentId, displayName: option.displayName}">
-              {{option.displayName}}
-            </mat-option>
+            <mat-option [value]="option.displayName">{{option.displayName}}</mat-option>
           </ng-container>
         </mat-autocomplete>
       </mat-form-field>
