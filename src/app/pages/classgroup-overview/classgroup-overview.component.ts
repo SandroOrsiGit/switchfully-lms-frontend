@@ -43,7 +43,7 @@ export class ClassgroupOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.activeRoute.params.subscribe(
       (params: Params) => {
-        this.id += params["id"]
+        this.id += params["classGroupId"]
       });
     this.classGroupService.getClassGroupByClassGroupId(this.id).pipe().subscribe({
       next: (classGroup) => {

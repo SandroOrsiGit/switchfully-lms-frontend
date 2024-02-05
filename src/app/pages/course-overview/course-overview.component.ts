@@ -25,10 +25,12 @@ export class CourseOverviewComponent implements OnInit {
   private _courses: CourseDto[] = [];
   private _courseService: CourseService = inject(CourseService);
   private _userService: UserService = inject(UserService);
-  displayedColumns: string[] = ['id', 'name', 'details', 'create_module'];
-  btn_create_course: string = "Create Course";
-  btn_create_module: string = "Create Module";
-  btn_edit_course: string = "Edit Course";
+  displayedColumns: string[] = ['name', 'actions'];
+  btn_details_course: string = "Course Details";
+  btn_create_course: string = "Course Create";
+  btn_create_module: string = "Module Create";
+  btn_edit_course: string = "Course Edit";
+
 
   ngOnInit() {
     this.getCourses();
@@ -49,5 +51,4 @@ export class CourseOverviewComponent implements OnInit {
   isCoach() {
     return this._userService.getCurrentUser()?.role === 'coach';
   }
-
 }

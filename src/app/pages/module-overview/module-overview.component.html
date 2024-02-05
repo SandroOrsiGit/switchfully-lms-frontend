@@ -5,14 +5,16 @@
 
     <table mat-table [dataSource]="modules" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="view-codelabs">
+        <th mat-header-cell *matHeaderCellDef>View codelabs</th>
+        <td mat-cell *matCellDef="let element" >
+            <app-button [buttonName]="btn_view_codelabs" [routerLink]="['/codelabs/module', element.id]"></app-button>
+          </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

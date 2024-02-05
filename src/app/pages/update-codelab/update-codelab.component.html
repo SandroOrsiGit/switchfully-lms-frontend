@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-content>
+
+    <h1>Update codelab</h1>
+
+    <p>You are currently editing: {{codelab.name}}</p>
+    <p>This codelab is currently assigned to module: {{currentModule.name}}</p>
+
+    <form>
+      <div>
+        <mat-form-field>
+          <mat-label>Enter new codelab name</mat-label>
+          <input matInput placeholder="Codelab name" [formControl]="name" required>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Available Modules</mat-label>
+          <mat-select [formControl]="moduleId" required>
+            @for (module of modules; track module) {
+              <mat-option [value]="module.id">{{module.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+      <div>
+        <app-button mat-raised-button buttonName="Save" [disabled]="toggleButton()"  (buttonClick)="onEdit()"></app-button>
+        <app-button mat-raised-button buttonName="Cancel" [routerLink]="['/codelabs']" [queryParams]="{ moduleId: 1}"></app-button>
+      </div>
+    </form>
+
+  </mat-card-content>
+</mat-card>
