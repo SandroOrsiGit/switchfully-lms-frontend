@@ -1,26 +1,19 @@
 <mat-toolbar>
-  <span routerLink='home'>Switchfully learning management system</span>
-  <!-- <span *ngIf="!this.userService.getCurrentUser(); else logoutTemplate" routerLink='login'>Login</span>
-    <ng-template #logoutTemplate>
-        <span (click)="keycloackService.logout()" routerLink='login'>Logout</span>
-    </ng-template>
-    -->
-
-  <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
-  <!-- <span routerLink='profile'>Profile</span>-->
-  <span *ngIf="this.userService.getCurrentUser()" routerLink='courses'>Courses</span>
-  <span *ngIf="this.userService.getCurrentUser()" [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
-  <span *ngIf="this.userService.getCurrentUser()" [routerLink]="['/modules', 1]">Modules</span>
+  <span routerLink='home'>Switchfully LMS</span>
+  <div class="navigation" *ngIf="this.userService.getCurrentUser()">
+    <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
+    <span routerLink='courses'>Courses</span>
+    <span [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
+    <span routerLink='/class-groups'>Classes</span>
+  </div>
 
   <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
     routerLink='profile'>Login</span>
   <ng-template #logOutTemplate>
-    <!-- <span (click)="keycloackService.logout()" routerLink='login'>Login</span> -->
     <button mat-button [matMenuTriggerFor]="menu">{{message()}}</button>
     <mat-menu #menu="matMenu" class="custom-menu">
       <button mat-menu-item routerLink="profile">Profile</button>
       <button mat-menu-item (click)="keycloackService.logout()" routerLink='login'>Logout</button>
     </mat-menu>
   </ng-template>
-
 </mat-toolbar>

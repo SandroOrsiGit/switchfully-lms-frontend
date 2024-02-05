@@ -32,17 +32,21 @@ export class KeycloakService {
     return localStorage.getItem(this.TOKEN_KEY_NAME);
   }
 
-  isLoggedIn(): boolean {
-    if (!this.isTokenValid().subscribe()) {
-      return false;
-    }
-    
-    if (this.userService.getCurrentUser() == null) {
-      this.userService.getUserByToken().subscribe(
-        user => this.userService.setCurrentUser(user)
-      );
-    }
-    return !!this.userService.getCurrentUser();
+  isLoggedIn(): any {
+    this.isTokenValid().subscribe({
+      next: () => {
+        if (this.userService.getCurrentUser() == null) {
+          this.userService.getUserByToken().subscribe(
+            user => this.userService.setCurrentUser(user)
+          );
+        }
+        return !!this.userService.getCurrentUser();
+      },
+      error: () => {
+        this.logout();
+        return false
+      }
+    });
   }
 
   isTokenValid(): Observable<boolean> {
