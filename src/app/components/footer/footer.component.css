@@ -1,13 +1,12 @@
 mat-toolbar {
     margin-top: 5%;
-    justify-content: center;
+    justify-content: flex-end;
     position: fixed;
     bottom: 0;
     z-index: 10;
 }
 
 mat-toolbar span {
-    font-size: x-large;
+    font-size: medium;
     font-weight: 500;
-    cursor: pointer;
 }
