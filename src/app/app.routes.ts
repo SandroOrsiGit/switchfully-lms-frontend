@@ -34,7 +34,10 @@ export const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [coachGuard]},
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-groups/overview/:id', component: ClassgroupOverviewComponent, canActivate: [authGuard]},
-  {path: 'modules/:courseId', component: ModuleOverviewComponent},
-  {path: 'student-overview/:id', component: StudentOverviewComponent},
-  // {path: 'submodule/create', component: CreateSubModuleComponent},
+  {path: 'modules/:courseId', component: ModuleOverviewComponent, canActivate: [authGuard]},
+  {path: 'student-overview/:id', component: StudentOverviewComponent, canActivate: [coachGuard]},
+  
+  // {path: 'submodule/create', component: CreateSubModuleComponent}
+  { path: '**', redirectTo: '' }
+  
 ];
