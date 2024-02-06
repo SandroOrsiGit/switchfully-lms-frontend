@@ -1,0 +1,12 @@
+mat-card {
+  box-shadow: none;
+  height: 75%;
+}
+
+mat-card-content {
+  margin: auto;
+}
+
+mat-form-field {
+  margin-bottom: 0.5em;
+}

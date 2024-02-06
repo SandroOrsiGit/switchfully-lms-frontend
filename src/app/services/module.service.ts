@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment.development";
-import {CreateModuleDto} from "../dto/CreateModuleDto";
+import {CreateModuleDto} from "../dtos/CreateModuleDto";
 import {Observable} from "rxjs";
-import {Module} from "../models/Module";
+import {ModuleDto} from "../dtos/ModuleDto";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,24 @@ export class ModuleService {
     this._url = `${environment.backendUrl}/modules`;
   }
 
-  createModule(createModuleDto: CreateModuleDto): Observable<Module> {
-    return this.http.post(this._url, createModuleDto);
+  createModule(createModuleDto: CreateModuleDto): Observable<ModuleDto> {
+    return this.http.post<ModuleDto>(this._url, createModuleDto);
   }
+
+  getModule(moduleId: number): Observable<ModuleDto> {
+    return this.http.get<ModuleDto>(`${this._url}/${moduleId}`);
+  }
+
+  getModules(courseId: number): Observable<ModuleDto[]> {
+    return this.http.get<ModuleDto[]>(`${this._url}/course/${courseId}`);
+  }
+
+  getAllModules(): Observable<ModuleDto[]> {
+    return this.http.get<ModuleDto[]>(this._url);
+  }
+
+  getModuleByCodelabId(codelabId: number): Observable<ModuleDto> {
+    return this.http.get<ModuleDto>(`${this._url}/codelab/${codelabId}`);
+  }
+
 }

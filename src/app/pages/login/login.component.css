@@ -32,3 +32,17 @@ mat-form-field {
   color: white;
   text-transform: uppercase!important;
 }
+h1 {
+  text-align: center;
+}
+
+.register-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.register-link p {
+  margin: 0;
+}

@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
+  flex-direction: column;
 }
 
 .profile-container {
@@ -13,6 +14,7 @@
   width: 300px;
   text-align: center;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .settings-icon {
@@ -38,6 +40,9 @@ mat-label{
 
 .class-list h3 {
   margin-bottom: 10px;
+}
+.disabled {
+  color: darkgrey!important;
 }
 
 

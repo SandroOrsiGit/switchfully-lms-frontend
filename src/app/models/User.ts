@@ -5,6 +5,6 @@ export interface User {
     email: string,
     displayName: string,
     role?: string,
-    classes?: ClassGroup[],
+    classes: ClassGroup[],
     password?: string
 }

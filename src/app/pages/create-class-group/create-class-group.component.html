@@ -1,0 +1,47 @@
+<mat-card>
+  <mat-card-content>
+    <h1>Create class group</h1>
+
+    <form [formGroup]="createClassGroupForm">
+      <div>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput #message maxlength="256" placeholder="Type here..." formControlName="name">
+          <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Available Courses</mat-label>
+          <mat-select [formControl]="courseId" required>
+            @for (course of courses; track course) {
+            <mat-option [value]="course.id">{{course.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Start date</mat-label>
+
+          <input matInput [matDatepicker]="startDate" formControlName="startDate" >
+          <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>End date</mat-label>
+          <input matInput [matDatepicker]="endDate" formControlName="endDate">
+          <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      @if (this.createClassGroupForm.get('endDate')?.dirty && createClassGroupForm.hasError('endDateBeforeStartDate')) {
+        <mat-error>Start date should be less than end date</mat-error> }
+      <div>
+        <app-button buttonName="Create" [disabled]="createClassGroupForm.invalid" (buttonClick)="onSubmit()"></app-button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

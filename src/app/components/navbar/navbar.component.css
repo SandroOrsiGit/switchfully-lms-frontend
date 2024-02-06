@@ -1,0 +1,30 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+mat-toolbar span {
+    font-size: x-large;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: large;
+}
+
+login-message {
+  font-weight: normal;
+  font-family: "Times New Roman", Times, serif;
+ }
+
+ ::ng-deep .custom-menu {
+  width: 180px; /* Replace with your desired width */
+}
+
+mat-toolbar mat-toolbar-single-row {
+  justify-content: space-between;
+}
+
+.navigation span {
+  padding-right: 10px;
+}

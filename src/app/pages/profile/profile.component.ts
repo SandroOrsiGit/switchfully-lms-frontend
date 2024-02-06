@@ -5,16 +5,18 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {KeycloakService} from '../../services/keycloak.service';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
-import { FormValidator } from '../../components/register/form-validator';
 import { MatIconModule } from '@angular/material/icon';
+import {CreateClassGroupComponent} from "../create-class-group/create-class-group.component";
+import {ButtonComponent} from "../../components/button/button.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, CreateClassGroupComponent, ButtonComponent, RouterLink],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -22,24 +24,18 @@ export class ProfileComponent implements OnInit {
   userService: UserService = inject(UserService);
   keycloakService = inject(KeycloakService);
   router = inject(Router);
-  editing: boolean = false;
-  emailInUseError$?: string;
+  private _snackBar = inject(MatSnackBar);
   user?: User = this.userService.getCurrentUser();
+  updateProfileButton: string = "Update profile";
 
-  hide = true;
   id = new FormControl(this.user?.id);
   email = new FormControl(this.user?.email, [Validators.required, Validators.email]);
   displayName = new FormControl(this.user?.displayName, [Validators.required])
-  password = new FormControl(this.user?.password, [Validators.required])
-  passwordConfirm = new FormControl(this.user?.password, [Validators.required])
   updateProfileForm = new FormGroup({
     id: this.id,
     email: this.email,
     displayName: this.displayName,
-    password: this.password,
-    passwordConfirm: this.passwordConfirm
   },
-    { validators: FormValidator.passwordsMatch}
   )
 
   constructor() {}
@@ -50,18 +46,16 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  toggleEditing(): void {
-    this.editing = !this.editing;
-  }
-
   updateProfile() {
     // TODO no empty password allowed
     this.userService.updateProfile(this.updateProfileForm.value).subscribe(
       {
-        next: data => console.warn(data),
-        error: error => this.emailInUseError$ = error.error.message
+        next: () => {
+          this._snackBar.open('DisplayName Succesfully Updated', 'Close', {
+            duration: 1000
+          });
+        }
       }
     );
   }
-
 }
