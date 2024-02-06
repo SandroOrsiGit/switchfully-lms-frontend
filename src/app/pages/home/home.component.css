@@ -1,19 +1,19 @@
-.wrapper {
+.container {
     width: 80%;
     margin: auto;
     margin-top: 5%;
     padding-bottom: 7%;
 }
 
-.wrapper p {
+.container p {
     margin-top: 3%;
 }
 
-.wrapper h2 {
+.container h2 {
     margin-top: 5%;
 }
 
-.wrapper-body {
+.container-body {
     margin-top: 2%;
     display: flex;
     flex-wrap: wrap;
