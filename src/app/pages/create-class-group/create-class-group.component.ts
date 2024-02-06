@@ -35,7 +35,6 @@ export class CreateClassGroupComponent implements OnInit {
   private _courseService: CourseService = inject(CourseService);
   private _courses: CourseDto[] = [];
 
-  buttonName: string = 'Create class group';
   private _userService: UserService = inject(UserService);
   private currentUser?: User = this._userService.getCurrentUser();
 
