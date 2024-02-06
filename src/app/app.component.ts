@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {RegisterComponent} from "./pages/register/register.component";
@@ -13,18 +13,18 @@ import { KeycloakService } from './services/keycloak.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent /* implements OnInit */{
   title = 'switchfully-lms-frontend';
   keycloakService: KeycloakService = Inject(KeycloakService )
 
-  ngOnInit() {
+  /* ngOnInit() {
     const isValid = this.keycloakService.isLoggedIn();
        
       if (!isValid) {
         
            this.keycloakService.logout();
        }
-  }
+  } */
 
   // check if token is valid
   // if not, than remove it from local storage
