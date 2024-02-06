@@ -27,8 +27,7 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
-          <app-button [buttonName]="btn_edit_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
-
+          <app-button *ngIf="isCoach()" [buttonName]="btn_edit_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
         </td>
       </ng-container>
 

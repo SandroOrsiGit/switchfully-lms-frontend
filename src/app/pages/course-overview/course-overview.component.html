@@ -3,7 +3,9 @@
 
     <h1>Courses</h1>
 
-    <app-button [buttonName]="btn_create_course" routerLink="/courses/create"></app-button>
+    <div *ngIf="isCoach()">
+      <app-button [buttonName]="btn_create_course" routerLink="/courses/create"></app-button>
+    </div>
 
     <table mat-table [dataSource]="courses" class="mat-elevation-z8">
 
