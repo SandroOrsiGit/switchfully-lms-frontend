@@ -5,8 +5,6 @@
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
     <span routerLink='/class-groups'>Classes</span>
     <span routerLink='/courses'>Courses</span>
-    <span [routerLink]="['/modules', 1]">Modules</span>
-    <span [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
   </div>
 
   <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"

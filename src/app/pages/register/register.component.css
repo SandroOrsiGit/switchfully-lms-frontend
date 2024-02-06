@@ -41,3 +41,7 @@ h1 {
   text-align: center;
 }
 
+.underline button, .underline a {
+  text-decoration: underline;
+}
+
