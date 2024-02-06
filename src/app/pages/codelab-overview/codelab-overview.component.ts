@@ -46,8 +46,8 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumns: string[];
   displayedColumnsStudent: string[] = ['name', 'progress', 'actions'];
   displayedColumnsCoach: string[] = ['name', 'actions'];
-  btn_codelab_details: string = "Codelab Details";
-  btn_edit_codelab: string = "Edit Codelab";
+  btn_codelab_details: string = "Details";
+  btn_edit_codelab: string = "Edit";
   btn_create_codelab: string = "Create Codelab"
 
   codelabDataSource: any[] = [];
