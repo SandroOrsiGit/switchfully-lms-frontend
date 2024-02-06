@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 import { UserMapper } from '../../mappers/user.mapper';
 import { FormValidator } from '../../utils/form-validators';
 import { ButtonComponent } from '../../components/button/button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +24,8 @@ import { ButtonComponent } from '../../components/button/button.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
-    ButtonComponent
+    ButtonComponent,
+    RouterLink,
   ],
 })
 export class RegisterComponent {
@@ -33,6 +35,7 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required])
   passwordConfirm = new FormControl('', [Validators.required])
   private userService = inject(UserService);
+
 
   registerForm = new FormGroup({
     email: this.email,

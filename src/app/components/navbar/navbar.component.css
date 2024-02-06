@@ -20,3 +20,11 @@ login-message {
  ::ng-deep .custom-menu {
   width: 180px; /* Replace with your desired width */
 }
+
+mat-toolbar mat-toolbar-single-row {
+  justify-content: space-between;
+}
+
+.navigation span {
+  padding-right: 10px;
+}
