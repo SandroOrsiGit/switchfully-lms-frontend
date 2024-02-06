@@ -5,7 +5,7 @@
 
     <h3>Currently viewing: {{classGroup.name}}</h3>
 
-    <form class="example-form" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">
+    <form class="example-form" *ngIf="isCoach()" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">
       <mat-form-field class="example-full-width">
         <mat-label>Student</mat-label>
         <input type="text"

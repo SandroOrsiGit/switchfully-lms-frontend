@@ -26,7 +26,7 @@ import {map, Observable, startWith} from "rxjs";
     ButtonComponent,
     AsyncPipe,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   templateUrl: './class-group-detail.component.html',
   styleUrl: './class-group-detail.component.css'
@@ -70,9 +70,11 @@ export class ClassGroupDetailComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
 
-    this.getStudents();
-
     this.loggedInUser = this._userService.getCurrentUser();
+
+    if (this.isCoach()) {
+      this.getStudents();
+    }
   }
 
   isCoach(): boolean {
