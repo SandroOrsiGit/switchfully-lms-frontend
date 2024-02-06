@@ -19,8 +19,12 @@ export class ModuleService {
     return this.http.post<ModuleDto>(this._url, createModuleDto);
   }
 
+  getModule(moduleId: number): Observable<ModuleDto> {
+    return this.http.get<ModuleDto>(`${this._url}/${moduleId}`);
+  }
+
   getModules(courseId: number): Observable<ModuleDto[]> {
-    return this.http.get<ModuleDto[]>(`${this._url}/${courseId}`);
+    return this.http.get<ModuleDto[]>(`${this._url}/course/${courseId}`);
   }
 
   getAllModules(): Observable<ModuleDto[]> {
