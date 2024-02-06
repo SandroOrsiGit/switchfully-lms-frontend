@@ -1,7 +1,9 @@
 <mat-card>
   <mat-card-content>
 
-    <h1>Modules</h1>
+    <h1>Modules for course: {{course?.name}}</h1>
+
+    <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1}"></app-button>
 
     <table mat-table [dataSource]="modules" class="mat-elevation-z8">
 
