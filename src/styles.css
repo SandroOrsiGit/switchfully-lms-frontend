@@ -2,12 +2,30 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 .container {
     padding-top: 3%;
+    padding-bottom: 3%;
     width: 80%;
     margin: auto;
 }
 
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.container {
+    flex: 1;
+    overflow-y: auto;
+}
