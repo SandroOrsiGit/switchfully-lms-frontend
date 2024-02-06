@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-content>
 
-    <h1>Codelabs</h1>
+    <h1>Codelabs for Module: {{module?.name}}</h1>
 
     <div *ngIf="isCoach()">
-      <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: moduleId }" ></app-button>
+      <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: module.id }" ></app-button>
     </div>
 
     <table mat-table [dataSource]="codelabDataSource" class="mat-elevation-z8">
