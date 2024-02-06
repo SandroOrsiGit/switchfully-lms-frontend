@@ -3,7 +3,9 @@
 
     <h1>Modules for course: {{course?.name}}</h1>
 
-    <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1}"></app-button>
+    <div *ngIf="isCoach()">
+      <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1}"></app-button>
+    </div>
 
     <table mat-table *ngIf="modules.length !== 0; else elseBlock" [dataSource]="modules" class="mat-elevation-z8">
 
