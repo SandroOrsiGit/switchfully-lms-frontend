@@ -10,8 +10,6 @@ import {MatInputModule} from "@angular/material/input";
 import {ModuleDto} from "../../dtos/ModuleDto";
 import {ModuleService} from "../../services/module.service";
 import {MatSelectModule} from "@angular/material/select";
-import {CourseService} from "../../services/course.service";
-import {CourseDto} from "../../dtos/CourseDto";
 
 @Component({
   selector: 'app-create-codelab',
