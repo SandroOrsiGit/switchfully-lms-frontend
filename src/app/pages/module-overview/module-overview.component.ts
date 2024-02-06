@@ -8,6 +8,7 @@ import {ActivatedRoute, RouterLink} from '@angular/router';
 import {ButtonComponent} from "../../components/button/button.component";
 import {CourseService} from "../../services/course.service";
 import {CourseDto} from "../../dtos/CourseDto";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-module-overview',
@@ -28,6 +29,7 @@ export class ModuleOverviewComponent implements OnInit {
   private _modules: ModuleDto[] = [];
   private _courseService: CourseService = inject(CourseService);
   private _moduleService: ModuleService = inject(ModuleService);
+  private _userService: UserService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _course: CourseDto;
 
@@ -62,6 +64,10 @@ export class ModuleOverviewComponent implements OnInit {
 
   get modules(): ModuleDto[] {
     return this._modules;
+  }
+
+  isCoach() {
+    return this._userService.isCoach();
   }
 
 }
