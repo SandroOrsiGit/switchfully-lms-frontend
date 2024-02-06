@@ -26,7 +26,7 @@
       </div>
 
       <div>
-        <app-button buttonName="Save" [disabled]="toggleButton()"  (buttonClick)="onEdit()"></app-button>
+        <app-button buttonName="Save" [disabled]="!editCodelabForm.valid" (buttonClick)="onEdit()"></app-button>
       </div>
     </form>
 
