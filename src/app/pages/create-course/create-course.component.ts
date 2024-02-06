@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {MatCardModule} from "@angular/material/card";
 import {ButtonComponent} from "../../components/button/button.component";
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {CourseService} from "../../services/course.service";
@@ -23,10 +23,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrl: './create-course.component.css'
 })
 export class CreateCourseComponent {
-  name = new FormControl('test', [Validators.required]);
   private _courseService: CourseService = inject(CourseService);
   private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+
+  name = new FormControl(null, [Validators.required]);
+  createCourseForm = new FormGroup( {
+    name: this.name
+  });
 
   onCreate() {
     return this._courseService.createCourse({name: this.name.value!}).subscribe({

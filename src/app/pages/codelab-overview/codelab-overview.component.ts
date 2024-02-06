@@ -45,6 +45,7 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumnsCoach: string[] = ['name', 'actions'];
   btn_codelab_details: string = "Codelab Details";
   btn_edit_codelab: string = "Edit Codelab";
+  btn_create_codelab: string = "Create Codelab"
 
   codelabDataSource: any[] = [];
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
@@ -64,7 +65,6 @@ export class CodelabOverviewComponent implements OnInit {
     }
 
     this.getProgressOptions();
-
   }
 
   setCoachSettings() {
@@ -107,6 +107,11 @@ export class CodelabOverviewComponent implements OnInit {
     return this._progressOptions;
   }
 
+
+  get moduleId(): number {
+    return this._moduleId;
+  }
+
   updateProgress(codelabId: number, progressId: number) {
     const updateCodelabProgressDto = {
       codelabId: codelabId,
@@ -134,6 +139,10 @@ export class CodelabOverviewComponent implements OnInit {
 
   isCoach() {
     return this._userService.isCoach();
+  }
+
+  get codelabs(): CodelabDto[] {
+    return this._codelabs;
   }
 
 }
