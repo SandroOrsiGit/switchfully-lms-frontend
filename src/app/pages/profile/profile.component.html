@@ -1,35 +1,39 @@
-<div class="profile-wrapper">
-  <div class="profile-container">
+<div class="">
 
-    <h2>Edit Profile</h2>
+  <div class="profile-wrapper">
+    <div class="profile-container">
 
-    <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
+      <h2>Edit Profile</h2>
 
-      <mat-form-field>
+      <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
 
-        <input matInput class="disabled" [formControl]="email" formControlName="email"  [readonly]="true" [disabled]="true" >
+        <mat-form-field>
 
-        <mat-icon class="disabled" matSuffix>email</mat-icon>
-      </mat-form-field>
+          <input matInput class="disabled" [formControl]="email" formControlName="email"  [readonly]="true" [disabled]="true" >
+
+          <mat-icon class="disabled" matSuffix>email</mat-icon>
+        </mat-form-field>
 
 
-      <mat-form-field>
-        <mat-label>Display Name</mat-label>
-        <input matInput [formControl]="displayName" value="{{displayName}}"  />
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Display Name</mat-label>
+          <input matInput [formControl]="displayName" value="{{displayName}}"  />
+        </mat-form-field>
 
-      <div class="class-list">
+        <div class="class-list">
 
-        <div *ngIf="!(user) || user.classes && user.classes.length > 0">
-          <h3>Your Classes</h3>
-          <p *ngFor="let classGroup of user?.classes">
-            <a [routerLink]="['/class-groups', classGroup.id]">{{classGroup.name}}</a>
-          </p>
+          <div *ngIf="!(user) || user.classes && user.classes.length > 0">
+            <h3>Your Classes</h3>
+            <p *ngFor="let classGroup of user?.classes">
+              <a [routerLink]="['/class-groups', classGroup.id]">{{classGroup.name}}</a>
+            </p>
+          </div>
+
         </div>
+        <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!updateProfileForm.valid"></app-button>
+      </form>
 
-      </div>
-      <app-button style="margin-top: 10px;" [buttonName]="updateProfileButton" [disabled]="!updateProfileForm.valid"></app-button>
-    </form>
-
+    </div>
   </div>
+
 </div>
