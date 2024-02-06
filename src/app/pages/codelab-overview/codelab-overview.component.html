@@ -7,7 +7,7 @@
       <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: moduleId }" ></app-button>
     </div>
 
-    <table mat-table [dataSource]="codelabDataSource" class="mat-elevation-z8">
+    <table mat-table *ngIf="codelabs.length !== 0; else elseBlock" [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -38,6 +38,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <ng-template #elseBlock>
+      <p>This module does not have any codelabs assigned to it.</p>
+    </ng-template>
 
   </mat-card-content>
 </mat-card>

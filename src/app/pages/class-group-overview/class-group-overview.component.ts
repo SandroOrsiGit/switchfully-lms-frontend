@@ -25,7 +25,7 @@ export class ClassGroupOverviewComponent implements OnInit{
   private _classGroupService: ClassGroupService = inject(ClassGroupService);
   private _userService: UserService = inject(UserService);
 
-  private _classGroups: ClassGroupOverviewDto[];
+  private _classGroups: ClassGroupOverviewDto[] = [];
 
   displayedColumns: string[] = ['name', 'start-date', 'end-date', 'actions'];
   btn_class_group_details: string = "Class Group details"

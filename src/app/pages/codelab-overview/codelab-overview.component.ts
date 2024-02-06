@@ -141,4 +141,8 @@ export class CodelabOverviewComponent implements OnInit {
     return this._userService.isCoach();
   }
 
+  get codelabs(): CodelabDto[] {
+    return this._codelabs;
+  }
+
 }
