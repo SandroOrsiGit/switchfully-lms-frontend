@@ -13,8 +13,6 @@ import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CodelabDto} from "../../dtos/CodelabDto";
 import {UserService} from "../../services/user.service";
-import {ModuleDto} from "../../dtos/ModuleDto";
-import {ModuleService} from "../../services/module.service";
 
 @Component({
   selector: 'app-codelab',
@@ -37,7 +35,6 @@ import {ModuleService} from "../../services/module.service";
 export class CodelabOverviewComponent implements OnInit {
 
   private _codelabService: CodelabService = inject(CodelabService);
-  private _moduleService: ModuleService = inject(ModuleService);
   private _progressService: ProgressService = inject(ProgressService);
   private _userService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
@@ -48,42 +45,38 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumnsCoach: string[] = ['name', 'actions'];
   btn_codelab_details: string = "Codelab Details";
   btn_edit_codelab: string = "Edit Codelab";
+  btn_create_codelab: string = "Create Codelab"
 
   codelabDataSource: any[] = [];
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-  private _module: ModuleDto;
+  private _moduleId: number;
 
   ngOnInit() {
     if(this._route.snapshot.queryParamMap.get('moduleId') !== null) {
-      const moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
+      this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
+    }
 
-      this._moduleService.getModule(moduleId).subscribe({
-        next: module => {
-          this._module = module;
-          if (this._userService.isCoach()) {
-            this.setCoachSettings(this._module.id);
-          } else {
-            this.setStudentSettings(this._module.id);
-          }
-        }
-      })
+    if (this._userService.isCoach()) {
+      this.setCoachSettings();
+    } else {
+      this.setStudentSettings();
     }
 
     this.getProgressOptions();
   }
 
-  setCoachSettings(moduleId: number) {
-    this.getCodelabs(moduleId);
+  setCoachSettings() {
+    this.getCodelabs();
   }
 
-  setStudentSettings(moduleId: number) {
-    this.getCodelabsWithProgress(moduleId);
+  setStudentSettings() {
+    this.getCodelabsWithProgress();
   }
 
-  getCodelabs(moduleId: number) {
-    this._codelabService.getCodelabsByModuleId(moduleId).subscribe({
+  getCodelabs() {
+    this._codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
       next: (codelabs) => {
         this._codelabs = codelabs;
         this.codelabDataSource = this._codelabs;
@@ -92,8 +85,8 @@ export class CodelabOverviewComponent implements OnInit {
     });
   }
 
-  private getCodelabsWithProgress(moduleId: number) {
-    this._codelabService.getCodelabsWithProgressByModuleId(moduleId).subscribe({
+  private getCodelabsWithProgress() {
+    this._codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
       next: (codelabsWithProgress) => {
         this._codelabsWithProgress = codelabsWithProgress;
         this.codelabDataSource = this._codelabsWithProgress;
@@ -112,6 +105,11 @@ export class CodelabOverviewComponent implements OnInit {
 
   get progressOptions() {
     return this._progressOptions;
+  }
+
+
+  get moduleId(): number {
+    return this._moduleId;
   }
 
   updateProgress(codelabId: number, progressId: number) {
@@ -133,10 +131,6 @@ export class CodelabOverviewComponent implements OnInit {
         }
       }
     );
-  }
-
-  get module() {
-    return this._module;
   }
 
   isStudent() {
