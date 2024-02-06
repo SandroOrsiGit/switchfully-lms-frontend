@@ -34,8 +34,8 @@ export const routes: Routes = [
   {path: 'codelabs/:codelabId/edit', component: CodelabEditComponent},
   {path: 'codelabs/module/:moduleId', component: CodelabOverviewComponent},
 
+  {path: 'modules', component: ModuleOverviewComponent},
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
-  {path: 'modules/:courseId', component: ModuleOverviewComponent},
 
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},
