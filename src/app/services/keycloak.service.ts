@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpKeycloakService } from './http-keycloak.service';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { KeycloakTokenResponse } from '../models/KeycloakTokenResponse';
 import { UserService } from './user.service';
 import { environment } from '../../environments/environments';
@@ -39,7 +39,9 @@ export class KeycloakService {
 
     if (this.userService.getCurrentUser() == null) {
       this.userService.getUserByToken().subscribe(
-        user => this.userService.setCurrentUser(user)
+        user => {
+          this.userService.setCurrentUser(user)}
+
       );
     }
     return !!this.userService.getCurrentUser();
@@ -52,7 +54,13 @@ export class KeycloakService {
     }
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<boolean>(`${this._url}/users/validate-token`, { headers });
+    return this.http.get<boolean>(`${this._url}/users/validate-token`, { headers }).pipe(catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        return of(false);
+      }
+      throw error;
+    }));
+    
   }
 
   logout(): void {
