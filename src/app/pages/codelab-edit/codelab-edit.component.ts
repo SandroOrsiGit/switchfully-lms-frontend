@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateCodelabDto } from '../../dtos/UpdateCodelabDto';
 import { ModuleService } from '../../services/module.service';
 import { ModuleDto } from '../../dtos/ModuleDto';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-update-codelab',
@@ -36,6 +37,7 @@ export class CodelabEditComponent implements OnInit {
   private _route: ActivatedRoute = inject(ActivatedRoute);
   private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+  private _location: Location = inject(Location);
 
   private _codelab: CodelabDto;
   modules: ModuleDto[] = [];
@@ -96,7 +98,7 @@ export class CodelabEditComponent implements OnInit {
         this._snackBar.open('Successfully edited codelab', 'Close', {
           duration: 1000
         });
-        this._router.navigate(['/codelabs']);
+        this._location.back();
       },
       error: () => {
         this._snackBar.open('Only coaches can edit a codelab', 'Close', {
