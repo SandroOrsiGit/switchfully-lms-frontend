@@ -20,6 +20,7 @@ import {CodelabEditComponent} from "./pages/codelab-edit/codelab-edit.component"
 import {ClassGroupOverviewComponent} from "./pages/class-group-overview/class-group-overview.component";
 import { HomeComponent } from './pages/home/home.component';
 import { CourseEditComponent } from './pages/course-edit/course-edit.component';
+import {ModuleEditComponent} from "./pages/module-edit/module-edit.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,6 +37,7 @@ export const routes: Routes = [
 
   {path: 'modules', component: ModuleOverviewComponent},
   {path: 'modules/create', component: CreateModuleComponent, canActivate: [coachGuard]},
+  {path: 'modules/:moduleId/edit', component: ModuleEditComponent, canActivate: [coachGuard]},
 
   {path: 'courses', component: CourseOverviewComponent, canActivate: [authGuard]},
   {path: 'courses/create', component: CreateCourseComponent, canActivate: [coachGuard]},

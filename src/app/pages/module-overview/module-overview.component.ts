@@ -36,6 +36,7 @@ export class ModuleOverviewComponent implements OnInit {
   displayedColumns: string[] = ['name', 'actions'];
   btn_module_details: string = "Module Details";
   btn_create_module: string = "Create Module";
+  btn_edit_module: string = "Edit Module";
 
   ngOnInit() {
     if(this._route.snapshot.queryParamMap.get('courseId') !== null) {
