@@ -3,6 +3,10 @@
 
     <h1>Codelabs</h1>
 
+    <div *ngIf="isCoach()">
+      <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: moduleId }" ></app-button>
+    </div>
+
     <table mat-table [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">

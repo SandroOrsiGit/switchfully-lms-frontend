@@ -10,6 +10,8 @@ import {MatInputModule} from "@angular/material/input";
 import {ModuleDto} from "../../dtos/ModuleDto";
 import {ModuleService} from "../../services/module.service";
 import {MatSelectModule} from "@angular/material/select";
+import {CourseService} from "../../services/course.service";
+import {CourseDto} from "../../dtos/CourseDto";
 
 @Component({
   selector: 'app-create-codelab',
@@ -29,16 +31,16 @@ import {MatSelectModule} from "@angular/material/select";
 export class CreateCodelabComponent implements OnInit {
   private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
-  private _modules: ModuleDto[] = []
+  private _modules: ModuleDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
   private _codelabService: CodelabService = inject(CodelabService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
-  courseId: number;
+
 
   name = new FormControl(null, [Validators.required]);
   moduleId: FormControl<number | null> = new FormControl(null, [Validators.required]);
 
-  createCodelabForm = new FormGroup( {
+  createCodelabForm = new FormGroup({
     name: this.name,
     moduleId: this.moduleId
   });
@@ -50,19 +52,12 @@ export class CreateCodelabComponent implements OnInit {
           this.router.navigate(['/profile']);
         },
         error: () => {
-          this._snackBar.open('Only coaches can created a codelab','Close', {
+          this._snackBar.open('Only coaches can created a codelab', 'Close', {
             duration: 1000
           })
         }
       }
     );
-  }
-
-  private getModules(courseId: number) {
-
-    this._moduleService.getModules(courseId).subscribe({
-      next: modules => this._modules = modules
-    });
   }
 
   private getAllModules() {
@@ -72,26 +67,19 @@ export class CreateCodelabComponent implements OnInit {
       });
   }
 
-
   get modules(): ModuleDto[] {
     return this._modules;
   }
 
   ngOnInit() {
 
-    const moduleId = this._route.snapshot.queryParamMap.get('moduleId');
-    const courseId = this._route.snapshot.queryParamMap.get('courseId');
+    const moduleIdInUrl = this._route.snapshot.queryParamMap.get('moduleId');
 
-    if (moduleId !== null) {
-      this.moduleId.setValue(parseInt(moduleId));
+    this.getAllModules();
+
+    if (moduleIdInUrl) {
+      this.moduleId.setValue(parseInt(moduleIdInUrl));
     }
-    if (courseId !== null) {
-      this.courseId = parseInt(courseId);
-      this.getModules(this.courseId);
-    } else {
-      this.getAllModules();
-    }
+
   }
-
-
 }
