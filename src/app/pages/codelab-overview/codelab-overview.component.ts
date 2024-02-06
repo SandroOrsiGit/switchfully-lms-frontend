@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {CodelabService} from "../../services/codelab.service";
@@ -26,33 +26,30 @@ import {UserService} from "../../services/user.service";
     RouterLink,
     MatFormFieldModule,
     MatSelectModule,
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   templateUrl: './codelab-overview.component.html',
   styleUrl: './codelab-overview.component.css'
 })
 export class CodelabOverviewComponent implements OnInit {
 
-  // Services
-  private codelabService: CodelabService = inject(CodelabService);
-  private progressService: ProgressService = inject(ProgressService);
+  private _codelabService: CodelabService = inject(CodelabService);
+  private _progressService: ProgressService = inject(ProgressService);
   private _userService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
+  private _snackBar = inject(MatSnackBar);
 
-  // Html attributes
   displayedColumns: string[];
   displayedColumnsStudent: string[] = ['name', 'progress', 'actions'];
   displayedColumnsCoach: string[] = ['name', 'actions'];
   btn_codelab_details: string = "Codelab Details";
   btn_edit_codelab: string = "Edit Codelab";
-  private _snackBar = inject(MatSnackBar);
 
-  // Data from backend
   codelabDataSource: any[] = [];
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-
   private _moduleId: number;
 
   ngOnInit() {
@@ -79,7 +76,7 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   getCodelabs() {
-    this.codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
+    this._codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
       next: (codelabs) => {
         this._codelabs = codelabs;
         this.codelabDataSource = this._codelabs;
@@ -89,7 +86,7 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   private getCodelabsWithProgress() {
-    this.codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
+    this._codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
       next: (codelabsWithProgress) => {
         this._codelabsWithProgress = codelabsWithProgress;
         this.codelabDataSource = this._codelabsWithProgress;
@@ -99,7 +96,7 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   private getProgressOptions() {
-    this.progressService.getProgressOptions().subscribe(
+    this._progressService.getProgressOptions().subscribe(
       {
         next: progressOptions => this._progressOptions = progressOptions,
       }
@@ -115,7 +112,7 @@ export class CodelabOverviewComponent implements OnInit {
       codelabId: codelabId,
       progressId: progressId
     }
-    this.codelabService.updateProgress(updateCodelabProgressDto).subscribe(
+    this._codelabService.updateProgress(updateCodelabProgressDto).subscribe(
       {
         next: () => {
           this._snackBar.open('Progress saved', 'Close', {
