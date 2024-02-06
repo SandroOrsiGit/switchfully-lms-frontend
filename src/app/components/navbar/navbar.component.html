@@ -14,7 +14,7 @@
 
 
   <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
-  <!-- <span routerLink='profile'>Profile</span>-->
+  <!- <span routerLink='profile'>Profile</span>-->
   <span *ngIf="this.userService.getCurrentUser()" routerLink='courses'>Courses</span>
   <span *ngIf="this.userService.getCurrentUser()" [routerLink]="['codelabs']" [queryParams]="{ moduleId: 1}">Codelabs</span>
   <span *ngIf="this.userService.getCurrentUser()" [routerLink]="['/modules', 1]">Modules</span>

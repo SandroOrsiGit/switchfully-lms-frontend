@@ -7,8 +7,9 @@ export const keycloakInterceptor: HttpInterceptorFn = (req, next) => {
   const keycloakService = inject(KeycloakService);
 
   if (req.url.includes(`${environment.backendUrl}`)
-    && keycloakService.getToken()
+   && keycloakService.getToken()
     && req.url !== 'http://localhost:8080/user/register') {
+      console.log('we are here')
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${keycloakService.getToken()}`

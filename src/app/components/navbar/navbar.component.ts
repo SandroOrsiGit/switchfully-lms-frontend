@@ -18,6 +18,7 @@ export class NavbarComponent {
     userService = inject(UserService);
     keycloackService = inject(KeycloakService);
   message() {
+    console.log(this.userService.getCurrentUser()); 
     return 'Logged in as ' + this.userService.getCurrentUser()?.displayName;
   }
 

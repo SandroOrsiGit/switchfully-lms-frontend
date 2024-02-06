@@ -37,9 +37,14 @@ export class KeycloakService {
       return false;
     }
     
-    if (this.userService.getCurrentUser() == null) {
+    if (this.userService.getCurrentUser() == (null || undefined)) {
+      console.log("idloggedin: "+this.userService.getCurrentUser())
       this.userService.getUserByToken().subscribe(
-        user => this.userService.setCurrentUser(user)
+        user => {
+          this.userService.setCurrentUser(user)
+          console.log("idloggedin set: "+this.userService.getCurrentUser())
+
+        }
       );
     }
     return !!this.userService.getCurrentUser();
