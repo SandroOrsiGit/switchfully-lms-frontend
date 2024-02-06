@@ -3,8 +3,14 @@ mat-toolbar {
   justify-content: space-between;
   padding-left: 35px;
   padding-right: 35px;
+  background: #489ccc;
 }
 
+.nav-menu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 mat-toolbar span {
     font-size: x-large;
     font-weight: 500;
@@ -27,4 +33,14 @@ mat-toolbar mat-toolbar-single-row {
 
 .navigation span {
   padding-right: 10px;
+}
+.mat-mdc-icon-button {
+  color: #fcfeff;
+}
+.mat-mdc-icon-button.mat-mdc-button-base {
+  background: #77b1d2;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 20px!important;
 }

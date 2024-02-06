@@ -1,6 +1,6 @@
 <mat-toolbar>
   <span routerLink='home'>Switchfully LMS</span>
-
+  <div class="nav-menu">
   <div class="navigation" *ngIf="this.userService.getCurrentUser()">
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
     <span routerLink='/class-groups'>Classes</span>
@@ -10,11 +10,14 @@
   <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
     routerLink='profile'>Login</span>
   <ng-template #logOutTemplate>
-    <button mat-button [matMenuTriggerFor]="menu">{{message()}}</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>{{message()}}
     <mat-menu #menu="matMenu" class="custom-menu">
       <button mat-menu-item routerLink="profile">Profile</button>
       <button mat-menu-item (click)="keycloackService.logout()" routerLink='login'>Logout</button>
     </mat-menu>
   </ng-template>
+  </div>
 
 </mat-toolbar>
