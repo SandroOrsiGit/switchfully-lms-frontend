@@ -40,7 +40,7 @@
       @if (this.createClassGroupForm.get('endDate')?.dirty && createClassGroupForm.hasError('endDateBeforeStartDate')) {
         <mat-error>Start date should be less than end date</mat-error> }
       <div>
-        <app-button [disabled]="createClassGroupForm.invalid" [buttonName]="buttonName" (buttonClick)="onSubmit()"></app-button>
+        <app-button buttonName="Create" [disabled]="createClassGroupForm.invalid" (buttonClick)="onSubmit()"></app-button>
       </div>
     </form>
   </mat-card-content>

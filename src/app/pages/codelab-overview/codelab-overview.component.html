@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
 
-    <h1>Codelabs</h1>
+    <h1>Codelabs for Module: {{module?.name}}</h1>
 
     <table mat-table *ngIf="codelabDataSource.length !== 0; else elseBlock" [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
