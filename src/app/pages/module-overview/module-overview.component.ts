@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {ModuleService} from "../../services/module.service";
 import {ModuleDto} from "../../dtos/ModuleDto";
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, CommonModule, NgForOf} from '@angular/common';
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {ActivatedRoute, RouterLink} from '@angular/router';
@@ -18,7 +18,8 @@ import {CourseDto} from "../../dtos/CourseDto";
     MatTableModule,
     MatCardModule,
     ButtonComponent,
-    RouterLink
+    RouterLink,
+    CommonModule,
   ],
   templateUrl: './module-overview.component.html',
   styleUrl: './module-overview.component.css'
