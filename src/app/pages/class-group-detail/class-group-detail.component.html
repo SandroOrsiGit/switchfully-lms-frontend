@@ -27,7 +27,7 @@
     <h5>List of coaches</h5>
 
 
-    <table mat-table [dataSource]="classGroup.coachDtoList" class="mat-elevation-z8">
+    <table mat-table [dataSource]="classGroup.coaches" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -54,7 +54,7 @@
 
     <h5>List of students</h5>
 
-    <table *ngIf="isCoach()" mat-table [dataSource]="classGroup.studentNoCodelabProgressDtoList" class="mat-elevation-z8">
+    <table *ngIf="isCoach()" mat-table [dataSource]="classGroup.students" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -79,7 +79,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <table *ngIf="!isCoach()" mat-table [dataSource]="classGroup.studentNoCodelabProgressDtoList" class="mat-elevation-z8">
+    <table *ngIf="!isCoach()" mat-table [dataSource]="classGroup.students" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>

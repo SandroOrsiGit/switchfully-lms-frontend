@@ -3,7 +3,7 @@ import {CreateClassGroupDto} from "../dtos/CreateClassGroupDto";
 import {environment} from "../../environments/environments";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ClassGroup} from '../models/ClassGroup';
+import {ClassGroupDto} from '../dtos/ClassGroupDto';
 import {ClassGroupOverviewDto} from "../dtos/ClassGroupOverviewDto";
 
 @Injectable({
@@ -23,16 +23,16 @@ export class ClassGroupService {
     return this.http.get<ClassGroupOverviewDto[]>(this.url + '?userId=' + userId)
   }
 
-  getClassGroupByClassGroupId(classGroupId: number | undefined): Observable<ClassGroup>  {
-    return this.http.get<ClassGroup>(this.url + '/' + classGroupId)
+  getClassGroupByClassGroupId(classGroupId: number | undefined): Observable<ClassGroupDto>  {
+    return this.http.get<ClassGroupDto>(this.url + '/' + classGroupId)
   }
 
   getAllClassGroups(): Observable<ClassGroupOverviewDto[]> {
     return this.http.get<ClassGroupOverviewDto[]>(this.url + '/all');
   }
 
-  addStudentToClassGroup(linkStudent: {classGroupId: number, studentId: number}): Observable<ClassGroup> {
-    return this.http.post<ClassGroup>(this.url + '/add-student', linkStudent);
+  addStudentToClassGroup(linkStudent: {classGroupId: number, studentId: number}): Observable<ClassGroupDto> {
+    return this.http.post<ClassGroupDto>(this.url + '/add-student', linkStudent);
   }
 
 }
