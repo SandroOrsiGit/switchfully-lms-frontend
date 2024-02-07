@@ -16,9 +16,11 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element" >
-          <app-button [buttonName]="btn_module_details" [routerLink]="['/codelabs']" [queryParams]="{ moduleId: element.id}"></app-button>
-          <app-button *ngIf="isCoach()" [buttonName]="btn_edit_module" [routerLink]="['/modules', element.id, 'edit']"></app-button>
-          <app-button *ngIf="isCoach()" [buttonName]="btn_add_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: element.id }" ></app-button>
+          <div class="right-aligned-cell">
+            <app-button [buttonName]="btn_module_details" [routerLink]="['/codelabs']" [queryParams]="{ moduleId: element.id}"></app-button>
+            <app-button *ngIf="isCoach()" [buttonName]="btn_edit_module" [routerLink]="['/modules', element.id, 'edit']"></app-button>
+            <app-button *ngIf="isCoach()" [buttonName]="btn_add_codelab" [routerLink]="['/codelabs/create']" [queryParams]="{ moduleId: element.id }" ></app-button>
+          </div>
         </td>
       </ng-container>
 
