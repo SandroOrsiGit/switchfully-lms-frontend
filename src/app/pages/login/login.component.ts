@@ -29,7 +29,7 @@ export class LoginComponent {
   email = new FormControl('coach@lms.com', [Validators.required, Validators.email]);
   password = new FormControl('coach', [Validators.required]);
   hide: boolean = true;
-
+  logoLMS: string = '../assets/logoLMS.png';
   getEmailErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';

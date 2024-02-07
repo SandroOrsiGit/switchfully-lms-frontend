@@ -1,7 +1,9 @@
 <div class="page-wrapper">
 
+  <div class="container-logo">
+    <img [src]="logoLMS" alt="logo" class = "logo">
   <h1>Register</h1>
-
+  </div>
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-form-field>
       <mat-label>Display Name</mat-label>

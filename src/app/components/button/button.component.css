@@ -3,3 +3,26 @@ button {
   height: 100%;
   padding: 16px;
 }
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+.mat-mdc-raised-button:not(:disabled){
+  padding: 0.5rem 1rem;
+  width: 12rem;
+  font-size: 1.10rem;
+  line-height: 1.5;
+  border-radius: 1.3rem;
+  background-color: #489ccc;
+  color: white;
+}
+
+.mat-mdc-raised-button[disabled][disabled]{
+  padding: 0.5rem 1rem;
+  width: 12rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  border-radius: 1.3rem!important;
+  background-color: #aaafb0!important;
+  color: white;
+}
