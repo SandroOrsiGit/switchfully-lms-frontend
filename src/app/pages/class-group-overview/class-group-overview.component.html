@@ -2,7 +2,7 @@
 
     <h1>Class Groups</h1>
 
-    <table mat-table *ngIf="classGroups.length !== 0; else elseBlock" [dataSource]="classGroups" class="mat-elevation-z8">
+    <table mat-table *ngIf="classGroups.length !== 0" [dataSource]="classGroups" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -30,7 +30,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <ng-template #elseBlock>
-      <p>You are not assigned to any class groups yet.</p>
-    </ng-template>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <div *ngIf="!loading && classGroups.length === 0">
+    <p>This module does not have any codelabs assigned to it.</p>
   </div>
+</div>

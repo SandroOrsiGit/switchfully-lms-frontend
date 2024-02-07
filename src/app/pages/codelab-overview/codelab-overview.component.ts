@@ -15,6 +15,7 @@ import {CodelabDto} from "../../dtos/CodelabDto";
 import {UserService} from "../../services/user.service";
 import {ModuleService} from "../../services/module.service";
 import {ModuleDto} from "../../dtos/ModuleDto";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-codelab',
@@ -29,7 +30,8 @@ import {ModuleDto} from "../../dtos/ModuleDto";
     MatFormFieldModule,
     MatSelectModule,
     NgForOf,
-    NgIf
+    NgIf,
+    MatProgressSpinnerModule
   ],
   templateUrl: './codelab-overview.component.html',
   styleUrl: './codelab-overview.component.css'
@@ -54,7 +56,8 @@ export class CodelabOverviewComponent implements OnInit {
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-  private _module: ModuleDto;
+  private _module: ModuleDto = {} as ModuleDto;
+  loading: boolean = true;
 
   ngOnInit() {
     if(this._route.snapshot.queryParamMap.get('moduleId') !== null) {
@@ -89,6 +92,7 @@ export class CodelabOverviewComponent implements OnInit {
         this._codelabs = codelabs;
         this.codelabDataSource = this._codelabs;
         this.displayedColumns = this.displayedColumnsCoach;
+        this.finishLoading();
       },
     });
   }
@@ -99,6 +103,7 @@ export class CodelabOverviewComponent implements OnInit {
         this._codelabsWithProgress = codelabsWithProgress;
         this.codelabDataSource = this._codelabsWithProgress;
         this.displayedColumns = this.displayedColumnsStudent;
+        this.finishLoading();
       }
     });
   }
@@ -150,6 +155,10 @@ export class CodelabOverviewComponent implements OnInit {
 
   get codelabs(): CodelabDto[] {
     return this._codelabs;
+  }
+
+  finishLoading() {
+    this.loading = false;
   }
 
 }

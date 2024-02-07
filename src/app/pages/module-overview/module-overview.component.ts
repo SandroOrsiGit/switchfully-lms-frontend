@@ -9,6 +9,7 @@ import {ButtonComponent} from "../../components/button/button.component";
 import {CourseService} from "../../services/course.service";
 import {CourseDto} from "../../dtos/CourseDto";
 import {UserService} from "../../services/user.service";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-module-overview',
@@ -21,6 +22,7 @@ import {UserService} from "../../services/user.service";
     ButtonComponent,
     RouterLink,
     CommonModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './module-overview.component.html',
   styleUrl: './module-overview.component.css'
@@ -31,7 +33,9 @@ export class ModuleOverviewComponent implements OnInit {
   private _moduleService: ModuleService = inject(ModuleService);
   private _userService: UserService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
+
   private _course: CourseDto;
+  loading: boolean = true;
 
   displayedColumns: string[] = ['name', 'actions'];
   btn_create_module: string = "Create Module";
@@ -47,6 +51,7 @@ export class ModuleOverviewComponent implements OnInit {
         next: course => {
           this._course = course;
           this.getModules();
+          this.finishLoading();
         }
       })
     }
@@ -70,6 +75,10 @@ export class ModuleOverviewComponent implements OnInit {
 
   isCoach() {
     return this._userService.isCoach();
+  }
+
+  finishLoading() {
+    this.loading = false;
   }
 
 }
