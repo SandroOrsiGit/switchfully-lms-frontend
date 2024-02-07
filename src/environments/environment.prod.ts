@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  backendUrl: ['BACKEND_URL'],
-  keycloakUrl: ['KEYCLOAK_URL'],
+  backendUrl: process.env['BACKEND_URL'],
+  keycloakUrl: process.env['KEYCLOAK_URL'],
 };
