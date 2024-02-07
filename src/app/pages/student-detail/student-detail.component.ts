@@ -28,7 +28,7 @@ import {StudentWithCoursesDto} from "../../dtos/StudentWithCoursesDto";
     MatTableModule,
     NgForOf,
     NgIf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './student-detail.component.html',
   styleUrl: './student-detail.component.css'
@@ -39,7 +39,10 @@ export class StudentDetailComponent implements OnInit {
   private _userService: UserService = inject(UserService);
   private _currentStudentId: number;
 
-  private _studentWithCoursesDto!: StudentWithCoursesDto | undefined;
+  studentWithCoursesDto: StudentWithCoursesDto;
+  displayedColumns: ['name'];
+
+  dataSource: string[] = [];
 
   ngOnInit(): void {
     this._activeRoute.params.subscribe(
@@ -48,13 +51,11 @@ export class StudentDetailComponent implements OnInit {
       });
     this._userService.getStudentById(this._currentStudentId).subscribe({
       next: (student) => {
-        this._studentWithCoursesDto = student;
+        this.studentWithCoursesDto = student;
+        this.dataSource = this.studentWithCoursesDto.courseDtoList.map((CourseDto) => CourseDto.name);
       }
     })
   }
 
-  get studentWithCoursesDto(): StudentWithCoursesDto | undefined {
-    return this._studentWithCoursesDto;
-  }
 
 }
