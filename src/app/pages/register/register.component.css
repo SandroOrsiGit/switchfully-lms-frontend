@@ -6,6 +6,7 @@ form {
 
 h1 {
   text-align: center;
+  color: #489ccc;
 }
 
 mat-form-field {
@@ -45,4 +46,17 @@ mat-form-field {
 .register-button {
   display: flex;
   justify-content: center;
+}
+
+.logo {
+  max-width:12rem;
+  height: auto;
+  padding: 2.3em 0 4em;
+}
+
+.container-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
