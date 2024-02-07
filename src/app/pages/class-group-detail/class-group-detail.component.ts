@@ -1,7 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core';
 import {ClassGroupService} from '../../services/class-group.service';
 import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {ClassGroup} from '../../models/ClassGroup';
+import {ClassGroupDto} from '../../dtos/ClassGroupDto';
 import {AsyncPipe, CommonModule} from '@angular/common';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
@@ -41,7 +41,7 @@ export class ClassGroupDetailComponent implements OnInit {
 
   private classGroupId: number = 0;
   private currentStudentId: number;
-  private _classGroup: ClassGroup;
+  private _classGroup: ClassGroupDto;
   private _studentDtoList: StudentDto[] = [];
   studentListAutoComplete = new FormControl('');
   addStudentForm = new FormGroup({
@@ -120,11 +120,8 @@ export class ClassGroupDetailComponent implements OnInit {
         return false;
       });
   }
-  get classGroup(): ClassGroup {
+  get classGroup(): ClassGroupDto {
     return this._classGroup;
   }
 
-  get studentDtoList(): StudentDto[] {
-    return this._studentDtoList;
-  }
 }

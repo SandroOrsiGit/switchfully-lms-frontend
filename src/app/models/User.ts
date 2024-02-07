@@ -1,10 +1,10 @@
-import {ClassGroup} from './ClassGroup';
+import {ClassGroupDto} from '../dtos/ClassGroupDto';
 
 export interface User {
     id: number,
     email: string,
     displayName: string,
     role?: string,
-    classes: ClassGroup[],
+    classes: ClassGroupDto[],
     password?: string
 }

@@ -19,7 +19,7 @@
           <div>
             <app-button [buttonName]="btn_course_details" [routerLink]="['/modules']" [queryParams]="{ courseId: element.id}"></app-button>
             <app-button *ngIf="isCoach()" [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
-            <app-button *ngIf="isCoach()" [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
+            <app-button *ngIf="isCoach()" [buttonName]="btn_add_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
           </div>
         </td>
       </ng-container>

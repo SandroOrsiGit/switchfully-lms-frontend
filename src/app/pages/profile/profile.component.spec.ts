@@ -87,14 +87,14 @@ describe('ProfileComponent', () => {
           id: 1,
           name: 'Classgroup_test1',
           course_id: 1,
-          coachDtoList: [
+          coaches: [
             {
               id: 456,
               email: 'coach@example.com',
               displayName: 'Coach Name',
             }
           ],
-          studentNoCodelabProgressDtoList: [
+          students: [
             {
               id: 789,
               email: 'student@example.com',
@@ -135,14 +135,14 @@ describe('ProfileComponent', () => {
           id: 1,
           name: 'Classgroup_test1',
           course_id: 1,
-          coachDtoList: [
+          coaches: [
             {
               id: 456,
               email: 'coach@example.com',
               displayName: 'Coach Name',
             }
           ],
-          studentNoCodelabProgressDtoList: [
+          students: [
             {
               id: 789,
               email: 'student@example.com',
@@ -183,14 +183,14 @@ describe('ProfileComponent', () => {
           id: 1,
           name: 'Classgroup_test1',
           course_id: 1,
-          coachDtoList: [
+          coaches: [
             {
               id: 456,
               email: 'coach@example.com',
               displayName: 'Coach Name',
             }
           ],
-          studentNoCodelabProgressDtoList: [
+          students: [
             {
               id: 789,
               email: 'student@example.com',
