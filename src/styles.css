@@ -1,4 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 80%;
+    margin: auto;
+}
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10%; /* bottom margin to compensate footer height */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 100; /* to avoid button text from peeking through the footer */
+    height: 10%;
+}
+
+.container {
+    flex: 1;
+    overflow-y: auto;
+}

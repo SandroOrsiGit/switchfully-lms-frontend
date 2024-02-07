@@ -1,17 +1,8 @@
-<mat-card>
-  <mat-card-content>
+<div class="page-wrapper">
 
     <h1>Create codelab</h1>
 
     <form>
-      <mat-form-field>
-        <mat-label>Assign module</mat-label>
-        <mat-select [formControl]="moduleId" required>
-          @for (module of modules; track module) {
-          <mat-option [value]="module.id">{{module.name}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
       <div>
         <mat-form-field>
           <mat-label>Enter codelab name</mat-label>
@@ -19,9 +10,18 @@
         </mat-form-field>
       </div>
       <div>
+        <mat-form-field>
+          <mat-label>Assign module</mat-label>
+          <mat-select [formControl]="moduleId" required>
+            @for (module of modules; track module) {
+            <mat-option [value]="module.id">{{module.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
         <app-button buttonName="Create" [disabled]="!createCodelabForm.valid" (buttonClick)="onCreate()"></app-button>
       </div>
     </form>
 
-  </mat-card-content>
-</mat-card>
+</div>
