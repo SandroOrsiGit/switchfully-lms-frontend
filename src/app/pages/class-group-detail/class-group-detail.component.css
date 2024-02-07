@@ -24,6 +24,17 @@ table {
   table-layout: fixed ;
   width: 100% ;
 }
+
 td {
   width: 33% ;
 }
+
+form {
+  display: flex;
+  gap: 30px;
+}
+
+app-button {
+  height: 100%;
+}
+
