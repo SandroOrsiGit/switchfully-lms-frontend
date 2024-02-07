@@ -14,7 +14,7 @@ import { ClassGroupDetailComponent } from './pages/class-group-detail/class-grou
 import {CodelabOverviewComponent} from "./pages/codelab-overview/codelab-overview.component";
 import {CourseOverviewComponent} from "./pages/course-overview/course-overview.component";
 import {ModuleOverviewComponent} from "./pages/module-overview/module-overview.component";
-import {StudentOverviewComponent} from "./pages/student-overview/student-overview.component";
+import {StudentDetailComponent} from "./pages/student-detail/student-detail.component";
 import { CodelabDetailComponent } from './pages/codelab-detail/codelab-detail.component';
 import {CodelabEditComponent} from "./pages/codelab-edit/codelab-edit.component";
 import {ClassGroupOverviewComponent} from "./pages/class-group-overview/class-group-overview.component";
@@ -47,7 +47,7 @@ export const routes: Routes = [
   {path: 'class-groups/create', component: CreateClassGroupComponent, canActivate: [coachGuard]},
   {path: 'class-groups/:id', component: ClassGroupDetailComponent, canActivate: [authGuard]},
 
-  {path: 'student-overview/:id', component: StudentOverviewComponent},
+  {path: 'student-detail/:id', component: StudentDetailComponent, canActivate: [coachGuard]},
   // {path: 'submodule/create', component: CreateSubModuleComponent},
   { path: '**', redirectTo: '' }
 ];
