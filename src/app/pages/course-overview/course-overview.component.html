@@ -1,4 +1,4 @@
-<div class="">
+<div class="page-wrapper">
 
     <h1>Courses</h1>
 
@@ -6,7 +6,7 @@
       <app-button [buttonName]="btn_create_course" routerLink="/courses/create"></app-button>
     </div>
 
-    <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+    <table mat-table *ngIf="courses.length !== 0" [dataSource]="courses" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -16,10 +16,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <div>
-            <app-button [buttonName]="btn_course_details" [routerLink]="['/modules', element.id]"></app-button>
+          <div class="right-aligned-cell">
+            <app-button [buttonName]="btn_course_details" [routerLink]="['/modules']" [queryParams]="{ courseId: element.id}"></app-button>
             <app-button *ngIf="isCoach()" [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
-            <app-button *ngIf="isCoach()" [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
+            <app-button *ngIf="isCoach()" [buttonName]="btn_add_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
           </div>
         </td>
       </ng-container>
@@ -27,5 +27,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <div *ngIf="!loading && courses.length === 0">
+    <p>This module does not have any codelabs assigned to it.</p>
+  </div>
 
 </div>

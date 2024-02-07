@@ -1,48 +1,41 @@
-<div class="">
+<div class="page-wrapper">
 
   <h1>Register</h1>
 
   <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <div>
-      <mat-form-field>
-        <mat-label>Display Name</mat-label>
-        <input matInput placeholder="Enter your display name" [formControl]="displayName" required>
-        @if (displayName.invalid) {
-        <mat-error>Must provide display name</mat-error>
-        }
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-    </div>
+    <mat-form-field>
+      <mat-label>Display Name</mat-label>
+      <input matInput placeholder="Enter your display name" [formControl]="displayName" required>
+      @if (displayName.invalid) {
+      <mat-error>Must provide display name</mat-error>
+      }
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
 
-    <div>
-      <mat-form-field>
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
-        @if (email.errors?.['required']) {
-        <mat-error>Must provide email</mat-error>
-        }
-        @else if (email.errors?.['email']) {
-        <mat-error>Not a valid email</mat-error>
-        }
-        <mat-icon matSuffix>email</mat-icon>
-      </mat-form-field>
-    </div>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      @if (email.errors?.['required']) {
+      <mat-error>Must provide email</mat-error>
+      }
+      @else if (email.errors?.['email']) {
+      <mat-error>Not a valid email</mat-error>
+      }
+      <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
 
-    <div>
-      <mat-form-field>
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
-        @if (password.invalid) {
-        <mat-error>Must provide password</mat-error>
-        }
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+      @if (password.invalid) {
+      <mat-error>Must provide password</mat-error>
+      }
 
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-
-    </div>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
 
     <div>
       <mat-form-field>
@@ -56,14 +49,15 @@
 
       </mat-form-field>
 
-
       @if ( this.registerForm.get('passwordConfirm')?.dirty &&
       this.registerForm.hasError('passwordsNotMatching')) {
       <mat-error> Passwords are not matching!</mat-error>
       }
 
-
     </div>
-    <app-button [disabled]="!registerForm.valid" [buttonName]="'Register'">Register</app-button>  </form>
+    <div class="register-button">
+      <app-button [disabled]="!registerForm.valid" [buttonName]="'Register'">Register</app-button>
+    </div>
+  </form>
 
-  </div>
+</div>

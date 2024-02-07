@@ -1,7 +1,6 @@
 div {
     width: 90%;
-    margin: auto;
-    margin-top: 3rem;
+    margin: 3rem auto;
 }
 
 mat-expansion-panel {
@@ -24,7 +23,19 @@ mat-expansion-panel p {
 table {
   table-layout: fixed ;
   width: 100% ;
+  
 }
+
 td {
-  width: 33% ;
+  width: 33%;
 }
+
+form {
+  display: flex;
+  gap: 30px;
+}
+
+app-button {
+  height: 100%;
+}
+

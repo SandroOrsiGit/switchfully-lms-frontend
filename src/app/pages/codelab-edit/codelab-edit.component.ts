@@ -5,13 +5,14 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CodelabDto } from '../../dtos/CodelabDto';
 import { CodelabService } from '../../services/codelab.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UpdateCodelabDto } from '../../dtos/UpdateCodelabDto';
 import { ModuleService } from '../../services/module.service';
 import { ModuleDto } from '../../dtos/ModuleDto';
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-update-codelab',
@@ -34,14 +35,13 @@ export class CodelabEditComponent implements OnInit {
   private _codelabService: CodelabService = inject(CodelabService);
   private _moduleService: ModuleService = inject(ModuleService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
-  private _router = inject(Router);
   private _snackBar = inject(MatSnackBar);
+  private _location: Location = inject(Location);
 
   private _codelab: CodelabDto;
   modules: ModuleDto[] = [];
   private _currentModule: ModuleDto;
 
-  private isFormEdited = false;
   name: FormControl<string | null> = new FormControl(null, [Validators.required]);
   moduleId: FormControl<number | null> = new FormControl(null, [Validators.required]);
   editCodelabForm = new FormGroup( {
@@ -52,9 +52,6 @@ export class CodelabEditComponent implements OnInit {
   ngOnInit(): void {
     this.getCodelab();
     this.getModules();
-    this.editCodelabForm.valueChanges.subscribe(() => {
-      this.isFormEdited = true;
-    });
   }
 
   getCodelab() {
@@ -96,7 +93,7 @@ export class CodelabEditComponent implements OnInit {
         this._snackBar.open('Successfully edited codelab', 'Close', {
           duration: 1000
         });
-        this._router.navigate(['/codelabs']);
+        this._location.back();
       },
       error: () => {
         this._snackBar.open('Only coaches can edit a codelab', 'Close', {
@@ -104,10 +101,6 @@ export class CodelabEditComponent implements OnInit {
         });
       }
     });
-  }
-
-  toggleButton(): boolean {
-    return !this.isFormEdited;
   }
 
   get codelab() {

@@ -1,4 +1,4 @@
-<div class="">
+<div class="page-wrapper">
 
     <h1>Create course</h1>
     <form>
@@ -9,7 +9,7 @@
         </mat-form-field>
       </div>
       <div>
-        <app-button buttonName="Add" (buttonClick)="onCreate()"></app-button>
+        <app-button buttonName="Create" [disabled]="!createCourseForm.valid" (buttonClick)="onCreate()"></app-button>
       </div>
     </form>
     

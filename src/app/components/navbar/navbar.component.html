@@ -12,7 +12,7 @@
   </div>
 
   <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
-    routerLink='profile'>Login</span>
+    routerLink='profile'>Login / Register</span>
   <ng-template #logOutTemplate>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>

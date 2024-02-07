@@ -40,7 +40,7 @@ export class CodelabService {
   }
 
   editCodelab(codelabId: number, updateCodelabDto : UpdateCodelabDto): Observable<void> {
-    return this.http.put<void>(this._url, updateCodelabDto);
+    return this.http.put<void>(`${this._url}/${codelabId}`, updateCodelabDto);
   }
 
 }

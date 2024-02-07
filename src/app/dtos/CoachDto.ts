@@ -1,5 +1,5 @@
 export interface CoachDto {
-    id: number,
-    email: string,
-    displayName: string,
+  id: number,
+  email: string,
+  displayName: string,
 }

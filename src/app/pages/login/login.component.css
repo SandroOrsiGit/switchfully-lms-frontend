@@ -1,11 +1,11 @@
-mat-card {
-  height: 75%;
-  box-shadow: none;
+
+h1 {
+  text-align: center;
 }
 
-
-mat-card-content {
-  margin: auto;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
 mat-form-field {
@@ -25,6 +25,7 @@ img {
   color: white;
   text-transform: uppercase!important;
 }
+
 .mat-mdc-raised-button[disabled][disabled]{
   padding: 0.5rem 1rem;
   width: 80%;
@@ -34,9 +35,6 @@ img {
   background-color: #aaafb0!important;
   color: white;
   text-transform: uppercase!important;
-}
-h1 {
-  text-align: center;
 }
 
 .register-link {
@@ -48,4 +46,9 @@ h1 {
 
 .register-link p {
   margin: 0;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
 }

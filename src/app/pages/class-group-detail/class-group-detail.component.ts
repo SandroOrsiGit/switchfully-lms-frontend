@@ -1,7 +1,7 @@
 import {Component, OnInit, inject} from '@angular/core';
 import {ClassGroupService} from '../../services/class-group.service';
 import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {ClassGroup} from '../../models/ClassGroup';
+import {ClassGroupDto} from '../../dtos/ClassGroupDto';
 import {AsyncPipe, CommonModule} from '@angular/common';
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/User";
@@ -13,6 +13,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StudentDto} from "../../dtos/StudentDto";
 import {map, Observable, startWith} from "rxjs";
+import { MatDividerModule } from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @Component({
   selector: 'app-classgroup-overview',
@@ -27,6 +29,8 @@ import {map, Observable, startWith} from "rxjs";
     AsyncPipe,
     MatInputModule,
     MatAutocompleteModule,
+    MatDividerModule,
+    MatListModule,
   ],
   templateUrl: './class-group-detail.component.html',
   styleUrl: './class-group-detail.component.css'
@@ -41,7 +45,7 @@ export class ClassGroupDetailComponent implements OnInit {
 
   private classGroupId: number = 0;
   private currentStudentId: number;
-  private _classGroup: ClassGroup;
+  private _classGroup: ClassGroupDto;
   private _studentDtoList: StudentDto[] = [];
   studentListAutoComplete = new FormControl('');
   addStudentForm = new FormGroup({
@@ -120,11 +124,8 @@ export class ClassGroupDetailComponent implements OnInit {
         return false;
       });
   }
-  get classGroup(): ClassGroup {
+  get classGroup(): ClassGroupDto {
     return this._classGroup;
   }
 
-  get studentDtoList(): StudentDto[] {
-    return this._studentDtoList;
-  }
 }

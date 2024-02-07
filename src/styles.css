@@ -2,12 +2,54 @@
 html, body {
     height: 100%;
     margin: 0;
+    padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+table {
+  border: 50px solid red;
+  box-shadow: none;
+  margin-top: 1rem;
+  table-layout: fixed ;
+  width: 100% ;
+}
+
+td {
+  padding: 5px !important;
+}
+
+.right-aligned-cell {
+  display: flex;
+  justify-content: end;
+}
+
+app-button {
+  margin-right: max(1rem, 10%);
 }
 
 .container {
     padding-top: 3%;
+    padding-bottom: 3%;
     width: 80%;
     margin: auto;
 }
 
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10%; /* bottom margin to compensate footer height */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 100; /* to avoid button text from peeking through the footer */
+    height: 10%;
+}
+
+.container {
+    flex: 1;
+    overflow-y: auto;
+}

@@ -4,7 +4,7 @@
 // import { ClassGroupService } from '../../services/class-group.service';
 // import { UserService } from '../../services/user.service';
 // import { of } from 'rxjs';
-// import { ClassGroup } from '../../models/ClassGroup';
+// import { ClassGroupDto } from '../../models/ClassGroupDto';
 // import { User } from '../../models/User';
 // import {HttpClientTestingModule} from "@angular/common/http/testing";
 // import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -24,7 +24,7 @@
 //   let userServiceMock: jasmine.SpyObj<UserService>;
 //   let routerMock: jasmine.SpyObj<Router>;
 //   let activatedRoute: ActivatedRoute;
-//   let classGroup: ClassGroup;
+//   let classGroup: ClassGroupDto;
 //
 //   beforeEach(() => {
 //     classGroupServiceMock = jasmine.createSpyObj('ClassGroupService', ['getClassGroupByClassGroupId']);
@@ -34,8 +34,8 @@
 //       id: 1,
 //       name: 'Java Testing Classgroup',
 //       course_id: 1,
-//       coachDtoList: [],
-//       studentNoCodelabProgressDtoList: []
+//       coaches: [],
+//       students: []
 //     };
 //     activatedRoute = {
 //       snapshot: {

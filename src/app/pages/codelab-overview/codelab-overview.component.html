@@ -1,37 +1,49 @@
-<div class="">
+<div class="page-wrapper">
 
-    <h1>Codelabs</h1>
+  <h1>Codelabs for Module: {{module?.name}}</h1>
 
-    <table mat-table [dataSource]="codelabDataSource" class="mat-elevation-z8">
+  <div *ngIf="isCoach()">
+    <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']"
+                [queryParams]="{ moduleId: module.id }"></app-button>
+  </div>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
+  <table mat-table *ngIf="codelabs.length !== 0" [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="progress">
-        <th mat-header-cell *matHeaderCellDef>Progress</th>
-        <td mat-cell *matCellDef="let element">
-          <mat-form-field>
-            <mat-select [value]="element.progress.id" (valueChange)="updateProgress(element.id, $event)" required>
-              @for (progress of progressOptions; track progress) {
-              <mat-option [value]="progress.id">{{progress.name}}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let element">
-          <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
-          <app-button *ngIf="isCoach()" [buttonName]="btn_edit_codelab" [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
-        </td>
-      </ng-container>
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef>Progress</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <mat-select [value]="element.progress.id" (valueChange)="updateProgress(element.id, $event)" required>
+            @for (progress of progressOptions; track progress) {
+            <mat-option [value]="progress.id">{{progress.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <app-button [buttonName]="btn_codelab_details" [routerLink]="['/codelabs', element.id]"></app-button>
+        <app-button *ngIf="isCoach()" [buttonName]="btn_edit_codelab"
+                    [routerLink]="['/codelabs', element.id, 'edit']"></app-button>
+      </td>
+    </ng-container>
 
-<div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <div *ngIf="!loading && codelabs.length === 0">
+    <p>This module does not have any codelabs assigned to it.</p>
+  </div>
+</div>
+

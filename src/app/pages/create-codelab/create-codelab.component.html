@@ -1,4 +1,4 @@
-<div class="">
+<div class="page-wrapper">
 
     <h1>Create codelab</h1>
 
@@ -9,14 +9,16 @@
           <input matInput placeholder="Codelab name" [formControl]="name" required>
         </mat-form-field>
       </div>
-      <mat-form-field>
-        <mat-label>Available Modules</mat-label>
-        <mat-select [formControl]="moduleId" required>
-          @for (module of modules; track module) {
-          <mat-option [value]="module.id">{{module.name}}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+      <div>
+        <mat-form-field>
+          <mat-label>Assign module</mat-label>
+          <mat-select [formControl]="moduleId" required>
+            @for (module of modules; track module) {
+            <mat-option [value]="module.id">{{module.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div>
         <app-button buttonName="Create" [disabled]="!createCodelabForm.valid" (buttonClick)="onCreate()"></app-button>
       </div>

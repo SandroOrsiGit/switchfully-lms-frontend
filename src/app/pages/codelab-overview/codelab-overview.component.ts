@@ -13,6 +13,9 @@ import {CodelabWithProgressDto} from "../../dtos/CodelabWithProgressDto";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {CodelabDto} from "../../dtos/CodelabDto";
 import {UserService} from "../../services/user.service";
+import {ModuleService} from "../../services/module.service";
+import {ModuleDto} from "../../dtos/ModuleDto";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-codelab',
@@ -27,7 +30,8 @@ import {UserService} from "../../services/user.service";
     MatFormFieldModule,
     MatSelectModule,
     NgForOf,
-    NgIf
+    NgIf,
+    MatProgressSpinnerModule
   ],
   templateUrl: './codelab-overview.component.html',
   styleUrl: './codelab-overview.component.css'
@@ -35,6 +39,7 @@ import {UserService} from "../../services/user.service";
 export class CodelabOverviewComponent implements OnInit {
 
   private _codelabService: CodelabService = inject(CodelabService);
+  private _moduleService: ModuleService = inject(ModuleService);
   private _progressService: ProgressService = inject(ProgressService);
   private _userService = inject(UserService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
@@ -43,54 +48,62 @@ export class CodelabOverviewComponent implements OnInit {
   displayedColumns: string[];
   displayedColumnsStudent: string[] = ['name', 'progress', 'actions'];
   displayedColumnsCoach: string[] = ['name', 'actions'];
-  btn_codelab_details: string = "Codelab Details";
-  btn_edit_codelab: string = "Edit Codelab";
+  btn_codelab_details: string = "Details";
+  btn_edit_codelab: string = "Edit";
+  btn_create_codelab: string = "Create Codelab"
 
   codelabDataSource: any[] = [];
   private _codelabsWithProgress: CodelabWithProgressDto[] = [];
   private _codelabs: CodelabDto[] = [];
   private _progressOptions: ProgressDto[] = [];
-  private _moduleId: number;
+  private _module: ModuleDto = {} as ModuleDto;
+  loading: boolean = true;
 
   ngOnInit() {
     if(this._route.snapshot.queryParamMap.get('moduleId') !== null) {
-      this._moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
-    }
+      const moduleId = parseInt(this._route.snapshot.queryParamMap.get('moduleId')!);
 
-    if (this._userService.isCoach()) {
-      this.setCoachSettings();
-    } else {
-      this.setStudentSettings();
+      this._moduleService.getModule(moduleId).subscribe({
+        next: module => {
+          this._module = module;
+          if (this._userService.isCoach()) {
+            this.setCoachSettings(this._module.id);
+          } else {
+            this.setStudentSettings(this._module.id);
+          }
+        }
+      })
     }
 
     this.getProgressOptions();
-
   }
 
-  setCoachSettings() {
-    this.getCodelabs();
+  setCoachSettings(moduleId: number) {
+    this.getCodelabs(moduleId);
   }
 
-  setStudentSettings() {
-    this.getCodelabsWithProgress();
+  setStudentSettings(moduleId: number) {
+    this.getCodelabsWithProgress(moduleId);
   }
 
-  getCodelabs() {
-    this._codelabService.getCodelabsByModuleId(this._moduleId).subscribe({
+  getCodelabs(moduleId: number) {
+    this._codelabService.getCodelabsByModuleId(moduleId).subscribe({
       next: (codelabs) => {
         this._codelabs = codelabs;
         this.codelabDataSource = this._codelabs;
         this.displayedColumns = this.displayedColumnsCoach;
+        this.finishLoading();
       },
     });
   }
 
-  private getCodelabsWithProgress() {
-    this._codelabService.getCodelabsWithProgressByModuleId(this._moduleId).subscribe({
+  private getCodelabsWithProgress(moduleId: number) {
+    this._codelabService.getCodelabsWithProgressByModuleId(moduleId).subscribe({
       next: (codelabsWithProgress) => {
         this._codelabsWithProgress = codelabsWithProgress;
         this.codelabDataSource = this._codelabsWithProgress;
         this.displayedColumns = this.displayedColumnsStudent;
+        this.finishLoading();
       }
     });
   }
@@ -128,12 +141,24 @@ export class CodelabOverviewComponent implements OnInit {
     );
   }
 
+  get module() {
+    return this._module;
+  }
+
   isStudent() {
     return this._userService.isStudent();
   }
 
   isCoach() {
     return this._userService.isCoach();
+  }
+
+  get codelabs(): CodelabDto[] {
+    return this._codelabs;
+  }
+
+  finishLoading() {
+    this.loading = false;
   }
 
 }
