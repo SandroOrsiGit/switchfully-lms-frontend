@@ -6,7 +6,7 @@
       <app-button [buttonName]="btn_create_course" routerLink="/courses/create"></app-button>
     </div>
 
-    <table mat-table *ngIf="courses.length !== 0; else elseBlock" [dataSource]="courses" class="mat-elevation-z8">
+    <table mat-table *ngIf="courses.length !== 0" [dataSource]="courses" class="mat-elevation-z8">
 
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -28,7 +28,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <ng-template #elseBlock>
-      <p>Your current classgroup does not have any courses assigned to it.</p>
-    </ng-template>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+
+  <div *ngIf="!loading && courses.length === 0">
+    <p>This module does not have any codelabs assigned to it.</p>
+  </div>
 </div>
