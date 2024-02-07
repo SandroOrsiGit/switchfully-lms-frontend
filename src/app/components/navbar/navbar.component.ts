@@ -14,10 +14,13 @@ import {MatIconModule} from "@angular/material/icon";
   imports: [MatToolbarModule, RouterLink, NgIf, MatButtonModule, MatMenuModule, MatIconModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
+
 })
 export class NavbarComponent {
     userService = inject(UserService);
     keycloackService = inject(KeycloakService);
+    logoLMS: string = '../assets/logoLMS.png';
+
   message() {
     return 'Welcome ' + this.userService.getCurrentUser()?.displayName;
   }

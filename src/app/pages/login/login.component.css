@@ -12,6 +12,9 @@ mat-form-field {
   margin-bottom: 0.5em;
 }
 
+img {
+  margin-right: 1em;
+}
 .mat-mdc-raised-button:not(:disabled){
   padding: 0.5rem 1rem;
   width: 80%;

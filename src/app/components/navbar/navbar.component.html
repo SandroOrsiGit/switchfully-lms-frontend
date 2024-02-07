@@ -1,5 +1,7 @@
 <mat-toolbar>
-  <span routerLink='home'>Switchfully LMS</span>
+
+  <span routerLink='home' class="logo-text">
+    <img [src]="logoLMS" alt="logo" class = "logo"> SWITCHFULLY LMS</span>
   <div class="nav-menu">
   <div class="navigation" *ngIf="this.userService.getCurrentUser()">
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
@@ -19,5 +21,4 @@
     </mat-menu>
   </ng-template>
   </div>
-
 </mat-toolbar>

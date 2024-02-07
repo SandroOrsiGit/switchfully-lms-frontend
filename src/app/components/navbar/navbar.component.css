@@ -3,9 +3,14 @@ mat-toolbar {
   justify-content: space-between;
   padding-left: 35px;
   padding-right: 35px;
-  background: #489ccc;
+  background: #076491;
+  color: #fcfeff;
+  align-items: center;
 }
-
+.logo-text{
+  display: flex;
+  align-items: center;
+}
 .nav-menu{
   display: flex;
   justify-content: flex-end;
@@ -43,4 +48,8 @@ mat-toolbar mat-toolbar-single-row {
 
 .mat-toolbar-row, .mat-toolbar-single-row {
   padding: 0 20px!important;
+}
+.logo {
+  width: 6rem;
+  height: 2rem;
 }
