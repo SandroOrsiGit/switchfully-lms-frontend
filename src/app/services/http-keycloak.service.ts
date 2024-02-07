@@ -15,7 +15,7 @@ export class HttpKeycloakService {
   };
 
   constructor(private http: HttpClient) {
-    this._url = environment.keycloakUrl;
+    this._url = `${environment.backendUrl}`;
   }
 
    login(loginData: {email: string, password: string}): Observable<KeycloakTokenResponse> {
