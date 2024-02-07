@@ -2,37 +2,13 @@
 
 <!--  <h1>Student detail</h1>-->
 
-<!--  <h3>Currently viewing: {{student.name}}</h3>-->
+<!--  <h3>Currently viewing: {{studentWithCoursesDto?.displayName}}</h3>-->
 
 <!--  <mat-list>-->
-<!--    <div>-->
-<!--      <form *ngIf="isCoach()" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">-->
+<!--        <div>-->
+<!--      <h5>List of courses</h5>-->
 
-<!--        <mat-form-field>-->
-<!--          <mat-label>Student</mat-label>-->
-<!--          <input type="text"-->
-<!--                 placeholder="Pick one"-->
-<!--                 aria-label="Number"-->
-<!--                 matInput-->
-<!--                 [formControl]="studentListAutoComplete"-->
-<!--                 [matAutocomplete]="auto">-->
-<!--          <mat-autocomplete #auto="matAutocomplete">-->
-<!--            <ng-container *ngFor="let option of filteredOptions | async">-->
-<!--              <mat-option [value]="option.displayName">{{option.displayName}}</mat-option>-->
-<!--            </ng-container>-->
-<!--          </mat-autocomplete>-->
-<!--        </mat-form-field>-->
-
-<!--        <app-button [buttonName]="btn_add_student" ></app-button>-->
-<!--      </form>-->
-<!--    </div>-->
-
-<!--    <mat-divider></mat-divider>-->
-
-<!--    <div>-->
-<!--      <h5>List of coaches</h5>-->
-
-<!--      <table mat-table [dataSource]="classGroup.coaches" class="mat-elevation-z8">-->
+<!--      <table mat-table [dataSource]="studentWithCoursesDto?.courseDtoList" class="mat-elevation-z8">-->
 
 <!--        <ng-container matColumnDef="name">-->
 <!--          <th mat-header-cell *matHeaderCellDef>Name</th>-->

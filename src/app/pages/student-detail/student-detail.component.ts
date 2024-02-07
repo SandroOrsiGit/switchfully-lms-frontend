@@ -33,25 +33,28 @@ import {StudentWithCoursesDto} from "../../dtos/StudentWithCoursesDto";
   templateUrl: './student-detail.component.html',
   styleUrl: './student-detail.component.css'
 })
-export class
-StudentDetailComponent implements OnInit{
+export class StudentDetailComponent implements OnInit {
 
   private _activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private _userService: UserService = inject(UserService);
   private _currentStudentId: number;
 
-  private _studentWithCoursesDto: StudentWithCoursesDto;
+  private _studentWithCoursesDto!: StudentWithCoursesDto | undefined;
 
   ngOnInit(): void {
     this._activeRoute.params.subscribe(
       (params: Params) => {
-        this._currentStudentId += params["id"]
+        this._currentStudentId = params["id"]
       });
-    this._userService.getStudentById(this._currentStudentId).pipe().subscribe({
-      next:(student) => {
+    this._userService.getStudentById(this._currentStudentId).subscribe({
+      next: (student) => {
         this._studentWithCoursesDto = student;
       }
     })
+  }
+
+  get studentWithCoursesDto(): StudentWithCoursesDto | undefined {
+    return this._studentWithCoursesDto;
   }
 
 }
