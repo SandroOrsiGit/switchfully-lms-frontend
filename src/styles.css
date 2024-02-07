@@ -6,16 +6,17 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
 table {
-  border: 50px solid red;
   box-shadow: none;
-  margin-top: 1rem;
+  margin: 1rem 0 3rem;
   table-layout: fixed ;
   width: 100% ;
 }
 
+
 td {
-  padding: 5px !important;
+  padding: 16px !important;
 }
 
 .right-aligned-cell {
@@ -39,7 +40,9 @@ app-button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 10%; /* bottom margin to compensate footer height */
+    width: 90%;
+    margin: 3rem auto 10%;
+    /* bottom margin to compensate footer height */
 }
 
 .footer {
@@ -52,4 +55,21 @@ app-button {
 .container {
     flex: 1;
     overflow-y: auto;
+}
+
+mat-list {
+  width: 100%;
+}
+mat-divider {
+  width: 100%;
+}
+
+.inline-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.inline-form > * {
+  height: 100%;
+  margin: 1rem 0;
 }
