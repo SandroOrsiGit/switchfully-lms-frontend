@@ -4,6 +4,7 @@
     <form>
       <div>
         <mat-form-field>
+
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="student@lms.com" [formControl]="email" required>
           @if (email.invalid) {
