@@ -51,7 +51,6 @@ export class ModuleOverviewComponent implements OnInit {
         next: course => {
           this._course = course;
           this.getModules();
-          this.finishLoading();
         }
       })
     }
@@ -60,7 +59,10 @@ export class ModuleOverviewComponent implements OnInit {
   private getModules() {
     this._moduleService.getModules(this._course.id).subscribe(
       {
-        next: modules => this._modules = modules,
+        next: modules => {
+          this._modules = modules
+          this.finishLoading();
+        },
       }
     );
   }
