@@ -8,7 +8,7 @@
   </div>
 
   <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
-    routerLink='profile'>Login</span>
+    routerLink='profile'>Login / Register</span>
   <ng-template #logOutTemplate>
     <button mat-button [matMenuTriggerFor]="menu">{{message()}}</button>
     <mat-menu #menu="matMenu" class="custom-menu">

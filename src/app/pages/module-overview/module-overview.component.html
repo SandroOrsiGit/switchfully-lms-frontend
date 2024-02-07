@@ -1,5 +1,4 @@
-<mat-card>
-  <mat-card-content>
+<div class="page-wrapper">
 
     <h1>Modules for Course: {{course?.name}}</h1>
 
@@ -26,10 +25,9 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-
+  
     <ng-template #elseBlock>
       <p>This course does not have any modules assigned to it.</p>
     </ng-template>
+</div>
 
-  </mat-card-content>
-</mat-card>
