@@ -17,22 +17,17 @@ img {
   margin-right: 1em;
 }
 
-
 .register-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-bottom: 20px;
+  justify-content: center;
+  padding-bottom: 3em;
 }
 
 .register-link p {
   margin: 0;
 }
-
-/*.login-button {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
 
 .logo {
   max-width:12rem;
