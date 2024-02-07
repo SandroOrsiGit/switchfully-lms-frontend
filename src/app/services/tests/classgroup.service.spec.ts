@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {ClassGroupService} from '../class-group.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {CreateClassGroupDto} from '../../dtos/CreateClassGroupDto';
-import {environment} from '../../../environments/environment.development';
+import {environment} from '../../../environments/environment.dev';
 
 describe('ClassGroupService', () => {
   let service: ClassGroupService;

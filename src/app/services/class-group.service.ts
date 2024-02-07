@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {CreateClassGroupDto} from "../dtos/CreateClassGroupDto";
-import {environment} from "../../environments/environments";
+import {environment} from "../../environments/environment.dev";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ClassGroupDto} from '../dtos/ClassGroupDto';

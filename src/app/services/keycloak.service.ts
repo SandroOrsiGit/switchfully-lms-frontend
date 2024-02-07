@@ -4,7 +4,7 @@ import { HttpKeycloakService } from './http-keycloak.service';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { KeycloakTokenResponse } from '../models/KeycloakTokenResponse';
 import { UserService } from './user.service';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment.dev';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,7 +60,7 @@ export class KeycloakService {
       }
       throw error;
     }));
-    
+
   }
 
   logout(): void {
