@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {CreateCommentDto} from '../dtos/CreateCommentDto';
-import {environment} from '../../environments/environment.dev';
+import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

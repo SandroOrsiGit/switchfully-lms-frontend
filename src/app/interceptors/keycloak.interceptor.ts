@@ -1,7 +1,7 @@
 import {HttpInterceptorFn} from '@angular/common/http';
 import {inject} from '@angular/core';
 import {KeycloakService} from '../services/keycloak.service';
-import {environment} from '../../environments/environment.dev';
+import {environment} from '../../environments/environment';
 
 export const keycloakInterceptor: HttpInterceptorFn = (req, next) => {
   const keycloakService = inject(KeycloakService);
