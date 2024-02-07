@@ -3,6 +3,7 @@
     <h1>Login</h1>
     <form>
         <mat-form-field>
+
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="student@lms.com" [formControl]="email" required>
           @if (email.invalid) {

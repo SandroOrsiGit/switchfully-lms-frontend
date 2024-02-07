@@ -1,11 +1,4 @@
-mat-card {
-  box-shadow: none;
-  height: 75%;
-}
 
-mat-card-content {
-  margin: auto;
-}
 
 .create-class-group-form {
   min-width: 150px;
