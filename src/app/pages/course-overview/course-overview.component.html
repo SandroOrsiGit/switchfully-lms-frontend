@@ -16,7 +16,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
-          <div>
+          <div class="right-aligned-cell">
             <app-button [buttonName]="btn_course_details" [routerLink]="['/modules']" [queryParams]="{ courseId: element.id}"></app-button>
             <app-button *ngIf="isCoach()" [buttonName]="btn_edit_course" [routerLink]="['/courses', element.id, 'edit']"></app-button>
             <app-button *ngIf="isCoach()" [buttonName]="btn_add_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: element.id}"></app-button>
