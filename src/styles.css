@@ -73,3 +73,13 @@ mat-divider {
   height: 100%;
   margin: 1rem 0;
 }
+
+.class-group-overview-button, .class-group-detail-button {
+  margin: 0 auto ;
+}
+
+.class-group-detail-button {
+  margin-left: 0;
+  display: table;
+  width: 50px;
+}
