@@ -6,6 +6,27 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+table {
+  border: 50px solid red;
+  box-shadow: none;
+  margin-top: 1rem;
+  table-layout: fixed ;
+  width: 100% ;
+}
+
+td {
+  padding: 5px !important;
+}
+
+.right-aligned-cell {
+  display: flex;
+  justify-content: end;
+}
+
+app-button {
+  margin-right: max(1rem, 10%);
+}
+
 .container {
     padding-top: 3%;
     padding-bottom: 3%;

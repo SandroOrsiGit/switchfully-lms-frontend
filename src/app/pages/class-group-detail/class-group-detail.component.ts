@@ -13,6 +13,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StudentDto} from "../../dtos/StudentDto";
 import {map, Observable, startWith} from "rxjs";
+import { MatDividerModule } from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @Component({
   selector: 'app-classgroup-overview',
@@ -27,6 +29,8 @@ import {map, Observable, startWith} from "rxjs";
     AsyncPipe,
     MatInputModule,
     MatAutocompleteModule,
+    MatDividerModule,
+    MatListModule,
   ],
   templateUrl: './class-group-detail.component.html',
   styleUrl: './class-group-detail.component.css'
