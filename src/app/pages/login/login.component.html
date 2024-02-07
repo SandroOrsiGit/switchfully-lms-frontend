@@ -1,9 +1,11 @@
 <div class="page-wrapper">
   <div class="login-page">
-    <h1>Login</h1>
+    <div class="container-logo">
+      <img [src]="logoLMS" alt="logo" class = "logo">
+      <h1>Login</h1>
+    </div>
     <form>
         <mat-form-field>
-
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="student@lms.com" [formControl]="email" required>
           @if (email.invalid) {
