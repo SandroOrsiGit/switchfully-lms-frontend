@@ -10,6 +10,11 @@ mat-toolbar {
 .logo-text{
   display: flex;
   align-items: center;
+  margin-left: 1em;
+}
+.logo-and-text{
+  display: flex;
+  align-items: center;
 }
 .nav-menu{
   display: flex;
