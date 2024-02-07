@@ -23,10 +23,11 @@ mat-expansion-panel p {
 table {
   table-layout: fixed ;
   width: 100% ;
+  
 }
 
 td {
-  width: 33% ;
+  width: 33%;
 }
 
 form {
