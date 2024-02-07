@@ -6,6 +6,10 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+table {
+  margin-top: 1rem;
+}
+
 .container {
     padding-top: 3%;
     padding-bottom: 3%;
