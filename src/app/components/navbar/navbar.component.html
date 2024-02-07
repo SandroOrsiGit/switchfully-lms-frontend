@@ -16,7 +16,9 @@
   <ng-template #logOutTemplate>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>
-    </button>{{message()}}
+    </button>
+    <div class="welcome">{{message()}}</div>
+
     <mat-menu #menu="matMenu" class="custom-menu">
       <button mat-menu-item routerLink="profile">Profile</button>
       <button mat-menu-item (click)="keycloackService.logout()" routerLink='login'>Logout</button>
