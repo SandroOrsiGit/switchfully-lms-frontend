@@ -32,7 +32,7 @@ export class CourseOverviewComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'actions'];
   btn_create_course: string = "Create Course";
-  btn_course_details: string = "Details";
+  btn_course_details: string = "Modules";
   btn_edit_course: string = "Edit";
   btn_add_module: string = "Add Module";
 
