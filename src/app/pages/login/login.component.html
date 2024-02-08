@@ -8,17 +8,11 @@
         <mat-form-field>
           <mat-label>Enter your email</mat-label>
           <input matInput placeholder="email@example.com" [formControl]="email" required>
-          @if (email.invalid) {
-            <mat-error>{{getEmailErrorMessage()}}</mat-error>
-          }
           <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Enter your password</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password">
-          @if (password.invalid) {
-            <mat-error>{{getPasswordErrorMessage()}}</mat-error>
-          }
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

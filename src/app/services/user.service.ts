@@ -25,7 +25,7 @@ export class UserService {
   }
 
   addUser(user: CreateUserDto): Observable<CreateUserDto> {
-    return this.http.post<CreateUserDto>(this.url, user).pipe(
+    return this.http.post<CreateUserDto>(this.url + '/register', user).pipe(
       tap(() => {
         this.router.navigate(['/login']);
         this.snackbar.open('User created successfully', 'Close', {
