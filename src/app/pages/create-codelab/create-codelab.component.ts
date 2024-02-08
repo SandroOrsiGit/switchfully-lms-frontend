@@ -1,5 +1,4 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
 import {MatCardModule} from "@angular/material/card";
 import {CodelabService} from "../../services/codelab.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -10,6 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ModuleDto} from "../../dtos/ModuleDto";
 import {ModuleService} from "../../services/module.service";
 import {MatSelectModule} from "@angular/material/select";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-create-codelab',
@@ -27,12 +27,12 @@ import {MatSelectModule} from "@angular/material/select";
   styleUrl: './create-codelab.component.css'
 })
 export class CreateCodelabComponent implements OnInit {
-  private router = inject(Router);
   private _snackBar = inject(MatSnackBar);
   private _modules: ModuleDto[] = [];
   private _moduleService: ModuleService = inject(ModuleService);
   private _codelabService: CodelabService = inject(CodelabService);
   private _route: ActivatedRoute = inject(ActivatedRoute);
+  private _location: Location = inject(Location);
 
 
   name = new FormControl(null, [Validators.required]);
@@ -47,7 +47,7 @@ export class CreateCodelabComponent implements OnInit {
     this._codelabService.createCodelab({name: this.name.value!, moduleId: this.moduleId.value!}).subscribe(
       {
         next: () => {
-          this.router.navigate(['/profile']);
+          this._location.back();
         },
         error: () => {
           this._snackBar.open('Only coaches can created a codelab', 'Close', {
