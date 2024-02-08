@@ -1,11 +1,11 @@
 <div class="page-wrapper">
 
-    <h1>DashBoard</h1>
+    <h1>Dashboard</h1>
     <div>
       <app-button [buttonName]="btn_create_course" routerLink="/courses/create"></app-button>
     </div>
     <div>
-      <app-button [buttonName]="btn_create_classgroup" routerLink="/class-groups/create"></app-button>
+      <app-button [buttonName]="btn_create_classgroup" routerLink="/classes/create"></app-button>
     </div>
     <div>
       <app-button [buttonName]="btn_create_module" [routerLink]="['/modules/create']" [queryParams]="{ courseId: 1}"></app-button>
@@ -13,5 +13,5 @@
     <div>
       <app-button [buttonName]="btn_create_codelab" [routerLink]="['/codelabs/create']" ></app-button>
     </div>
-    
+
   </div>

@@ -1,12 +1,11 @@
 <div class="page-wrapper" *ngIf="classGroup">
 
-  <h1>Classgroup Detail</h1>
+  <h1>Class Members</h1>
 
   <h3>Currently viewing: {{classGroup.name}}</h3>
 
   <mat-list>
-    <div>
-      <form *ngIf="isCoach()" [formGroup]="addStudentForm" (ngSubmit)="addStudent()">
+      <form *ngIf="isCoach()" [formGroup]="addStudentForm" (ngSubmit)="addStudent()" class="inline-form">
 
           <mat-form-field>
             <mat-label>Student</mat-label>
@@ -25,11 +24,11 @@
 
         <app-button [buttonName]="btn_add_student" ></app-button>
       </form>
-    </div>
+
 
     <mat-divider></mat-divider>
 
-    <div>
+
       <h5>List of coaches</h5>
 
       <table mat-table [dataSource]="classGroup.coaches" class="mat-elevation-z8">
@@ -55,11 +54,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div>
+
 
     <mat-divider></mat-divider>
 
-    <div>
       <h5>List of students</h5>
 
       <table *ngIf="isCoach()" mat-table [dataSource]="classGroup.students" class="mat-elevation-z8">
@@ -110,6 +108,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-    </div>
+
   </mat-list>
 </div>

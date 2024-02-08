@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { CreateUserDto } from '../dtos/CreateUserDto';
 import { User } from '../models/User';

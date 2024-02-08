@@ -33,8 +33,10 @@ mat-toolbar span {
 }
 
 login-message {
-  font-weight: normal;
-  font-family: "Times New Roman", Times, serif;
+  /*font-weight: normal;*/
+  /*font-family: "Times New Roman", Times, serif;*/
+  padding-right: 1em;
+
  }
 
  ::ng-deep .custom-menu {
@@ -68,4 +70,8 @@ mat-toolbar mat-toolbar-single-row {
 
 .welcome{
   padding-left: 10px;
+}
+
+.register-button{
+  margin-left: 2em;
 }

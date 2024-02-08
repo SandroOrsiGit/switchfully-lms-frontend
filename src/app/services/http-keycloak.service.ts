@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { KeycloakTokenResponse } from '../models/KeycloakTokenResponse';
 
@@ -15,7 +15,7 @@ export class HttpKeycloakService {
   };
 
   constructor(private http: HttpClient) {
-    this._url = environment.keycloakUrl;
+    this._url = `${environment.keycloakUrl}`;
   }
 
    login(loginData: {email: string, password: string}): Observable<KeycloakTokenResponse> {
