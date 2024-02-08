@@ -11,8 +11,11 @@
     <span routerLink='/courses'>Courses</span>
   </div>
 
-  <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
-    routerLink='profile'>Login / Register</span>
+    <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"  routerLink='profile'>Login</span>
+
+
+    <span class="register-button" *ngIf="!this.userService.getCurrentUser()" routerLink="/register">Register</span>
+
   <ng-template #logOutTemplate>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>
@@ -24,5 +27,6 @@
       <button mat-menu-item (click)="keycloackService.logout()" routerLink='login'>Logout</button>
     </mat-menu>
   </ng-template>
+
   </div>
 </mat-toolbar>
