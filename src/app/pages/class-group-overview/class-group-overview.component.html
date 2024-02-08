@@ -1,6 +1,6 @@
 <div class="page-wrapper">
 
-    <h1>Class Groups</h1>
+    <h1>Classes</h1>
 
     <table mat-table *ngIf="classGroups.length !== 0" [dataSource]="classGroups" class="mat-elevation-z8">
 
@@ -22,7 +22,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element" >
-          <app-button [buttonName]="btn_class_group_details" [routerLink]="['/class-groups', element.id]" class="class-group-overview-button"></app-button>
+          <app-button [buttonName]="btn_class_group_details" [routerLink]="['/classes', element.id]" class="class-group-overview-button"></app-button>
         </td>
       </ng-container>
 

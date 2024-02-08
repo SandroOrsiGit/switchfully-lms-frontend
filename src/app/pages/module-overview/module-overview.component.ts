@@ -39,7 +39,7 @@ export class ModuleOverviewComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'actions'];
   btn_create_module: string = "Create Module";
-  btn_module_details: string = "Details";
+  btn_module_details: string = "Codelabs";
   btn_edit_module: string = "Edit";
   btn_add_codelab: string = "Add Codelab";
 

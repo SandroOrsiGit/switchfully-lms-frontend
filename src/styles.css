@@ -14,6 +14,16 @@ table {
   width: 100% ;
 }
 
+.mat-mdc-table{
+  border-radius: 5px;
+  overflow:hidden !important;
+  box-shadow: 1px 3px 8px hsl(200, 49%, 83%);
+}
+
+.mat-mdc-table thead {
+  background: #bfdbe9 !important;
+}
+
 
 td {
   padding: 16px !important;
