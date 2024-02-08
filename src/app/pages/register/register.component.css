@@ -6,32 +6,11 @@ form {
 
 h1 {
   text-align: center;
+  color: #489ccc;
 }
 
 mat-form-field {
   margin-bottom: 0.5em;
-}
-
-.mat-mdc-raised-button:not(:disabled){
-  padding: 0.5rem 1rem;
-  width: 80%;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  border-radius: 1.3rem;
-  background-color: #086074;
-  color: white;
-  text-transform: uppercase!important;
-}
-
-.mat-mdc-raised-button[disabled][disabled]{
-  padding: 0.5rem 1rem;
-  width: 80%;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  border-radius: 1.3rem!important;
-  background-color: #aaafb0!important;
-  color: white;
-  text-transform: uppercase!important;
 }
 
 .mat-mdc-card{
@@ -42,7 +21,15 @@ mat-form-field {
   text-decoration: underline;
 }
 
-.register-button {
+.logo {
+  max-width:12rem;
+  height: auto;
+  padding: 1.3em 0 2em;
+}
+
+.container-logo{
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 }

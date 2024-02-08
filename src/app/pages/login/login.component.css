@@ -1,6 +1,7 @@
 
 h1 {
   text-align: center;
+  color: #489ccc;
 }
 
 form {
@@ -12,40 +13,32 @@ mat-form-field {
   margin-bottom: 0.5em;
 }
 
-.mat-mdc-raised-button:not(:disabled){
-  padding: 0.5rem 1rem;
-  width: 80%;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  border-radius: 1.3rem;
-  background-color: #086074;
-  color: white;
-  text-transform: uppercase!important;
-}
-
-.mat-mdc-raised-button[disabled][disabled]{
-  padding: 0.5rem 1rem;
-  width: 80%;
-  font-size: 1.15rem;
-  line-height: 1.5;
-  border-radius: 1.3rem!important;
-  background-color: #aaafb0!important;
-  color: white;
-  text-transform: uppercase!important;
+img {
+  margin-right: 1em;
 }
 
 .register-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-bottom: 20px;
+  justify-content: center;
+  padding-bottom: 3em;
 }
 
 .register-link p {
   margin: 0;
 }
 
-.login-button {
-  display: flex;
-  justify-content: center;
+.logo {
+  max-width:12rem;
+  height: auto;
+  padding: 1.3em 0 2em;
 }
+
+.container-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+

@@ -1,20 +1,32 @@
 <mat-toolbar>
-  <span routerLink='home'>Switchfully LMS</span>
 
+  <div class="logo-and-text">
+    <img [src]="logoLMS" alt="logo" class = "logo">
+    <span routerLink='home' class="logo-text">SWITCHFULLY LMS</span>
+  </div>
+  <div class="nav-menu">
   <div class="navigation" *ngIf="this.userService.getCurrentUser()">
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
     <span routerLink='/class-groups'>Classes</span>
     <span routerLink='/courses'>Courses</span>
   </div>
 
-  <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"
-    routerLink='profile'>Login / Register</span>
+    <span class="login-message" *ngIf="!this.userService.getCurrentUser(); else logOutTemplate"  routerLink='profile'>Login</span>
+
+
+    <span class="register-button" *ngIf="!this.userService.getCurrentUser()" routerLink="/register">Register</span>
+
   <ng-template #logOutTemplate>
-    <button mat-button [matMenuTriggerFor]="menu">{{message()}}</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+    </button>
+    <div class="welcome">{{message()}}</div>
+
     <mat-menu #menu="matMenu" class="custom-menu">
       <button mat-menu-item routerLink="profile">Profile</button>
       <button mat-menu-item (click)="keycloackService.logout()" routerLink='login'>Logout</button>
     </mat-menu>
   </ng-template>
 
+  </div>
 </mat-toolbar>

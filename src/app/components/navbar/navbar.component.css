@@ -3,6 +3,26 @@ mat-toolbar {
   justify-content: space-between;
   padding-left: 35px;
   padding-right: 35px;
+  background: #076491;
+  color: #fcfeff;
+  align-items: center;
+}
+
+.logo-text{
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.logo-and-text{
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 mat-toolbar span {
@@ -13,12 +33,14 @@ mat-toolbar span {
 }
 
 login-message {
-  font-weight: normal;
-  font-family: "Times New Roman", Times, serif;
+  /*font-weight: normal;*/
+  /*font-family: "Times New Roman", Times, serif;*/
+  padding-right: 1em;
+
  }
 
  ::ng-deep .custom-menu {
-  width: 180px; /* Replace with your desired width */
+  width: 180px;
 }
 
 mat-toolbar mat-toolbar-single-row {
@@ -26,5 +48,30 @@ mat-toolbar mat-toolbar-single-row {
 }
 
 .navigation span {
-  padding-right: 10px;
+  padding-right: 2rem;
+}
+
+.mat-mdc-icon-button {
+  color: #fcfeff;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  background: #77b1d2;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 20px!important;
+}
+
+.logo {
+  width: 6rem;
+  height: 2rem;
+}
+
+.welcome{
+  padding-left: 10px;
+}
+
+.register-button{
+  margin-left: 2em;
 }

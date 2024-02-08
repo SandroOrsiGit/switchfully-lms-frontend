@@ -35,7 +35,7 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required])
   passwordConfirm = new FormControl('', [Validators.required])
   private userService = inject(UserService);
-
+  logoLMS: string = '../assets/logoLMS.png';
 
   registerForm = new FormGroup({
     email: this.email,

@@ -6,6 +6,28 @@ html, body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+table {
+  box-shadow: none;
+  margin: 1rem 0 3rem;
+  table-layout: fixed ;
+  width: 100% ;
+}
+
+
+td {
+  padding: 16px !important;
+}
+
+.right-aligned-cell {
+  display: flex;
+  justify-content: end;
+}
+
+app-button {
+  margin-right: max(1rem, 10%);
+}
+
 .container {
     padding-top: 3%;
     padding-bottom: 3%;
@@ -18,7 +40,9 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 10%; /* bottom margin to compensate footer height */
+    width: 90%;
+    margin: 3rem auto 10%;
+    /* bottom margin to compensate footer height */
 }
 
 .footer {
@@ -31,4 +55,31 @@ html, body {
 .container {
     flex: 1;
     overflow-y: auto;
+}
+
+mat-list {
+  width: 100%;
+}
+mat-divider {
+  width: 100%;
+}
+
+.inline-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.inline-form > * {
+  height: 100%;
+  margin: 1rem 0;
+}
+
+.class-group-overview-button, .class-group-detail-button {
+  margin: 0 auto ;
+}
+
+.class-group-detail-button {
+  margin-left: 0;
+  display: table;
+  width: 50px;
 }

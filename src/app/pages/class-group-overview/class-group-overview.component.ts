@@ -7,6 +7,7 @@ import {ButtonComponent} from "../../components/button/button.component";
 import {ClassGroupService} from "../../services/class-group.service";
 import {UserService} from "../../services/user.service";
 import {ClassGroupOverviewDto} from "../../dtos/ClassGroupOverviewDto";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-classgroup-overview',
@@ -16,7 +17,7 @@ import {ClassGroupOverviewDto} from "../../dtos/ClassGroupOverviewDto";
     MatTableModule,
     MatCardModule,
     ButtonComponent,
-    AsyncPipe
+    AsyncPipe, MatProgressSpinnerModule
   ],
   templateUrl: './class-group-overview.component.html',
   styleUrl: './class-group-overview.component.css'
@@ -26,6 +27,7 @@ export class ClassGroupOverviewComponent implements OnInit{
   private _userService: UserService = inject(UserService);
 
   private _classGroups: ClassGroupOverviewDto[] = [];
+  loading: boolean = true;
 
   displayedColumns: string[] = ['name', 'start-date', 'end-date', 'actions'];
   btn_class_group_details: string = "Class Group details"
@@ -35,12 +37,14 @@ export class ClassGroupOverviewComponent implements OnInit{
       this._classGroupService.getAllClassGroups().pipe().subscribe({
         next: (classGroups: ClassGroupOverviewDto[]) => {
           this._classGroups = classGroups;
+          this.finishLoading();
         }
       })
     } else {
       this._classGroupService.getClassGroupsByUserId(this._userService.getCurrentUser()?.id).pipe().subscribe({
         next: (classGroups: ClassGroupOverviewDto[]) => {
           this._classGroups = classGroups;
+          this.finishLoading();
         }
       })
     }
@@ -48,5 +52,9 @@ export class ClassGroupOverviewComponent implements OnInit{
 
   get classGroups(): ClassGroupOverviewDto[] {
     return this._classGroups;
+  }
+
+  finishLoading() {
+    this.loading = false;
   }
 }
