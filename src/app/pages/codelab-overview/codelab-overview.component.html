@@ -7,7 +7,7 @@
                 [queryParams]="{ moduleId: module.id }"></app-button>
   </div>
 
-  <table mat-table *ngIf="codelabs.length !== 0" [dataSource]="codelabDataSource" class="mat-elevation-z8">
+  <table mat-table *ngIf="codelabDataSource.length !== 0" [dataSource]="codelabDataSource" class="mat-elevation-z8">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -45,7 +45,7 @@
   <mat-spinner *ngIf="loading"></mat-spinner>
 
   <div *ngIf="!loading && codelabs.length === 0">
-    <p>This module does not have any codelabs assigned to it.</p>
+    <p>No codelabs available yet.</p>
   </div>
 </div>
 
