@@ -31,18 +31,10 @@ export class LoginComponent {
   hide: boolean = true;
   logoLMS: string = '../assets/logoLMS.png';
   getEmailErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
   getPasswordErrorMessage() {
-    if (this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-
     return this.password.hasError('password') ? 'Not a valid password' : '';
   }
   onLogin() {
