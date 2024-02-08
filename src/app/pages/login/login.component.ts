@@ -26,8 +26,8 @@ export class LoginComponent {
   router = inject(Router);
   private _snackBar = inject(MatSnackBar);
 
-  email = new FormControl('coach@lms.com', [Validators.required, Validators.email]);
-  password = new FormControl('coach', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
   hide: boolean = true;
   logoLMS: string = '../assets/logoLMS.png';
   getEmailErrorMessage() {
