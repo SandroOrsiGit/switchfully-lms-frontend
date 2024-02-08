@@ -21,15 +21,10 @@ mat-form-field {
   text-decoration: underline;
 }
 
-/*.register-button {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*}*/
-
 .logo {
   max-width:12rem;
   height: auto;
-  padding: 2.3em 0 4em;
+  padding: 1.3em 0 2em;
 }
 
 .container-logo{
