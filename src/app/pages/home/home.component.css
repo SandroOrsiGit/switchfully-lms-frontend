@@ -1,8 +1,8 @@
 .container {
-    width: 80%;
+    width: 100%;
     margin: auto;
-    margin-top: 5%;
-    padding-bottom: 7%;
+    margin-top: 0%;
+    padding-bottom: 0%;
 }
 
 .container p {
@@ -31,8 +31,8 @@
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     color: #333;
 }
 
@@ -43,4 +43,59 @@ mat-card-title, mat-card-content {
 .example-card:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.banner {
+  position: absolute;
+  top:64px;
+  left: 0;
+  width: 100%;
+  height: 30em;
+}
+
+.banner img {
+  background-image: url("https://cms.fastcrm.rocks//assets/img/banners/12/Banner_CFD_Formations-a-distance.jpg");
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  max-width: 30%;
+}
+
+.text-overlay h1 {
+  margin-top: 0;
+}
+
+.text-overlay p {
+  margin-bottom: 0;
+}
+
+h1{
+  color: #076491;
+}
+
+h2{
+  color: #3ba6b7;
+}
+
+.homepage {
+  margin-top: 28em;
+}
+
+#text-banner, p {
+  line-height: 1.5;
+}
+
+h3{
+  color: #11707f;
 }
