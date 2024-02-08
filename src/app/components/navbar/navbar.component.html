@@ -1,8 +1,8 @@
 <mat-toolbar>
 
-  <div class="logo-and-text">
+  <div class="logo-and-text" routerLink='home'>
     <img [src]="logoLMS" alt="logo" class = "logo">
-    <span routerLink='home' class="logo-text">SWITCHFULLY LMS</span>
+    <span class="logo-text">SWITCHFULLY LMS</span>
   </div>
   <div class="nav-menu">
   <div class="navigation" *ngIf="this.userService.getCurrentUser()">

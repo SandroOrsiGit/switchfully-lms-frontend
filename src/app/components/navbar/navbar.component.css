@@ -17,6 +17,7 @@ mat-toolbar {
 .logo-and-text{
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .nav-menu{
@@ -26,7 +27,6 @@ mat-toolbar {
 }
 
 mat-toolbar span {
-    font-size: x-large;
     font-weight: 500;
     cursor: pointer;
     font-size: large;
