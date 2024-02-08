@@ -40,7 +40,7 @@ export class StudentDetailComponent implements OnInit {
   private _currentStudentId: number;
 
   studentWithCoursesDto: StudentWithCoursesDto;
-  displayedColumns: ['name'];
+  displayedColumns: string[] = ['name'];
 
   dataSource: string[] = [];
 
