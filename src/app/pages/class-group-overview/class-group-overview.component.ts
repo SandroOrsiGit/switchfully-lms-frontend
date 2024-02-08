@@ -30,7 +30,7 @@ export class ClassGroupOverviewComponent implements OnInit{
   loading: boolean = true;
 
   displayedColumns: string[] = ['name', 'start-date', 'end-date', 'actions'];
-  btn_class_group_details: string = "Class Group details"
+  btn_class_group_details: string = "Class Members"
 
   ngOnInit() {
     if (this._userService.getCurrentUser()?.role === 'coach') {

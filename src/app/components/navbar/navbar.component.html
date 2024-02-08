@@ -7,7 +7,7 @@
   <div class="nav-menu">
   <div class="navigation" *ngIf="this.userService.getCurrentUser()">
     <span *ngIf="this.userService.getCurrentUser()?.role == 'coach'" routerLink='dashboard'>Dashboard</span>
-    <span routerLink='/class-groups'>Classes</span>
+    <span routerLink='/classes'>Classes</span>
     <span routerLink='/courses'>Courses</span>
   </div>
 
