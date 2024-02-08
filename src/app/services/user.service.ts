@@ -7,7 +7,8 @@ import { Observable, tap } from "rxjs";
 import { UserMapper } from '../mappers/user.mapper';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { StudentDto } from "../dtos/StudentDto"; // import MatSnackBar
+import { StudentDto } from "../dtos/StudentDto";
+import {StudentWithCoursesDto} from "../dtos/StudentWithCoursesDto"; // import MatSnackBar
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class UserService {
   }
 
   addUser(user: CreateUserDto): Observable<CreateUserDto> {
-    return this.http.post<CreateUserDto>(this.url, user).pipe(
+    return this.http.post<CreateUserDto>(this.url + '/register', user).pipe(
       tap(() => {
         this.router.navigate(['/login']);
         this.snackbar.open('User created successfully', 'Close', {
@@ -69,5 +70,9 @@ export class UserService {
 
   getAllStudents(): Observable<StudentDto[]> {
     return this.http.get<StudentDto[]>(this.url + '/students')
+  }
+
+  getStudentById(id: number): Observable<StudentWithCoursesDto> {
+    return this.http.get<StudentWithCoursesDto>(this.url + '/students/'+id);
   }
 }

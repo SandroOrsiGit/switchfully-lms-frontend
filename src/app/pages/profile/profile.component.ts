@@ -21,11 +21,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
-  userService: UserService = inject(UserService);
+  private _userService: UserService = inject(UserService);
   keycloakService = inject(KeycloakService);
   router = inject(Router);
   private _snackBar = inject(MatSnackBar);
-  user?: User = this.userService.getCurrentUser();
+  user?: User = this._userService.getCurrentUser();
   updateProfileButton: string = "Update profile";
 
   id = new FormControl(this.user?.id);
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     // TODO no empty password allowed
-    this.userService.updateProfile(this.updateProfileForm.value).subscribe(
+    this._userService.updateProfile(this.updateProfileForm.value).subscribe(
       {
         next: () => {
           this._snackBar.open('DisplayName Succesfully Updated', 'Close', {

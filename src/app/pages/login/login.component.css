@@ -29,6 +29,11 @@ img {
   margin: 0;
 }
 
+.register-link a {
+  text-decoration: none;
+  color: #489ccc;
+}
+
 .logo {
   max-width:12rem;
   height: auto;
