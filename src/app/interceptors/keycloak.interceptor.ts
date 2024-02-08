@@ -8,7 +8,7 @@ export const keycloakInterceptor: HttpInterceptorFn = (req, next) => {
 
   if (req.url.includes(`${environment.backendUrl}`)
     && keycloakService.getToken()
-    && req.url !== `${environment.backendUrl}/user/register`
+    && req.url !== `${environment.backendUrl}/users/register`
   ) {
     req = req.clone({
       setHeaders: {
