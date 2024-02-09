@@ -51,7 +51,7 @@ export class ClassGroupDetailComponent implements OnInit {
   addStudentForm = new FormGroup({
     studentListAutoComplete: this.studentListAutoComplete
   })
-  btn_add_student: string = "Add To Classgroup";
+  btn_add_student: string = "Add To Class";
 
   filteredOptions: Observable<StudentDto[]>;
 

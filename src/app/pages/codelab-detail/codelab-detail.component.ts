@@ -42,7 +42,7 @@ export class CodelabDetailComponent implements OnInit{
   private _codelab: CodelabDto;
   private _dataSource = new MatTableDataSource<CommentDto>();
 
-  text = new FormControl('test', [Validators.required]);
+  text = new FormControl('', [Validators.required]);
 
   displayedColumns: string[] = ['name', 'comments'];
 

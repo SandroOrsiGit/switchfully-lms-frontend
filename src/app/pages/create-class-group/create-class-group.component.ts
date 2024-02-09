@@ -80,7 +80,7 @@ export class CreateClassGroupComponent implements OnInit {
     this._classGroupService.createClassGroup(classGroup).pipe().subscribe({
       next: () => {
         this.activateSnackBar();
-        this.gotoProfilePage();
+        this.gotoClassesPage();
       }
     });
   }
@@ -93,8 +93,8 @@ export class CreateClassGroupComponent implements OnInit {
     return new Date(year + '-' + month + '-' + day);
   }
 
-  gotoProfilePage() {
-    this._router.navigate(['profile']);
+  gotoClassesPage() {
+    this._router.navigate(['classes']);
   }
 
   activateSnackBar() {
